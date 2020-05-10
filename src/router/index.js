@@ -3,36 +3,62 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import LayoutOne from '@/layout/layoutone'
-import LayoutTwo from '@/layout/layouttwo'
+import LayoutFull from '@/layout/layoutFull'
+import LayoutNavbar from '@/layout/layoutNavbar'
+import LayoutNoMain from '@/layout/layoutNoMain'
 
 export const constantRoutes = [
   {
     path: '/login',
-    component: () => import('../views/About.vue')
+    component: () => import('../views/Login.vue'),
+    hidden: true
   },
   {
     path: '/',
-    component: LayoutOne,
+    component: LayoutNoMain,
     redirect: '/dashboard',
     children: [
       {
         path: 'dashboard',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/Dashboard.vue'),
         name: 'Dashboard',
         meta: { title: 'Dashboard', icon: 'dashboard' }
+      },
+      {
+        path: 'product',
+        component: () => import('../views/Product.vue'),
+        name: 'Product',
+        meta: { title: 'Product', icon: 'product' }
+      },
+      {
+        path: 'user',
+        component: () => import('../views/User.vue'),
+        name: 'User',
+        meta: { title: 'User', icon: 'user' }
+      },
+    ]
+  },
+  {
+    path: '/',
+    component: LayoutFull,
+    children: [
+      {
+        path: 'form',
+        component: () => import('../views/Form.vue'),
+        name: 'Form',
+        meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
   {
     path: '/',
-    component: LayoutTwo,
+    component: LayoutNavbar,
     children: [
       {
-        path: 'project',
-        component: () => import('../views/Project.vue'),
-        name: 'Project',
-        meta: { title: 'Project', icon: 'project' }
+        path: 'store',
+        component: () => import('../views/Store.vue'),
+        name: 'Store',
+        meta: { title: 'Store', icon: 'store' }
       }
     ]
   }
@@ -46,7 +72,6 @@ const createRouter = () =>
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes
   })
-
 const router = createRouter()
 
 export default router

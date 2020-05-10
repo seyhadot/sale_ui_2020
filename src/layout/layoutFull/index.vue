@@ -35,9 +35,6 @@ export default {
     Sidebar
   },
   computed: {
-    ...mapState({
-      sidebar: (state) => state.app.sidebar
-    }),
     key() {
       return this.$route.path
     }

@@ -17,16 +17,28 @@
       <nav class="ul-wrapper">
         <ul data-submenu-title="Apps">
           <li>
-            <a href="#">
+            <router-link to="dashboard">
               <i class="uil-dashboard"></i>
               <span>Dashboard</span>
-            </a>
+            </router-link>
           </li>
           <li>
-            <a href="chat">
+            <router-link to="form">
               <i class="uil-comment-alt-dots"></i>
-              <span>Chat</span>
-            </a>
+              <span>Form</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="product">
+              <i class="uil-shopping-basket"></i>
+              <span>Products</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="user">
+              <i class="uil-user"></i>
+              <span>Users</span>
+            </router-link>
           </li>
           <li>
             <a>
@@ -72,6 +84,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      activeItem: 'about'
+    }
+  },
   methods: {
     setMenu() {
       this.active = !this.active
@@ -82,7 +99,14 @@ export default {
       this.active = !this.active
       const sitebody = document.body
       this.active ? sitebody.classList.add('menu_mobile_callaped') : sitebody.classList.remove('menu_mobile_callaped')
+    },
+    isActive: function (menuItem) {
+      return this.activeItem === menuItem
+    },
+    setActive: function (menuItem) {
+      this.activeItem = menuItem // no need for Vue.set()
     }
+
   }
 }
 </script>

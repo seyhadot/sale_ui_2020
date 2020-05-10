@@ -23,10 +23,9 @@ module.exports = {
       menu_yellow: '#fec171',
       menu_profile: '#a2a2a2',
       menu_bg: '#f7f6f1',
-      menu_low: '#E8E8E8',
+      menu_low: '#727579',
       menu_title: '#4F4F4E',
       menu_blue: '#C9EFFF',
-
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -159,7 +158,8 @@ module.exports = {
       '40': '10rem',
       '48': '12rem',
       '56': '14rem',
-      '64': '16rem'
+      '64': '16rem',
+      '72': '20rem'
     },
     backgroundColor: (theme) => theme('colors'),
     backgroundOpacity: (theme) => theme('opacity'),

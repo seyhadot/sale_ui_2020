@@ -9,9 +9,10 @@
           </a>
         </li>
         <li class="flex items-center h-full dropdown_menu">
-          <a v-click-outside="hideDropDownMennu" @click="toggleDropDownMenu" class="flex items-center h-full px-3">
+          <a v-click-outside="hideDropDownMennu" @click="toggleDropDownMenu" v-bind:class="{ 'active_profile': showStar }"
+  v-on:click="showStar = !showStar" class="flex items-center h-full px-3">
             <span class="font-sans text-xs text-menu_profile">Heng Seyha</span>
-            <img class="rounded-full w-8 h-8 ml-2" src="@/assets/img/user.png" />
+            <img class="rounded-full w-8 h-8 ml-2" src="@/assets/img/login/user.png" />
             <span class="caret text-gray-400"></span>
           </a>
           <div class="icon-browse grid-dropdown grid-open" v-show="dropDownMenu" style="right: 56px; top: 60px;">
@@ -25,7 +26,7 @@
           </div>
         </li>
         <li class="flex justify-between items-center h-full hover:bg-white">
-          <a href="/project" to="/project" class="flex h-full px-4">
+          <router-link to="store" class="flex h-full px-4">
             <div class="app-icon h-full flex justify-center items-center">
               <div class="app-icon-inner">
                 <div class="app-icon-block first"></div>
@@ -34,7 +35,7 @@
                 <div class="app-icon-block"></div>
               </div>
             </div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -49,7 +50,7 @@ export default {
       scrollPosition: null,
       openDropDown: false,
       dropDownMenu: false,
-      fullScreen: false
+      fullScreen: false,
     }
   },
   methods: {
@@ -59,6 +60,7 @@ export default {
 
     hideDropDownMennu() {
       this.dropDownMenu = false
+      this.showStar = false
     },
     updateScroll() {
       this.scrollPosition = window.scrollY
