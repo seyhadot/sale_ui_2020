@@ -218,13 +218,13 @@
   border-bottom: 1px solid #dfe2e6;
 }
 .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
-  background-color: $yellow;
-  border-color: $yellow;
+  background-color: $green;
+  border-color: $green;
 }
 .el-checkbox__inner::after {
   box-sizing: content-box;
   content: "";
-  border: 1px solid $menu;
+  border: 1px solid $white;
   border-left: 0;
   border-top: 0;
   height: 7px;

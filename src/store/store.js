@@ -14,6 +14,7 @@ export const store = new Vuex.Store({
     auth
   },
   state: {
+    defaultModule: 'salewhat',
     count: 1,
     defaultLocale: 'km',
     company: {},

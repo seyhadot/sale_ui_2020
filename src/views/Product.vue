@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody class="list">
-          <tr>
+          <tr v-for="x in 30">
             <td class="pr-0">
               <div class="custom-control custom-checkbox">
                 <el-checkbox v-model="checked"></el-checkbox>
@@ -90,8 +90,8 @@
               <span>$12,402</span>
             </td>
             <td class="text-right">
-              <a href class="text-menu_yellow">
-                <i class="flex items-center justify-center bg-menu_gray uil-ellipsis-v w-8 h-8 rounded-full"></i>
+              <a href class="text-gray-700">
+                <i class="flex items-center justify-center bg-menu_blue uil-ellipsis-v w-8 h-8 rounded-full"></i>
               </a>
             </td>
           </tr>
