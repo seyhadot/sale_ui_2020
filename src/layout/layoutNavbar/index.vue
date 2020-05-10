@@ -1,10 +1,10 @@
 <template>
-  <div class="flex body_wrapper bg-menu_yellow h-full h-screen">
+  <div class="flex body_wrapper bg-bunting h-auto h-full h-screen ">
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
         <div class="px-5 pt-4">
-          <div class="content-card px-6 py-5">
+          <div class="content-card xs:px-2 sm:px-3 lg:px-6 xs:py-2 sm:py-3 lg:py-6">
             <router-view :key="key" />
           </div>
         </div>

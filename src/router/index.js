@@ -73,13 +73,10 @@ export const constantRoutes = [
         component: () => import('../views/components/stores/AddStore'),
         name: 'Edit Store',
         meta: {title: "Edit Store", icon: 'store'}
-      },
-      { path: '*', redirect: "/login" }
-
+      }
     ]
   },
   { path: '*', redirect: "/login" }
-
 ]
 
 export const asyncRoutes = []

@@ -10,14 +10,30 @@
     left: calc(100% - 10px);
   }
 }
+.button-new-tag{
+  border-radius: 50%;
+  width: 32px;
+  i{
+    position: relative;
+    right: 6px;
+    color: dodgerblue;
+  }
+}
 .el-row {
+  .el-form-item {
+    margin-bottom: 0px;
+  }
+  .el-form-item__label {
+    line-height: 24px;
+    color: $bunting;
+  }
   .el-col {
     label {
       font-size: 13px;
       font-weight: 500;
-      span {
-        color: $span_in_label;
-        background: $yellow;
+      .span1 {
+        color: $white;
+        background: $bunting;
         padding: 2px 7px;
         border-radius: 25px;
         font-size: 10px;
@@ -34,10 +50,11 @@
         background: $input_bg;
         border: 1px solid $input_bg;
         margin: 8px 0px;
+        padding-bottom:9px;
       }
       .el-textarea__inner:focus {
         border: 1px solid $yellow;
-        border-color: $yellow;
+        border-color: $pink;
         background: $input_bg;
       }
     }
@@ -48,8 +65,8 @@
         margin: 8px 0px;
       }
       input.el-input__inner:focus {
-        border: 1px solid $yellow;
-        border-color: $yellow;
+        border: 1px solid $bunting;
+        border-color: $pink;
         background: $input_bg;
       }
       .el-select__caret {
@@ -85,24 +102,6 @@
   .el-button:hover::before {
     animation: thmBtnRipple 2s ease-out infinite;
   }
-  // .el-button--primary {
-  //   span {
-  //     text-align: left;
-  //   }
-  //   color: $white;
-  //   border-color: #09c0e4;
-  //   background-size: auto 200%;
-  //   background-image: linear-gradient(0deg, #1293c8 0%, #1fe4f2 51%, #1293c8 100%);
-  //   -webkit-transition: all .4s ease;
-  //   transition: all .4s ease;
-  //   background-position: top;
-  //   position: relative;
-
-  //   &:hover {
-  //     background-color: $yellow_dark;
-  //     color: $white;
-  //   }
-  // }
   .el-button--info {
     span {
       text-align: left;
@@ -116,7 +115,7 @@
     background-position: top;
     position: relative;
     &:hover {
-      background-color: $yellow_dark;
+      background-color: $pink;
       color: $white;
     }
   }
@@ -134,7 +133,7 @@
     position: relative;
 
     &:hover {
-      background-color: $yellow_dark;
+      background-color: $pink;
       color: $white;
     }
   }
@@ -151,7 +150,7 @@
     background-position: top;
     position: relative;
     &:hover {
-      background-color: $yellow_dark;
+      background-color: $pink;
       color: $white;
     }
   }
@@ -160,15 +159,15 @@
       text-align: left;
     }
     color: $white;
-    border-color: #ecb975;
-    background-image: linear-gradient(0deg, #fec171 0%, #ea8500 51%, #fec171 100%);
+    border-color: $white;
+    background-image: linear-gradient(180deg, $pink 0%, $plum 51%, $pink 100%);
     background-size: auto 200%;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     background-position: top;
     position: relative;
     &:hover {
-      background-color: $yellow_dark;
+      background-color: $pink;
       color: $white;
     }
   }
@@ -185,17 +184,24 @@
     background-position: top;
     position: relative;
     &:hover {
-      background-color: $yellow_dark;
+      background-color: $pink;
       color: $white;
     }
   }
 }
 .el-date-table td.today span {
-  color: $yellow;
+  color: $pink;
 }
 .el-date-table td.available:hover {
-  color: $yellow;
+  color: $pink;
 }
+.el-range-editor.is-active, .el-range-editor.is-active:hover {
+  border-color: $pink;
+}
+.el-date-table td.end-date span, .el-date-table td.start-date span {
+  background-color: $pink;
+}
+
 .caret {
   display: inline-block;
   width: 0;
@@ -235,4 +241,13 @@
   width: 3px;
   transition: transform .15s ease-in .05s;
   transform-origin: center;
+}
+.el-form-item__content{
+.el-form-item__error{
+  position: absolute;
+  right: 0;
+  top: 0;
+  float: right;
+  left: none;
+}
 }

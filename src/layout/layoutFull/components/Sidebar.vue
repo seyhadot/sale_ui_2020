@@ -1,21 +1,21 @@
 <template>
-  <aside class="sidebar h-screen bg-menu_yellow">
+  <aside class="sidebar h-screen bg-topaz-1">
     <ul class="w-160px page-menu-inner">
-      <li class="hover:bg-menu_gray">
+      <li class="hover:bg-bcg">
         <a
           @click="setMenu()"
-          class="sidebar_toggle cursor-pointer hover:text-menu_yellow w-full flex items-center justify-center py-3 text-menu_gray"
+          class="sidebar_toggle cursor-pointer hover:text-cerise w-full flex items-center justify-center py-3 text-bunting"
           v-if="$resize && $mq.above(690)"
         >
           <i class="uil-wrap-text text-4xl"></i>
         </a>
 
-        <a @click="setMenuMobile()" class="hover:text-menu_yellow w-full flex items-center justify-center py-3 text-menu_gray" v-if="$resize && $mq.below(690)">
+        <a @click="setMenuMobile()" class="hover:text-menu_yellow w-full flex items-center justify-center py-3 text-white" v-if="$resize && $mq.below(690)">
           <i class="uil-wrap-text text-4xl"></i>
         </a>
       </li>
       <nav class="ul-wrapper">
-        <ul data-submenu-title="Apps">
+        <ul data-submenu-title="Menu" class="text-bunting">
           <li>
             <router-link to="dashboard">
               <i class="uil-dashboard"></i>

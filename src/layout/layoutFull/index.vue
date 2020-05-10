@@ -8,10 +8,10 @@
           <div class="px-2">
             <div class="flex -mx-3">
               <div class="w-1/2 px-1">
-                <div class="border-t-4 border-menu_yellow"></div>
+                <div class="border-t-4 border-cerise"></div>
               </div>
               <div class="w-1/2 px-1">
-                <div class="border-t-4 border-menu_low"></div>
+                <div class="border-t-4 border-topaz"></div>
               </div>
             </div>
           </div>

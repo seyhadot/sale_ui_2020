@@ -42,6 +42,7 @@
     "node-sass": "^4.14.0",
     "prettier": "^2.0.5",
     "sass-loader": "^8.0.2",
+    "tailwindcss-plugins": "^0.3.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -1,10 +1,10 @@
 <template>
-  <header class="h-60px header_scroll w-full bg-menu_gray" :class="{ header_fixed: scrollPosition > 100 }">
+  <header class="h-60px header_scroll w-full bg-topaz" :class="{ header_fixed: scrollPosition > 100 }">
     <nav class="flex justify-between items-center h-full">
       <div class="h-full"></div>
       <ul class="flex h-full">
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">
-          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-white text-lg hover:text-menu_yellow">
+          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-white text-lg hover:text-white">
             <i class="uil-focus"></i>
           </a>
         </li>
@@ -22,10 +22,10 @@
             <a href="#" class="icon-menu-item"> <i class="uil-shopping-basket"></i> Cart </a>
             <a href="#" class="icon-menu-item"> <i class="uil-shield-check"></i> Privacy </a>
             <a href="#" class="icon-menu-item"> <i class="uil-bolt-alt"></i> Upgrade </a>
-            <a href="#" class="more-app">More Features</a>
+            <router-link to="/dashboard" class="more-app text-cerise"><i class="uil-sign-out-alt"></i>  Logout</router-link>
           </div>
         </li>
-        <li class="flex justify-between items-center h-full hover:bg-white">
+        <li class="flex justify-between items-center h-full hover:bg-bcg">
           <router-link to="/store" class="flex h-full px-4">
             <div class="app-icon h-full flex justify-center items-center">
               <div class="app-icon-inner">

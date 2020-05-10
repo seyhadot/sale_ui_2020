@@ -15,7 +15,6 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-
       black: '#000',
       white: '#fff',
       pure_gray: '#f7f6f1',
@@ -26,6 +25,10 @@ module.exports = {
       menu_low: '#727579',
       menu_title: '#4F4F4E',
       menu_blue: '#C9EFFF',
+      plum: '#9E3792',
+      cerise: '#F4368E',
+      bunting: '#2B3646',
+      bcg: '#F1F5F8',
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',
@@ -634,7 +637,20 @@ module.exports = {
       '500': '500ms',
       '700': '700ms',
       '1000': '1000ms'
-    }
+    },
+    gradients: theme => ({
+      'topaz':      ['320deg', theme('colors.plum'), theme('colors.cerise')],
+      'topaz-1':      ['-15deg', theme('colors.plum'), theme('colors.cerise')],
+      'topaz-dark': ['30deg', theme('colors.orange.700'), theme('colors.pink.600')],
+      'emerald':    ['to right', theme('colors.green.400'), theme('colors.teal.500')],
+      'fireopal':   ['to right', '#40E0D0', '#FF8C00', '#FF0080'],
+      'relay':      ['to top left', '#3A1C71', '#D76D77', '#FFAF7B'],
+
+      'mono-circle': {
+          type: 'radial',
+          colors: ['circle', '#CCC', '#000']
+      },
+    }),
   },
   variants: {
     accessibility: ['responsive', 'focus'],
@@ -733,8 +749,11 @@ module.exports = {
     transitionProperty: ['responsive'],
     transitionTimingFunction: ['responsive'],
     transitionDuration: ['responsive'],
-    transitionDelay: ['responsive']
+    transitionDelay: ['responsive'],
+    gradients: ['responsive', 'hover'],
   },
   corePlugins: {},
-  plugins: []
+  plugins: [
+    require('tailwindcss-plugins/gradients'),
+  ],
 }
