@@ -13,8 +13,8 @@
   position: fixed;
   z-index: 1000;
   background-color: $yellow;
-  -webkit-animation: closing 1s steps(100, end), step-end infinite;
-  animation: closing 1s steps(100, end), step-end infinite;
+  -webkit-animation: closing 2s steps(100, end), step-end infinite;
+  animation: closing 2s steps(100, end), step-end infinite;
   transition: 100s;
   .typewriter h1 {
     color: $menuBg;

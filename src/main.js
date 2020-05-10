@@ -8,6 +8,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 import './assets/styles/global.scss'
 import { MediaQueries, CommonBands } from 'vue-media-queries'
 import { store } from './store/store'
+import '../src/plugins/vue-cookie';
 const mediaQueries = new MediaQueries({
   bands: CommonBands.Tailwind
 })

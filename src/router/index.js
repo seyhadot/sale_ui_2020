@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {store} from '../store/store'
 
 Vue.use(Router)
 
@@ -10,6 +11,7 @@ import LayoutNoMain from '@/layout/layoutNoMain'
 export const constantRoutes = [
   {
     path: '/login',
+    name: 'Login',
     component: () => import('../views/Login.vue'),
     hidden: true
   },
@@ -35,7 +37,7 @@ export const constantRoutes = [
         component: () => import('../views/User.vue'),
         name: 'User',
         meta: { title: 'User', icon: 'user' }
-      },
+      }
     ]
   },
   {
@@ -59,6 +61,18 @@ export const constantRoutes = [
         component: () => import('../views/Store.vue'),
         name: 'Store',
         meta: { title: 'Store', icon: 'store' }
+      },
+      {
+        path: 'store/add',
+        component: () => import('../views/components/stores/AddStore'),
+        name: 'Add Store',
+        meta: {title: "Add Store", icon: 'store'}
+      },
+      {
+        path: 'store/add/:id',
+        component: () => import('../views/components/stores/AddStore'),
+        name: 'Edit Store',
+        meta: {title: "Edit Store", icon: 'store'}
       }
     ]
   }
@@ -66,12 +80,33 @@ export const constantRoutes = [
 
 export const asyncRoutes = []
 
-const createRouter = () =>
-  new Router({
-    mode: 'history', // require service support
-    scrollBehavior: () => ({ y: 0 }),
-    routes: constantRoutes
-  })
-const router = createRouter()
+const createRouter = new Router({
+  mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
+})
+createRouter.beforeEach((to, from, next) => {
+  const exceptionRoutes = [
+    'Login',
+    'Register',
+    'PrintOrder',
+    'printProductBarcode',
+    'TaxReport'
+  ]
+  if (exceptionRoutes.includes(to.name)) {
+    if (
+      store.state.user.user != null &&
+      !store.state.user.user.profile.approved
+    ) {
+      next('/not-authorize')
+    }
+    next()
+  } else if (store.state.user.user == null) {
+    next('/login')
+  }
+  next()
+})
 
-export default router
+
+
+export default createRouter;
