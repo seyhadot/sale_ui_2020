@@ -638,19 +638,19 @@ module.exports = {
       '700': '700ms',
       '1000': '1000ms'
     },
-    gradients: theme => ({
-      'topaz':      ['320deg', theme('colors.plum'), theme('colors.cerise')],
-      'topaz-1':      ['-15deg', theme('colors.plum'), theme('colors.cerise')],
+    gradients: (theme) => ({
+      topaz: ['320deg', theme('colors.plum'), theme('colors.cerise')],
+      'topaz-1': ['-15deg', theme('colors.plum'), theme('colors.cerise')],
       'topaz-dark': ['30deg', theme('colors.orange.700'), theme('colors.pink.600')],
-      'emerald':    ['to right', theme('colors.green.400'), theme('colors.teal.500')],
-      'fireopal':   ['to right', '#40E0D0', '#FF8C00', '#FF0080'],
-      'relay':      ['to top left', '#3A1C71', '#D76D77', '#FFAF7B'],
+      emerald: ['to right', theme('colors.green.400'), theme('colors.teal.500')],
+      fireopal: ['to right', '#40E0D0', '#FF8C00', '#FF0080'],
+      relay: ['to top left', '#3A1C71', '#D76D77', '#FFAF7B'],
 
       'mono-circle': {
-          type: 'radial',
-          colors: ['circle', '#CCC', '#000']
-      },
-    }),
+        type: 'radial',
+        colors: ['circle', '#CCC', '#000']
+      }
+    })
   },
   variants: {
     accessibility: ['responsive', 'focus'],
@@ -750,10 +750,8 @@ module.exports = {
     transitionTimingFunction: ['responsive'],
     transitionDuration: ['responsive'],
     transitionDelay: ['responsive'],
-    gradients: ['responsive', 'hover'],
+    gradients: ['responsive', 'hover']
   },
   corePlugins: {},
-  plugins: [
-    require('tailwindcss-plugins/gradients'),
-  ],
+  plugins: [require('tailwindcss-plugins/gradients')]
 }

@@ -9,8 +9,13 @@
           </a>
         </li>
         <li class="flex items-center h-full dropdown_menu">
-          <a v-click-outside="hideDropDownMennu" @click="toggleDropDownMenu" v-bind:class="{ 'active_profile': showStar }"
-  v-on:click="showStar = !showStar" class="flex items-center h-full px-3">
+          <a
+            v-click-outside="hideDropDownMennu"
+            @click="toggleDropDownMenu"
+            v-bind:class="{ active_profile: showStar }"
+            v-on:click="showStar = !showStar"
+            class="flex items-center h-full px-3"
+          >
             <span class="font-sans text-xs text-menu_profile">Heng Seyha</span>
             <img class="rounded-full w-8 h-8 ml-2" src="@/assets/img/login/user.png" />
             <span class="caret text-gray-400"></span>
@@ -22,7 +27,7 @@
             <a href="#" class="icon-menu-item"> <i class="uil-shopping-basket"></i> Cart </a>
             <a href="#" class="icon-menu-item"> <i class="uil-shield-check"></i> Privacy </a>
             <a href="#" class="icon-menu-item"> <i class="uil-bolt-alt"></i> Upgrade </a>
-            <router-link to="/dashboard" class="more-app text-cerise"><i class="uil-sign-out-alt"></i>  Logout</router-link>
+            <router-link to="/dashboard" class="more-app text-cerise"><i class="uil-sign-out-alt"></i> Logout</router-link>
           </div>
         </li>
         <li class="flex justify-between items-center h-full hover:bg-bcg">
@@ -50,7 +55,7 @@ export default {
       scrollPosition: null,
       openDropDown: false,
       dropDownMenu: false,
-      fullScreen: false,
+      fullScreen: false
     }
   },
   methods: {

@@ -2,11 +2,7 @@
   <aside class="sidebar h-screen bg-topaz-1">
     <ul class="w-160px page-menu-inner">
       <li class="hover:bg-bcg">
-        <a
-          @click="setMenu()"
-          class="sidebar_toggle cursor-pointer hover:text-cerise w-full flex items-center justify-center py-3 text-bunting"
-          v-if="$resize && $mq.above(690)"
-        >
+        <a @click="setMenu()" class="sidebar_toggle cursor-pointer hover:text-cerise w-full flex items-center justify-center py-3 text-bunting" v-if="$resize && $mq.above(690)">
           <i class="uil-wrap-text text-4xl"></i>
         </a>
 
@@ -106,7 +102,6 @@ export default {
     setActive: function (menuItem) {
       this.activeItem = menuItem // no need for Vue.set()
     }
-
   }
 }
 </script>

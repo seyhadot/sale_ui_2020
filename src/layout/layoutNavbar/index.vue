@@ -1,5 +1,5 @@
 <template>
-  <div class="flex body_wrapper bg-bunting h-auto h-full h-screen ">
+  <div class="flex body_wrapper bg-bunting h-auto h-full h-screen">
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
@@ -15,7 +15,6 @@
 
 <script>
 import { Navbar } from './components'
-import { mapState } from 'vuex'
 
 export default {
   name: 'Layout',
@@ -23,9 +22,6 @@ export default {
     Navbar
   },
   computed: {
-    ...mapState({
-      sidebar: (state) => state.app.sidebar
-    }),
     key() {
       return this.$route.path
     }

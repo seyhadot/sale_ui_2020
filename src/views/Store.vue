@@ -4,20 +4,13 @@
       <div>
         <h1 class="xs:text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-Raleway">Applications</h1>
       </div>
-      <button
-        v-if="ifIsSuper"
-        class="more-app border-2 px-4 py h-10 line text-white font-bold font-Raleway"
-        @click="handleGoToAddStore">
+      <button v-if="ifIsSuper" class="more-app border-2 px-4 py h-10 line text-white font-bold font-Raleway" @click="handleGoToAddStore">
         <span class="uil-plus mr-2 font-normal"></span> Add Store
         <!-- <span class="caret text-white"></span> -->
       </button>
     </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-10">
-      <div
-        :key="store.id"
-        v-for="store in userStores"
-        class="store bg-bcg ml-0 flex justify-center relative items-center align-middle"
-      >
+      <div :key="store.id" v-for="store in userStores" class="store bg-bcg ml-0 flex justify-center relative items-center align-middle">
         <div class="absolute top-0 right-0 pr-3 text-menu_profile pt-2 edit_setting">
           <el-button class="p-0 z-10" type="text" @click="handleEdit(store.id)">
             <i class="uil-cog"></i>
@@ -28,7 +21,7 @@
             <i class="uil-shop text-6xl"></i>
           </div>
           <div class="absolute bottom-0 left-0 pl-3 pb-2">
-            <span class="text-bunting font-bold text-xs capitalize">{{store.name}}</span>
+            <span class="text-bunting font-bold text-xs capitalize">{{ store.name }}</span>
           </div>
         </router-link>
       </div>
@@ -43,75 +36,73 @@
 </template>
 
 <script>
-  import { provider } from '../service/provider'
-    import axios from 'axios';
-  export default {
-    data() {
-      return {
-        dialogVisible: false,
-        storeData: [],
-      }
-    },
-    methods: {
-      handleEdit(id){
-        this.$router.push({name: 'Edit Store', params: {id}})
-      },
-      handleGoToAddStore() {
-        this.$router.push({name: 'Add Store'});
-      },
-      handleClose(done) {
-        this.$confirm('Are you sure to close this dialog?')
-          .then((_) => {
-            done()
-          })
-          .catch((_) => {
-          })
-      },
-      fetchStores() {
-        const { token, user } = this.$store.state.user;
-        const url = `${provider.baseURL}${provider.prefix}/store/list`;
-        axios
-          .post(
-            `${url}`,
-            {
-              requestId: user._id
-            },
-            {
-              headers: {
-                token: token
-              }
-            }
-          )
-          .then(response => {
-            const data = response.data;
-            if (data.code == 403) {
-              this.$message.error(data.message);
-            } else {
-              this.storeData = data.data;
-            }
-          })
-          .catch(err => {
-            this.$message.error(err.message);
-          });
-      },
-    },
-    computed: {
-      userStores() {
-
-        return this.storeData.map(s => ({
-          id: s._id,
-          name: s.name
-        }))
-      },
-      ifIsSuper() {
-        const { user } = this.$store.state.user
-        return provider.isSuper(user.roles)
-      }
-    },
-    created() {
-      this.fetchStores()
+import { provider } from '../service/provider'
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      dialogVisible: false,
+      storeData: []
     }
+  },
+  methods: {
+    handleEdit(id) {
+      this.$router.push({ name: 'Edit Store', params: { id } })
+    },
+    handleGoToAddStore() {
+      this.$router.push({ name: 'Add Store' })
+    },
+    handleClose(done) {
+      this.$confirm('Are you sure to close this dialog?')
+        .then((_) => {
+          done()
+        })
+        .catch((_) => {})
+    },
+    fetchStores() {
+      const { token, user } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/store/list`
+      axios
+        .post(
+          `${url}`,
+          {
+            requestId: user._id
+          },
+          {
+            headers: {
+              token: token
+            }
+          }
+        )
+        .then((response) => {
+          const data = response.data
+          if (data.code == 403) {
+            this.$message.error(data.message)
+          } else {
+            this.storeData = data.data
+          }
+        })
+        .catch((err) => {
+          this.$message.error(err.message)
+        })
+    }
+  },
+  computed: {
+    userStores() {
+      return this.storeData.map((s) => ({
+        id: s._id,
+        name: s.name
+      }))
+    },
+    ifIsSuper() {
+      const { user } = this.$store.state.user
+      return provider.isSuper(user.roles)
+    }
+  },
+  created() {
+    this.fetchStores()
   }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -43,32 +43,15 @@
           </el-col>
           <el-col :xs="24" :sm="12" :lg="8">
             <el-form-item label="Users">
-              <el-select
-                v-model="storeForm.users"
-                clearable
-                multiple
-                placeholder="All"
-                style="max-width: 100%; width: 100%;"
-              >
-                <el-option
-                  v-for="item in userOptions"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                ></el-option>
+              <el-select v-model="storeForm.users" clearable multiple placeholder="All" style="max-width: 100%; width: 100%;">
+                <el-option v-for="item in userOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :xs="12" :sm="12" :lg="8">
             <el-form-item>
               <label class="mr-3">Tags</label>
-              <el-tag
-                :key="languageTag"
-                v-for="languageTag in storeForm.tags"
-                closable
-                :disable-transitions="false"
-                @close="handleCloseTag(languageTag)"
-              >{{ languageTag }}</el-tag>
+              <el-tag :key="languageTag" v-for="languageTag in storeForm.tags" closable :disable-transitions="false" @close="handleCloseTag(languageTag)">{{ languageTag }}</el-tag>
               <el-input
                 class="input-new-tag"
                 v-if="inputTagVisible"
@@ -78,13 +61,7 @@
                 @keyup.enter.native="handleInputTag"
                 @blur="handleInputTag"
               ></el-input>
-              <el-button
-                icon="el-icon-plus"
-                v-else
-                class="button-new-tag"
-                size="small"
-                @click="showTagInput"
-              ></el-button>
+              <el-button icon="el-icon-plus" v-else class="button-new-tag" size="small" @click="showTagInput"></el-button>
             </el-form-item>
           </el-col>
           <el-col :xs="24" :sm="12" :lg="8">

@@ -51,16 +51,9 @@
             </td>
 
             <td>
-              <div
-                class="flex flex flex-no-wrap items-center rounded-circle"
-                style="white-space: nowrap;"
-              >
+              <div class="flex flex flex-no-wrap items-center rounded-circle" style="white-space: nowrap;">
                 <div class="avatar avatar-sm mr-3">
-                  <img
-                    src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg"
-                    alt="Avatar"
-                    class="avatar-img rounded-full"
-                  />
+                  <img src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg" alt="Avatar" class="avatar-img rounded-full" />
                 </div>
                 <div>
                   <p class="mb-0">
@@ -102,11 +95,11 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        checked: true
-      }
-    },
+export default {
+  data() {
+    return {
+      checked: true
+    }
   }
+}
 </script>

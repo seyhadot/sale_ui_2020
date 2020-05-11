@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import {store} from '../store/store'
+import { store } from '../store/store'
 
 Vue.use(Router)
 
@@ -66,17 +66,17 @@ export const constantRoutes = [
         path: 'store/add',
         component: () => import('../views/components/stores/AddStore'),
         name: 'Add Store',
-        meta: {title: "Add Store", icon: 'store'}
+        meta: { title: 'Add Store', icon: 'store' }
       },
       {
         path: 'store/add/:id',
         component: () => import('../views/components/stores/AddStore'),
         name: 'Edit Store',
-        meta: {title: "Edit Store", icon: 'store'}
+        meta: { title: 'Edit Store', icon: 'store' }
       }
     ]
   },
-  { path: '*', redirect: "/login" }
+  { path: '*', redirect: '/login' }
 ]
 
 export const asyncRoutes = []
@@ -87,18 +87,9 @@ const createRouter = new Router({
   routes: constantRoutes
 })
 createRouter.beforeEach((to, from, next) => {
-  const exceptionRoutes = [
-    'Login',
-    'Register',
-    'PrintOrder',
-    'printProductBarcode',
-    'TaxReport'
-  ]
+  const exceptionRoutes = ['Login', 'Register', 'PrintOrder', 'printProductBarcode', 'TaxReport']
   if (exceptionRoutes.includes(to.name)) {
-    if (
-      store.state.user.user != null &&
-      !store.state.user.user.profile.approved
-    ) {
+    if (store.state.user.user != null && !store.state.user.user.profile.approved) {
       next('/not-authorize')
     }
     next()
@@ -108,6 +99,4 @@ createRouter.beforeEach((to, from, next) => {
   next()
 })
 
-
-
-export default createRouter;
+export default createRouter

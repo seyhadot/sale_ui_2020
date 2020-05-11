@@ -16,7 +16,6 @@
 
 <script>
 import { Navbar, Sidebar } from './components'
-import { mapState } from 'vuex'
 
 export default {
   name: 'Layout',
