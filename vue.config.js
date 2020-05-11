@@ -16,9 +16,9 @@ module.exports = {
       }
     }
   },
-  publicPath: './',
+  publicPath: '/',
   outputDir: process.env.outputDir,
-  assetsDir: 'assets',
+  assetsDir: './src/assets',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
 

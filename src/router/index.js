@@ -8,6 +8,7 @@ import LayoutFull from '@/layout/layoutFull'
 import LayoutNavbar from '@/layout/layoutNavbar'
 import LayoutNoMain from '@/layout/layoutNoMain'
 
+const notFoundRoute = { path: '*', redirect: '/login' }
 export const constantRoutes = [
   {
     path: '/login',
@@ -41,11 +42,11 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
+    path: '/form',
     component: LayoutFull,
     children: [
       {
-        path: 'form',
+        path: '',
         component: () => import('../views/Form.vue'),
         name: 'Form',
         meta: { title: 'Form', icon: 'form' }
@@ -53,28 +54,77 @@ export const constantRoutes = [
     ]
   },
   {
-    path: '/',
+    path: '/store',
     component: LayoutNavbar,
     children: [
       {
-        path: 'store',
+        path: '',
         component: () => import('../views/Store.vue'),
         name: 'Store',
         meta: { title: 'Store', icon: 'store' }
       },
       {
-        path: 'store/add',
+        path: 'add',
         component: () => import('../views/components/stores/AddStore'),
         name: 'Add Store',
         meta: { title: 'Add Store', icon: 'store' }
       },
       {
-        path: 'store/add/:id',
+        path: 'add/:id',
         component: () => import('../views/components/stores/AddStore'),
         name: 'Edit Store',
         meta: { title: 'Edit Store', icon: 'store' }
       }
+
     ]
+  },
+
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: LayoutNavbar,
+    children: [
+      {
+        path: '',
+        meta: {
+          enName: 'Settings',
+          khName: 'ការកំណត់'
+        },
+        component: () =>
+          import ('../views/Settings')
+      },
+      {
+        path: "users/add",
+        name: "add_user",
+        meta: {
+          enName: "Add user",
+          khName: "បង្កើតអ្នកប្រើប្រាស់"
+        },
+        component: () =>
+          import ("../views/components/settings/AddUser.vue")
+      },
+      {
+        path: "users/:id/edit",
+        name: "edit_user",
+        meta: {
+          enName: "Edit user",
+          khName: "កែប្រែអ្នកប្រើប្រាស់"
+        },
+        component: () =>
+          import ("../views/components/settings/EditUser.vue")
+      },
+    ]
+
+  },
+  {
+    path: '/not_authorize',
+    name: 'not_authorize',
+    meta: {
+      enName: 'Not Authorize',
+      khName: 'មិនមានសិទ្ធ'
+    },
+    component: () =>
+      import ('../views/NotAuthorize')
   },
   { path: '*', redirect: '/login' }
 ]
@@ -90,10 +140,11 @@ createRouter.beforeEach((to, from, next) => {
   const exceptionRoutes = ['Login', 'Register', 'PrintOrder', 'printProductBarcode', 'TaxReport']
   if (exceptionRoutes.includes(to.name)) {
     if (store.state.user.user != null && !store.state.user.user.profile.approved) {
-      next('/not-authorize')
+      next('/not_authorize')
     }
     next()
   } else if (store.state.user.user == null) {
+    console.log('inside else if ')
     next('/login')
   }
   next()

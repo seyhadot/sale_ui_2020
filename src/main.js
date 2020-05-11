@@ -9,6 +9,8 @@ import './assets/styles/global.scss'
 import { MediaQueries, CommonBands } from 'vue-media-queries'
 import { store } from './store/store'
 import '../src/plugins/vue-cookie'
+Vue.use(require('vue-moment'));
+
 const mediaQueries = new MediaQueries({
   bands: CommonBands.Tailwind
 })

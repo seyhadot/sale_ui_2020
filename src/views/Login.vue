@@ -1,12 +1,12 @@
 <template>
   <div class="h-screen bg-menu_yellow bg_cover w-full">
     <div class="bg-logo w-full">
-      <img src="../assets/img/login/cover.png" alt class="w-full h-screen" />
+            <img src="../assets/img/login/cover.png" alt class="w-full h-screen" />
     </div>
     <div class="forny-container absolute pt-10" style="right: 18%;">
       <div class="forny-inner w-72 flex flex-col items-center justify-center">
         <div class="forny-logo relative" style="top: 70px;">
-          <img src="../assets/img/login/logo.png" class="w-40 h-40 rounded-full" />
+                    <img src="../assets/img/login/logo.png" class="w-40 h-40 rounded-full" />
         </div>
         <div class="forny-form w-72 bg-white pt-16 rounded-lg pb-16">
           <div class="text-center text-xs my-3 text-gray-600">
@@ -37,7 +37,7 @@
                 <el-button type="primary" class="btn-block w-48" @click="handleLogin" :loading="isLoading">{{ showLoadingText }} </el-button>
               </el-form-item>
               <el-form-item class="action flex w-full justify-center">
-                <el-checkbox v-model="isRemember">Remember for 7 days</el-checkbox>
+                <el-checkbox v-model="isRemember">Remember for 24 hours</el-checkbox>
               </el-form-item>
             </div>
           </el-form>
@@ -97,7 +97,7 @@ export default {
       this.$store.commit('setDefaultLocale', val)
     },
     isRemember(val) {
-      this.handleRememberFor7days(val)
+      this.handleRememberFor1day(val)
     }
   },
   computed: {
@@ -106,10 +106,10 @@ export default {
     }
   },
   methods: {
-    handleRememberFor7days(flagAddToCookie) {
+    handleRememberFor1day(flagAddToCookie) {
       if (flagAddToCookie) {
-        this.$cookie.set('salewhat::account::username', `${this.loginForm.username}`)
-        this.$cookie.set('salewhat::account::password', `${this.loginForm.password}`)
+        this.$cookie.set('salewhat::account::username', `${this.loginForm.username}`, { expires: '24h' })
+        this.$cookie.set('salewhat::account::password', `${this.loginForm.password}`,{ expires: '24h' })
       } else {
         //clear cookie
         this.$cookie.delete('salewhat::account::username')

@@ -21,13 +21,13 @@
             <span class="caret text-gray-400"></span>
           </a>
           <div class="icon-browse grid-dropdown grid-open" v-show="dropDownMenu" style="right: 56px; top: 60px;">
-            <a href="#" class="icon-menu-item"> <i class="uil-shop"></i> Dashboard </a>
+            <router-link to="/settings" class="more-app text-cerise"><i class="uil-shop"></i>  Settings</router-link>
             <a href="#" class="icon-menu-item"> <i class="uil-envelope-alt"></i> Messages </a>
             <a href="#" class="icon-menu-item"> <i class="uil-bookmark"></i> Bookmark </a>
             <a href="#" class="icon-menu-item"> <i class="uil-shopping-basket"></i> Cart </a>
             <a href="#" class="icon-menu-item"> <i class="uil-shield-check"></i> Privacy </a>
             <a href="#" class="icon-menu-item"> <i class="uil-bolt-alt"></i> Upgrade </a>
-            <router-link to="/dashboard" class="more-app text-cerise"><i class="uil-sign-out-alt"></i> Logout</router-link>
+            <el-button type="text" @click="handleLogout"   class="more-app text-cerise"><i class="uil-sign-out-alt"></i> Logout</el-button>
           </div>
         </li>
         <li class="flex justify-between items-center h-full hover:bg-bcg">
@@ -55,10 +55,18 @@ export default {
       scrollPosition: null,
       openDropDown: false,
       dropDownMenu: false,
-      fullScreen: false
+      fullScreen: false,
+      showStar: false,
     }
   },
   methods: {
+    handleLogout() {
+      this.$cookie.delete('salewhat::account::username')
+      this.$cookie.delete('salewhat::account::password')
+      setTimeout(()=>{
+         this.$router.push('/not_authorized')
+      }, 1000);
+    },
     toggleDropDownMenu() {
       this.dropDownMenu = !this.dropDownMenu
     },
