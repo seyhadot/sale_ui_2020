@@ -19,7 +19,7 @@ export const User = {
         storeName: map.name,
         desc: map.desc
       }))
-      state.activeStore = state.stores.length > 0 ? state.stores[0]._id : null
+      state.activeStore = state.stores.length === 1 ? state.stores[0]._id : null
     },
     unSetUser(state) {
       state.user = null
@@ -28,7 +28,7 @@ export const User = {
       state.activeStore = null
     },
     setActiveStore(state, payload) {
-      state.activeStore = payload._id
+      state.activeStore = payload._id || payload.id
     }
   },
   actions: {

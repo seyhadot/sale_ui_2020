@@ -10,20 +10,20 @@
       </button>
     </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-10">
-      <div :key="store.id" v-for="store in userStores" class="store bg-bcg ml-0 flex justify-center relative items-center align-middle">
-        <div class="absolute top-0 right-0 pr-3 text-menu_profile pt-2 edit_setting">
+      <div  :style="setStyleActiveStore(store)" :key="store.id" v-for="store in userStores" class="store bg-bcg ml-0 flex justify-center relative items-center align-middle">
+        <div class="absolute top-0 right-0 pr-3 text-menu_profile pt-2 edit_setting" >
           <el-button class="p-0 z-10" type="text" @click="handleEdit(store.id)">
             <i class="uil-cog"></i>
           </el-button>
         </div>
-        <router-link to="dashboard" class="w-full h-full py-16">
+        <div  @click="handleActiveStore(store)" class="w-full h-full py-16">
           <div class="text-bunting text-center">
             <i class="uil-shop text-6xl"></i>
           </div>
           <div class="absolute bottom-0 left-0 pl-3 pb-2">
             <span class="text-bunting font-bold text-xs capitalize">{{ store.name }}</span>
           </div>
-        </router-link>
+        </div>
       </div>
     </div>
     <el-dialog title="Store" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
@@ -46,6 +46,10 @@ export default {
     }
   },
   methods: {
+    handleActiveStore(store){
+      this.$store.commit("setActiveStore", store);
+      this.$router.push('/dashboard');
+    },
     handleEdit(id) {
       this.$router.push({ name: 'Edit Store', params: { id } })
     },
@@ -85,6 +89,13 @@ export default {
         .catch((err) => {
           this.$message.error(err.message)
         })
+    },
+    setStyleActiveStore(store){
+         const {activeStore} = this.$store.state.user;
+         if(store.id === activeStore){
+           return 'background: red';
+         }
+         return '';
     }
   },
   computed: {
@@ -100,7 +111,12 @@ export default {
     }
   },
   created() {
-    this.fetchStores()
+    const {user} = this.$store.state.user;
+    if(provider.isSuper(user.roles)){
+      this.fetchStores()
+    } else {
+      this.storeData = user.stores
+    }
   }
 }
 </script>

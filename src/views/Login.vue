@@ -138,11 +138,16 @@ export default {
                 if (!err) {
                   let body = result.body
                   if (body.code == 201) {
+                    const user = body.data;
                     this.$store.commit('setUser', {
                       token: body.token,
-                      user: body.data
+                      user
                     })
-                    this.$router.push('/')
+                    if(user.stores && user.stores.length > 1) {
+                      this.$router.push({name: 'Store'})
+                    } else {
+                      this.$router.push('/')
+                    }
                   } else {
                     this.isLoading = false
                     this.$message({

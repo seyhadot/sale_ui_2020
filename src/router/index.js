@@ -144,7 +144,6 @@ createRouter.beforeEach((to, from, next) => {
     }
     next()
   } else if (store.state.user.user == null) {
-    console.log('inside else if ')
     next('/login')
   }
   next()
