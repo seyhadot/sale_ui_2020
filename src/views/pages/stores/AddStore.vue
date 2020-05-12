@@ -12,8 +12,8 @@
         </div>
       </div>
       <el-form :model="storeForm" :rules="rules" ref="store">
-        <div class="form-title border-b pb-3 mt-5">
-          <h3 class="text-xl">Edit Store</h3>
+        <div class="form-title border-b pb-2 mt-8">
+          <h3 class="text-2xl text-center">{{$route.meta.title}}</h3>
         </div>
         <el-row class="mt-3" :gutter="20">
           <el-col :xs="24" :sm="24" :lg="8">
@@ -92,9 +92,9 @@
         </el-row>
         <div class="action mt-3">
           <el-button type="warning" @click="onSubmit">រក្សាទុក</el-button>
-          <router-link :to="-1">
+          <!-- <router-link :to="-1">
             Cancel
-          </router-link>
+          </router-link> -->
         </div>
       </el-form>
     </div>
@@ -279,9 +279,10 @@ export default {
               } else {
                 if (this.storeId) {
                   this.$message.success('កែប្រែបានជោគជ័យ')
-                  this.$router.push('/stores')
+                  this.$router.push('/store')
                 } else {
                   this.$message.success('បង្កើតហាងបានជោគជ័យ')
+                  this.$router.push('/store')
                   Object.assign(this.$data, this.$options.data.apply(this))
                 }
                 //clear property after success

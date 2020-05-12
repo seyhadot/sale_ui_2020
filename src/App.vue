@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="isLoading">
+    <div v-if="isLoading" mode="out-in">
       <div class="loader-wrapper">
         <div class="typewriter">
           <div v-loading="isLoading">
@@ -22,7 +22,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.isLoading = false
-    }, 1500)
+    }, 1200)
   }
 }
 </script>

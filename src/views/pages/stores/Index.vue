@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { provider } from '../service/provider'
+import { provider } from '@/service/provider'
 import axios from 'axios'
 export default {
   data() {

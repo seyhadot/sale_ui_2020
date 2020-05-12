@@ -13,9 +13,11 @@
   position: fixed;
   z-index: 1000;
   background-color: $yellow;
-  -webkit-animation: closing 2s steps(100, end), step-end infinite;
-  animation: closing 2s steps(100, end), step-end infinite;
-  transition: 100s;
+  -webkit-animation: closing 1.5s;
+  animation: closing 1.5s;
+  transition-property: all;
+	transition-duration: 1.5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
   .typewriter h1 {
     color: $menuBg;
     overflow: hidden;
@@ -25,8 +27,8 @@
     letter-spacing: 0.15em;
     font-weight: 700;
     font-size: 200%;
-    -webkit-animation: typing 0.9s steps(1000, end), blink-caret 0.5s step-end infinite;
-    animation: typing 0.9s steps(1000, end), blink-caret 0.5s step-end infinite;
+    -webkit-animation: typing 0.7s steps(30, end), blink-caret 0.7s step-end infinite;
+    animation: typing 0.7s steps(30, end), blink-caret 0.7s step-end infinite;
   }
 }
 @-webkit-keyframes typing {
@@ -45,13 +47,12 @@
     width: 100%;
   }
 }
-
 @-webkit-keyframes closing {
   from {
     height: 100%;
   }
   to {
-    height: 0;
+    height: 10%;
   }
 }
 @keyframes closing {
@@ -59,7 +60,7 @@
     height: 100%;
   }
   to {
-    height: 0;
+    height: 10%;
   }
 }
 

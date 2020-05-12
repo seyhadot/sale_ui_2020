@@ -59,19 +59,19 @@ export const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Store.vue'),
+        component: () => import('@/views/pages/stores/Index'),
         name: 'Store',
         meta: { title: 'Store', icon: 'store' }
       },
       {
         path: 'add',
-        component: () => import('../views/components/stores/AddStore'),
+        component: () => import('../views/pages/stores/AddStore'),
         name: 'Add Store',
         meta: { title: 'Add Store', icon: 'store' }
       },
       {
         path: 'add/:id',
-        component: () => import('../views/components/stores/AddStore'),
+        component: () => import('../views/pages/stores/AddStore'),
         name: 'Edit Store',
         meta: { title: 'Edit Store', icon: 'store' }
       }
@@ -91,7 +91,7 @@ export const constantRoutes = [
           khName: 'ការកំណត់'
         },
         component: () =>
-          import ('../views/Settings')
+          import ('../views/pages/settings/index.vue')
       },
       {
         path: "users/add",
@@ -101,7 +101,7 @@ export const constantRoutes = [
           khName: "បង្កើតអ្នកប្រើប្រាស់"
         },
         component: () =>
-          import ("../views/components/settings/AddUser.vue")
+          import ("../views/pages/settings/users/AddUser.vue")
       },
       {
         path: "users/:id/edit",
@@ -111,7 +111,7 @@ export const constantRoutes = [
           khName: "កែប្រែអ្នកប្រើប្រាស់"
         },
         component: () =>
-          import ("../views/components/settings/EditUser.vue")
+          import ("../views/pages/settings/users/EditUser.vue")
       },
     ]
 
