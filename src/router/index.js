@@ -6,7 +6,7 @@ Vue.use(Router)
 
 import LayoutFull from '@/layout/layoutFull'
 import LayoutNavbar from '@/layout/layoutNavbar'
-import LayoutNoMain from '@/layout/layoutNoMain'
+// import LayoutNoMain from '@/layout/layoutNoMain'
 
 const notFoundRoute = { path: '*', redirect: '/login' }
 export const constantRoutes = [
@@ -18,7 +18,7 @@ export const constantRoutes = [
   },
   {
     path: '/',
-    component: LayoutNoMain,
+    component: LayoutFull,
     redirect: '/dashboard',
     children: [
       {
@@ -67,7 +67,7 @@ export const constantRoutes = [
         path: 'add',
         component: () => import('../views/pages/stores/AddStore'),
         name: 'Add Store',
-        meta: { title: 'Add Store', icon: 'store' }
+        meta: { title: 'New Store', icon: 'store' }
       },
       {
         path: 'add/:id',
@@ -82,13 +82,15 @@ export const constantRoutes = [
   {
     path: '/settings',
     name: 'Settings',
-    component: LayoutNavbar,
+    component: LayoutFull,
     children: [
       {
         path: '',
         meta: {
+          title: 'Settings',
           enName: 'Settings',
           khName: 'ការកំណត់'
+          
         },
         component: () =>
           import ('../views/pages/settings/index.vue')
@@ -97,6 +99,7 @@ export const constantRoutes = [
         path: "users/add",
         name: "add_user",
         meta: {
+          title: 'New User',
           enName: "Add user",
           khName: "បង្កើតអ្នកប្រើប្រាស់"
         },

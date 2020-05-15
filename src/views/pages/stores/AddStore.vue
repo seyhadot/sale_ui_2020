@@ -1,103 +1,137 @@
 <template>
-  <div class="px-2 pt-4">
-    <div class="content-card bg-white xs:w-12/12 sm:w-12/12 lg:w-7/12 px-3 py-5 m-auto">
-      <div class="px-2">
-        <div class="flex -mx-3">
-          <div class="w-1/2 px-1">
-            <div class="border-t-4 border-cerise"></div>
-          </div>
-          <div class="w-1/2 px-1">
-            <div class="border-t-4 border-topaz"></div>
-          </div>
-        </div>
+  <div class="content-card xs:w-12/12 sm:w-12/12 lg:w-8/12 px-10 m-auto">
+    <el-form :model="storeForm" :rules="rules" ref="store">
+      <div class="form-title text-white">
+        <h3
+          class="xs:text-2xl sm:text-4xl lg:text-4xl font-bold text-white font-Raleway"
+        >{{$route.meta.title}}</h3>
       </div>
-      <el-form :model="storeForm" :rules="rules" ref="store">
-        <div class="form-title border-b pb-2 mt-8">
-          <h3 class="text-2xl text-center">{{$route.meta.title}}</h3>
-        </div>
-        <el-row class="mt-3" :gutter="20">
-          <el-col :xs="24" :sm="24" :lg="8">
-            <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
-              <el-input v-model="storeForm.name" placeholder="E-commerce Name"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="24" :lg="8">
-            <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
-              <el-input v-model="storeForm.shortcutName" placeholder="SWEM"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="24" :lg="8">
-            <el-form-item label="តំណរភ្ជាប់រូបភាព">
-              <el-input v-model="storeForm.coverImgUrl" placeholder></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="24" :lg="8">
-            <el-form-item label="ពិពណ៌នា">
-              <el-input type="textarea" v-model="storeForm.desc" rows="5"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="12" :lg="8">
-            <el-form-item label="អាស័យដ្ឋាន" prop="address">
-              <el-input type="textarea" v-model="storeForm.address" rows="5"></el-input>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="12" :lg="8">
-            <el-form-item label="Users">
-              <el-select v-model="storeForm.users" clearable multiple placeholder="All" style="max-width: 100%; width: 100%;">
-                <el-option v-for="item in userOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
-              </el-select>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="12" :sm="12" :lg="8">
-            <el-form-item>
-              <label class="mr-3">Tags</label>
-              <el-tag :key="languageTag" v-for="languageTag in storeForm.tags" closable :disable-transitions="false" @close="handleCloseTag(languageTag)">{{ languageTag }}</el-tag>
-              <el-input
-                class="input-new-tag"
-                v-if="inputTagVisible"
-                v-model="inputTagValue"
-                ref="saveTagInput"
-                size="mini"
-                @keyup.enter.native="handleInputTag"
-                @blur="handleInputTag"
-              ></el-input>
-              <el-button icon="el-icon-plus" v-else class="button-new-tag" size="small" @click="showTagInput"></el-button>
-            </el-form-item>
-          </el-col>
-          <el-col :xs="24" :sm="12" :lg="8">
-            <div class="flex justify-between xs:px-8 sm:px-3">
-              <el-form-item>
-                <el-checkbox v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ</el-checkbox>
-              </el-form-item>
-              <el-form-item>
-                <el-checkbox v-model="storeForm.isAddToBuyWhat">Add To Buywhat</el-checkbox>
-              </el-form-item>
-            </div>
-          </el-col>
-          <el-col :xs="24" :sm="12" :lg="24" class="mt-2">
-            <el-upload
-              v-loading="uploadProgress"
-              action="#"
-              list-type="picture-card"
-              :on-preview="handlePictureCardPreview"
-              :auto-upload="false"
-              :file-list="fileList"
-              :on-change="onUploadChange"
-              :on-remove="handleRemove"
-              style="float: left;"
+      <el-row class="mt-3" :gutter="40">
+        <el-col :xs="24" class="my-upload" :sm="24" :lg="6">
+          <el-upload
+            v-loading="uploadProgress"
+            action="#"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :auto-upload="false"
+            :file-list="fileList"
+            :on-change="onUploadChange"
+            :on-remove="handleRemove"
+            class="w-full upload-img relative"
+          >
+            <i class="el-icon-plus"></i>
+          </el-upload>
+        </el-col>
+        <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
+          <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
+            <el-input v-model="storeForm.name" placeholder="E-commerce Name"></el-input>
+          </el-form-item>
+          <!-- <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
+            <el-input v-model="storeForm.shortcutName" placeholder="SWEM"></el-input>
+          </el-form-item>-->
+          <!-- <el-form-item label="តំណរភ្ជាប់រូបភាព">
+            <el-input v-model="storeForm.coverImgUrl" placeholder></el-input>
+          </el-form-item>-->
+          <el-form-item label="Users">
+            <el-select
+              v-model="storeForm.users"
+              clearable
+              multiple
+              placeholder="All"
+              style="max-width: 100%; width: 100%;"
             >
-              <i class="el-icon-plus"></i>
-            </el-upload>
-          </el-col>
-        </el-row>
-        <div class="action mt-3">
-          <el-button type="warning" @click="onSubmit">រក្សាទុក</el-button>
-          <!-- <router-link :to="-1">
+              <el-option
+                v-for="item in userOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <!-- ---selecttag -->
+          <label for>Tag</label>
+          <el-select
+            v-model="value"
+            multiple
+            filterable
+            allow-create
+            default-first-option
+            placeholder="Choose tags for your article"
+          >
+            <el-option
+              v-for="item in options1"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+          <!-- ---selecttag -->
+        </el-col>
+      </el-row>
+      <el-row class="mt-5" :gutter="40">
+        <el-col class="px-5" :xs="24" :sm="24" :lg="6">
+          <div class="checkbox mb-5">
+            <el-form-item>
+              <el-checkbox class="check-label" v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ</el-checkbox>
+            </el-form-item>
+          </div>
+          <div class="checkbox">
+            <el-form-item>
+              <el-checkbox class="check-label" v-model="storeForm.isAddToBuyWhat">Add To Buywhat</el-checkbox>
+            </el-form-item>
+          </div>
+        </el-col>
+        <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
+          <el-row class="mt-3" :gutter="40">
+            <el-col class="p-0" :xs="24" :sm="24" :lg="12">
+              <el-form-item label="ពិពណ៌នា">
+                <el-input type="textarea" v-model="storeForm.desc" rows="5"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col class="p-0" :xs="24" :sm="24" :lg="12">
+              <el-form-item label="អាស័យដ្ឋាន" prop="address">
+                <el-input type="textarea" v-model="storeForm.address" rows="5"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <div class="action mt-3">
+            <el-button type="warning" @click="onSubmit">រក្សាទុក</el-button>
+            <!-- <router-link :to="-1">
             Cancel
-          </router-link> -->
-        </div>
-      </el-form>
-    </div>
+            </router-link>-->
+          </div>
+        </el-col>
+
+        <el-col :xs="12" :sm="12" :lg="12">
+          <el-form-item>
+            <label class="mr-3">Tags</label>
+            <el-tag
+              :key="languageTag"
+              v-for="languageTag in storeForm.tags"
+              closable
+              :disable-transitions="false"
+              @close="handleCloseTag(languageTag)"
+            >{{ languageTag }}</el-tag>
+            <el-input
+              class="input-new-tag"
+              v-if="inputTagVisible"
+              v-model="inputTagValue"
+              ref="saveTagInput"
+              size="mini"
+              @keyup.enter.native="handleInputTag"
+              @blur="handleInputTag"
+            ></el-input>
+            <el-button
+              icon="el-icon-plus"
+              v-else
+              class="button-new-tag"
+              size="small"
+              @click="showTagInput"
+            ></el-button>
+          </el-form-item>
+        </el-col>
+      </el-row>
+    </el-form>
   </div>
 </template>
 <script>
@@ -108,6 +142,17 @@ import axios from 'axios'
 export default {
   data() {
     return {
+        options1: [{
+          value: 'HTML',
+          label: 'HTML'
+        }, {
+          value: 'CSS',
+          label: 'CSS'
+        }, {
+          value: 'JavaScript',
+          label: 'JavaScript'
+        }],
+        value: [],
       inputTagVisible: false,
       inputTagValue: '',
       storeId: null,
@@ -353,7 +398,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .el-switch.is-checked .el-switch__core {
   border-color: #1f1f1f;
   background-color: #1f1f1f;
@@ -361,6 +406,88 @@ export default {
 
 .el-switch__label.is-active {
   color: #1f1f1f;
+}
+
+.upload-img {
+  .el-upload-list--picture-card {
+    position: absolute;
+  }
+  .el-upload-list--picture-card .el-upload-list__item-actions {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // left: 50%;
+    // top: 50%;
+    cursor: default;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s;
+  }
+  .el-upload-list--picture-card .el-upload-list__item {
+    overflow: hidden;
+    background-color: #fff;
+    border: 0px solid #c0ccda;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 148px;
+    height: 148px;
+    margin: 0 auto;
+    display: inline-block;
+    outline: none;
+  }
+  .el-upload-list--picture-card {
+    position: absolute;
+    top: 25px;
+    left: 40px;
+  }
+  .el-upload-list--picture-card .el-upload-list__item-actions {
+    outline: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    cursor: default;
+    text-align: center;
+    color: #fff;
+    opacity: 0;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  // .el-upload-list__item-preview {
+  //   display: none;
+  // }
+  .el-loading-mask {
+    position: absolute;
+    z-index: 2000;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    /* left: 100px; */
+    padding-left: 100px;
+    transition: opacity 0.3s;
+  }
+}
+
+.my-upload {
+  .el-upload--picture-card {
+    border: 1px dashed #c0ccda;
+    border-radius: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 200px;
+    vertical-align: top;
+    padding: 30px;
+  }
 }
 
 .el-tag + .el-tag {

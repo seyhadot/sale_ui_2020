@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <content-box>
     <div class="intro-y flex items-center">
       <h2 class="text-lg font-medium truncate mr-5">General Report</h2>
     </div>
@@ -63,7 +63,7 @@
             </el-row>
           </div>
           <div class="bg-white">
-            <apexchart width="100%" height="450px" type="area" :options="options" :series="series"></apexchart>
+            <apexchart width="100%" height="350px" type="area" :options="options" :series="series"></apexchart>
           </div>
         </div>
         <div class="xs:w-1/1 lg:w-1/2 m-4">
@@ -71,19 +71,21 @@
             <h2 class="text-lg font-medium truncate mr-5">Bar Report</h2>
           </div>
           <div class="bg-white">
-            <apexchart width="100%" height="450px" type="bar" :options="options" :series="series"></apexchart>
+            <apexchart width="100%" height="350px" type="bar" :options="options" :series="series"></apexchart>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </content-box>
 </template>
 
 <script>
 import VueApexCharts from 'vue-apexcharts'
+import ContentBox from '../components/ContentBoxNoBorder.vue'
 export default {
   components: {
-    apexchart: VueApexCharts
+    apexchart: VueApexCharts,
+    ContentBox
   },
   data() {
     return {

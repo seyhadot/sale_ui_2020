@@ -1,76 +1,88 @@
 <template>
   <aside class="sidebar h-screen bg-topaz-1">
     <ul class="w-160px page-menu-inner">
-      <li class="hover:bg-bcg">
-        <a @click="setMenu()" class="sidebar_toggle cursor-pointer hover:text-cerise w-full flex items-center justify-center py-3 text-bunting" v-if="$resize && $mq.above(690)">
+      <li class="hover:bg-white">
+        <a
+          @click="setMenu()"
+          class="sidebar_toggle cursor-pointer hover:text-cerise w-full flex items-center justify-center py-3 text-white"
+          v-if="$resize && $mq.above(690)"
+        >
           <i class="uil-wrap-text text-4xl"></i>
         </a>
 
-        <a @click="setMenuMobile()" class="hover:text-menu_yellow w-full flex items-center justify-center py-3 text-white" v-if="$resize && $mq.below(690)">
+        <a
+          @click="setMenuMobile()"
+          class="hover:text-cerise w-full flex items-center justify-center py-3 text-white"
+          v-if="$resize && $mq.below(690)"
+        >
           <i class="uil-wrap-text text-4xl"></i>
         </a>
       </li>
       <nav class="ul-wrapper">
         <ul data-submenu-title="Menu" class="text-bunting">
           <li>
-            <router-link to="dashboard">
-              <i class="uil-dashboard"></i>
-              <span>Dashboard</span>
-            </router-link>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="$route.meta.title"
+              placement="right-start"
+            >
+              <router-link
+                to="dashboard"
+                class="transition ease-in duration-700 w-full flex items-center justify-center"
+              >
+                <i class="uil-dashboard text-5xl"></i>
+                <!-- <span>Dashboard</span> -->
+              </router-link>
+            </el-tooltip>
           </li>
           <li>
-            <router-link to="form">
-              <i class="uil-comment-alt-dots"></i>
-              <span>Form</span>
-            </router-link>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="$route.meta.title"
+              placement="right-start"
+            >
+              <router-link
+                to="form"
+                class="transition ease-in duration-700 w-full flex items-center justify-center"
+              >
+                <i class="uil-comment-alt-dots text-5xl"></i>
+                <!-- <span>Form</span> -->
+              </router-link>
+            </el-tooltip>
           </li>
           <li>
-            <router-link to="product">
-              <i class="uil-shopping-basket"></i>
-              <span>Products</span>
-            </router-link>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="$route.meta.title"
+              placement="right-start"
+            >
+              <router-link
+                to="product"
+                class="transition ease-in duration-700 w-full flex items-center justify-center"
+              >
+                <i class="uil-shopping-basket text-5xl"></i>
+                <!-- <span>Products</span> -->
+              </router-link>
+            </el-tooltip>
           </li>
           <li>
-            <router-link to="user">
-              <i class="uil-user"></i>
-              <span>Users</span>
-            </router-link>
-          </li>
-          <li>
-            <a>
-              <i class="uil-envelope-alt"></i>
-              <span>Email</span>
-            </a>
-            <ul>
-              <li>
-                <a href="email-inbox">Inbox</a>
-                <a href="email-inbox-read">Email Read</a>
-                <a href="email-compose">Email Compose</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil-receipt"></i>
-              <span>Report</span>
-            </a>
-            <ul>
-              <li>
-                <a href="shop-card">Products Grid</a>
-              </li>
-              <li>
-                <a href="shop-listing">Products List</a>
-              </li>
-              <li>
-                <a href="shop-product">Product</a>
-              </li>
-              <li>
-                <a href="shop-cart">Products Cart</a>
-              </li>
-              <li>
-                <a href="shop-checkout">Products Checkout</a>
-              </li>
-            </ul>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="$route.meta.title"
+              placement="right-start"
+            >
+              <router-link
+                to="user"
+                class="transition ease-in duration-700 w-full flex items-center justify-center"
+              >
+                <i class="uil-user text-5xl"></i>
+                <!-- <span>Users</span> -->
+              </router-link>
+            </el-tooltip>
           </li>
         </ul>
       </nav>

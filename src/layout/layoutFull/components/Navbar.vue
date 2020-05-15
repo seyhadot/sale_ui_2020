@@ -1,10 +1,10 @@
 <template>
-  <header class="h-60px header_scroll w-full bg-topaz" :class="{ header_fixed: scrollPosition > 100 }">
+  <header class="h-60px header_scroll w-full bg-white" :class="{ header_fixed: scrollPosition > 100 }">
     <nav class="flex justify-between items-center h-full">
       <div class="h-full"></div>
       <ul class="flex h-full">
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">
-          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-white text-lg hover:text-white">
+          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise">
             <i class="uil-focus"></i>
           </a>
         </li>
@@ -21,7 +21,7 @@
             <span class="caret text-gray-400"></span>
           </a>
           <div class="icon-browse grid-dropdown grid-open" v-show="dropDownMenu" style="right: 56px; top: 60px;">
-            <router-link to="/settings" class="more-app text-cerise"><i class="uil-shop"></i>  Settings</router-link>
+            <router-link to="/settings" class="icon-menu-item"><i class="uil-shop"></i>  <span>Settings</span></router-link>
             <a href="#" class="icon-menu-item"> <i class="uil-envelope-alt"></i> Messages </a>
             <a href="#" class="icon-menu-item"> <i class="uil-bookmark"></i> Bookmark </a>
             <a href="#" class="icon-menu-item"> <i class="uil-shopping-basket"></i> Cart </a>

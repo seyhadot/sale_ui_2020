@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card bg-white shadow px-6 py-5">
+  <content-box>
     <div class="table-responsive">
       <div class="card-header">
         <form class="form-inline">
@@ -40,7 +40,7 @@
           </tr>
         </thead>
         <tbody class="list">
-          <tr class v-for="x in 50">
+          <tr class v-for="x in 15">
             <td class="pr-0">
               <div class="custom-control custom-checkbox">
                 <el-checkbox v-model="checked"></el-checkbox>
@@ -48,9 +48,16 @@
             </td>
 
             <td>
-              <div class="flex flex flex-no-wrap items-center rounded-circle" style="white-space: nowrap;">
+              <div
+                class="flex flex flex-no-wrap items-center rounded-circle"
+                style="white-space: nowrap;"
+              >
                 <div class="avatar avatar-sm mr-3">
-                  <img src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg" alt="Avatar" class="avatar-img rounded-full" />
+                  <img
+                    src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg"
+                    alt="Avatar"
+                    class="avatar-img rounded-full"
+                  />
                 </div>
                 <div class>
                   <div class>
@@ -91,15 +98,19 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </content-box>
 </template>
 
 <script>
+import ContentBox from '../components/ContentBoxNoBorder.vue'
 export default {
   data() {
     return {
       checked: true
     }
-  }
+  },
+  components: {
+    ContentBox,
+  },
 }
 </script>

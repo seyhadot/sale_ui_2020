@@ -1,130 +1,103 @@
 <template>
-    <div>
-        <div class="bgdark"></div>
-        <div class="container">
-            <transition name="el-zoom-in-top">
-                <el-row :gutter="20" v-show="true">
-                    <el-col :span="18" :offset="3">
-                        <el-row>
-                            <el-form :model="createUserForm" :rules="rules" ref="createUser">
-                                <div class="card-box first-margin">
-                                    <div
-                                            class="flex right"
-                                            style="text-align:right;padding-top:8px;padding-right: 8px;"
-                                    >
-                                        <el-col :span="24">
-                                            <router-link to="/settings?activeName=0">
-                                                <font-awesome-icon icon="times" size="lg" style="color: #1f1f1f"/>
-                                            </router-link>
-                                        </el-col>
-                                    </div>
-                                    <div class="card-header">
-                                        <h5>{{$t('user.add')}}</h5>
-                                        <p>{{$t('user.addHint')}}</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <el-row :gutter="16">
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.tableData.accountName')" prop="username">
-                                                    <el-input v-model="createUserForm.username" placeholder="Kevin"></el-input>
-                                                </el-form-item>
-                                            </el-col>
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.tableData.tel')" prop="tel">
-                                                    <el-input
-                                                            type="number"
-                                                            v-model="createUserForm.tel"
-                                                            placeholder="15427757"
-                                                    ></el-input>
-                                                </el-form-item>
-                                            </el-col>
-                                        </el-row>
-                                        <el-row :gutter="16">
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.password')" prop="password">
-                                                    <el-input
-                                                            type="password"
-                                                            v-model="createUserForm.password"
-                                                            :placeholder="$t('user.password')"
-                                                    ></el-input>
-                                                </el-form-item>
-                                            </el-col>
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.confirmPassword')" prop="confirmPassword">
-                                                    <el-input
-                                                            type="password"
-                                                            v-model="createUserForm.confirmPassword"
-                                                            :placeholder="$t('user.confirmPassword')"
-                                                    ></el-input>
-                                                </el-form-item>
-                                            </el-col>
-                                        </el-row>
-                                        <el-row :gutter="16">
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.chooseStores')">
-                                                    <el-select
-                                                            v-model="createUserForm.stores"
-                                                            multiple
-                                                            :placeholder="$t('user.chooseStores')"
-                                                            style="width: 100%;"
-                                                    >
-                                                        <el-option
-                                                                v-for="item in storeOptions"
-                                                                :key="item.value"
-                                                                :label="item.label"
-                                                                :value="item.value"
-                                                        ></el-option>
-                                                    </el-select>
-                                                </el-form-item>
-                                            </el-col>
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.chooseRoles')">
-                                                    <el-select
-                                                            v-model="createUserForm.roles"
-                                                            multiple
-                                                            :placeholder="$t('user.chooseRoles')"
-                                                            style="width: 100%;"
-                                                    >
-                                                        <el-option
-                                                                v-for="item in rolesOptions"
-                                                                :key="item.value"
-                                                                :label="item.label"
-                                                                :value="item.value"
-                                                        ></el-option>
-                                                    </el-select>
-                                                </el-form-item>
-                                            </el-col>
-                                        </el-row>
-                                        <el-row>
-                                            <el-switch
-                                                    v-model="createUserForm.profile.approved"
-                                                    :active-text="$t('user.approved')"
-                                                    inactive-text
-                                            ></el-switch>
-                                        </el-row>
-                                    </div>
-                                </div>
-                            </el-form>
-                            <div class="card-button first-margin">
-                                <div class="card-header" style="padding-left:0px;">
-                                    <el-button
-                                            type="primary"
-                                            @click="handleSubmit"
-                                            :loading="isLoading"
-                                    >{{$t('user.add')}}</el-button>
-                                </div>
-                            </div>
-                        </el-row>
-                    </el-col>
-                </el-row>
-            </transition>
-        </div>
-    </div>
+  <transition name="el-zoom-in-top">
+    <content-box>
+      <div class="content-card bg-white" v-show="true">
+        <el-form :model="createUserForm" :rules="rules" ref="createUser">
+          <el-col :span="24">
+            <router-link to="/settings?activeName=0">
+              <font-awesome-icon icon="times" size="lg" />
+            </router-link>
+          </el-col>
+
+          <div class="form-title border-b pb-3">
+            <h3 class="text-xl">{{$t('user.add')}}</h3>
+          </div>
+
+          <div class="card-body mt-5">
+            <el-row :gutter="40">
+              <el-col :span="12">
+                <el-form-item :label="$t('user.tableData.accountName')" prop="username">
+                  <el-input v-model="createUserForm.username" placeholder="Kevin"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item :label="$t('user.tableData.tel')" prop="tel">
+                  <el-input type="number" v-model="createUserForm.tel" placeholder="15427757"></el-input>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="12">
+                <el-form-item :label="$t('user.password')" prop="password">
+                  <el-input
+                    type="password"
+                    v-model="createUserForm.password"
+                    :placeholder="$t('user.password')"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item :label="$t('user.confirmPassword')" prop="confirmPassword">
+                  <el-input
+                    type="password"
+                    v-model="createUserForm.confirmPassword"
+                    :placeholder="$t('user.confirmPassword')"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="12">
+                <el-form-item :label="$t('user.chooseStores')">
+                  <el-select
+                    v-model="createUserForm.stores"
+                    multiple
+                    :placeholder="$t('user.chooseStores')"
+                    style="width: 100%;"
+                  >
+                    <el-option
+                      v-for="item in storeOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="12">
+                <el-form-item :label="$t('user.chooseRoles')">
+                  <el-select
+                    v-model="createUserForm.roles"
+                    multiple
+                    :placeholder="$t('user.chooseRoles')"
+                  >
+                    <el-option
+                      v-for="item in rolesOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-switch
+              v-model="createUserForm.profile.approved"
+              :active-text="$t('user.approved')"
+              inactive-text
+            ></el-switch>
+          </div>
+          <div class="action">
+            <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{$t('user.add')}}</el-button>
+          </div>
+        </el-form>
+      </div>
+    </content-box>
+  </transition>
 </template>
 
 <script>
   import { provider } from "@/service/provider";
   import axios from "axios";
+  import ContentBox from '../../../../components/ContentBox.vue'
 
   export default {
     data() {
@@ -197,6 +170,9 @@
           modules: [],
         }
       };
+    },
+    components: {
+      ContentBox,
     },
     methods: {
       fetchStores() {
@@ -276,54 +252,3 @@
     }
   };
 </script>
-
-<style lang="scss" scoped>
-    @import url("https://fonts.googleapis.com/css?family=Battambang|Bokor|Chenla|Kantumruy|Kdam+Thmor|Khmer|Nokora|Odor+Mean+Chey|Roboto|Taprom");
-
-    .card-button {
-        transition: box-shadow ease 0.2s;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        .card-header {
-            margin-bottom: 0;
-            padding: 0.75rem 1.25rem;
-            color: inherit;
-            border-bottom: 0 solid rgba(0, 0, 0, 0.125);
-            background-color: transparent;
-        }
-    }
-
-    .first-margin {
-        margin: 30px 10px 30px 35px;
-    }
-    .second-margin {
-        margin: 30px 30px 30px 5px;
-    }
-    .lmargin {
-        margin: 30px 10px 30px 35px;
-    }
-    .container {
-        margin-top: -220px;
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-
-    .el-switch.is-checked .el-switch__core {
-        border-color: #1f1f1f;
-        background-color: #1f1f1f;
-    }
-    .el-switch__label.is-active {
-        color: #1f1f1f;
-    }
-    @media (min-width: 1200px) {
-        .container {
-            max-width: 1140px;
-        }
-    }
-</style>

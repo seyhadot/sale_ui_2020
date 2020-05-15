@@ -27,7 +27,7 @@ module.exports = {
       menu_blue: '#C9EFFF',
       plum: '#9E3792',
       cerise: '#F4368E',
-      bunting: '#2B3646',
+      bunting: '#1E2E40',
       bcg: '#F1F5F8',
       gray: {
         100: '#f7fafc',

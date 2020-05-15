@@ -9,9 +9,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import './src/assets/styles/_variables.scss';
           @import './src/assets/styles/form.scss';
-          @import './src/assets/styles/style.scss';
         `
       }
     }

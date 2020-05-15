@@ -1,24 +1,20 @@
 <template>
-  <div class="flex body_wrapper">
+  <div class="flex body_wrapper bg-main h-screen">
     <sidebar class="sidebar-container" />
     <div class="wrapper_main w-full">
       <Navbar />
-      <main class="w-full">
-        <div class="content px-5 pt-4">
-          <div class="px-2">
-            <div class="flex -mx-3">
-              <div class="w-1/2 px-1">
-                <div class="border-t-4 border-cerise"></div>
-              </div>
-              <div class="w-1/2 px-1">
-                <div class="border-t-4 border-topaz"></div>
-              </div>
-            </div>
-          </div>
-          <div class="content-card bg-white px-6 py-5">
-            <router-view :key="key" />
-          </div>
+      <main class="w-full ">
+        <div class="bread_crumb content px-10 py-5">
+          <ul class="flex font-bold">
+            <!-- <li>
+              <a href>{{$route.meta.name}}</a>
+            </li> -->
+            <li>
+              <a href>{{$route.meta.title}}</a>
+            </li>
+          </ul>
         </div>
+        <router-view :key="key" />
       </main>
     </div>
   </div>
@@ -40,3 +36,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.bg-main {
+  background: url('../../assets/img/bg.png') no-repeat;
+  background-size: 60%;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-position: 20% 30%;
+}
+</style>

@@ -1,3 +1,6 @@
+@import "./_variables.scss";
+@import "./style.scss";
+
 @keyframes thmBtnRipple {
   0% {
     left: 10px;
@@ -10,10 +13,10 @@
     left: calc(100% - 10px);
   }
 }
-.button-new-tag{
+.button-new-tag {
   border-radius: 50%;
   width: 32px;
-  i{
+  i {
     position: relative;
     right: 6px;
     color: dodgerblue;
@@ -50,7 +53,7 @@
         background: $input_bg;
         border: 1px solid $input_bg;
         margin: 8px 0px;
-        padding-bottom:9px;
+        padding-bottom: 9px;
       }
       .el-textarea__inner:focus {
         border: 1px solid $yellow;
@@ -63,6 +66,7 @@
         background: $input_bg;
         border: 1px solid $input_bg;
         margin: 8px 0px;
+        margin-bottom: 13px;
       }
       input.el-input__inner:focus {
         border: 1px solid $bunting;
@@ -82,9 +86,10 @@
   }
 }
 .action {
+  margin-top: 0.5rem;
   .el-button {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
     outline: none;
   }
   .el-button::before {
@@ -195,10 +200,12 @@
 .el-date-table td.available:hover {
   color: $pink;
 }
-.el-range-editor.is-active, .el-range-editor.is-active:hover {
+.el-range-editor.is-active,
+.el-range-editor.is-active:hover {
   border-color: $pink;
 }
-.el-date-table td.end-date span, .el-date-table td.start-date span {
+.el-date-table td.end-date span,
+.el-date-table td.start-date span {
   background-color: $pink;
 }
 
@@ -219,11 +226,9 @@
     padding-left: 37px;
   }
 }
-.card-header {
-  position: relative;
-  border-bottom: 1px solid #dfe2e6;
-}
-.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
   background-color: $green;
   border-color: $green;
 }
@@ -239,15 +244,146 @@
   top: 1px;
   transform: rotate(45deg) scaleY(0);
   width: 3px;
-  transition: transform .15s ease-in .05s;
+  transition: transform 0.15s ease-in 0.05s;
   transform-origin: center;
 }
-.el-form-item__content{
-.el-form-item__error{
-  position: absolute;
-  right: 0;
-  top: 0;
-  float: right;
-  left: none;
+.el-form-item__content {
+  .el-form-item__error {
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    font-size: 12px;
+    position: absolute;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    top: 3px;
+    right: 0px;
+    left: auto;
+    z-index: 2;
+    height: 25px;
+    line-height: 1;
+    background-color: $pink;
+    color: $white;
+    font-weight: normal;
+    display: inline-block;
+    padding: 6px 8px;
+  }
+  .el-form-item__error:after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0 6px 6px 0;
+    border-color: transparent $pink;
+    display: block;
+    width: 0;
+    z-index: 1;
+    bottom: -6px;
+    left: 20%;
+  }
+}
+
+// switch
+.el-switch__label.is-active {
+  color: $pink;
+}
+.el-switch.is-checked .el-switch__core {
+  border-color: $pink;
+  background-color: $pink;
+}
+
+.el-switch {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+// multi_tag
+.el-tag.el-tag--info {
+  background-color: $pink;
+  border-color: $pink;
+  color: $white;
+}
+.el-select__tags {
+  top: 48%;
+}
+.el-select .el-tag__close.el-icon-close {
+  background-color: $white;
+  color: $pink;
+  &:hover {
+    background-color: $plum;
+  }
+}
+// dialog_header
+.el-dialog__header {
+  padding: 0;
+}
+
+// tooltip
+.el-tooltip__popper.is-dark {
+  background: $bunting;
+  color: #fff;
+}
+
+// checkbox
+.checkbox {
+  .el-form-item,
+  .el-form-item__content,
+  .el-checkbox {
+    width: 100%;
+    display: contents;
+  }
+  .el-checkbox__inner {
+    height: 24px;
+    width: 24px;
+    top: 12px;
+    left: 8px;
+  }
+  .el-checkbox__inner::after {
+    box-sizing: content-box;
+    content: "";
+    border: 2px solid #fff;
+    border-left: 0;
+    border-top: 0;
+    height: 15px;
+    left: 10px;
+    position: absolute;
+    top: 1px;
+    transform: rotate(45deg) scaleY(0);
+    width: 3px;
+    transition: transform 0.15s ease-in 0.05s;
+    transform-origin: center;
+  }
+  .el-checkbox__input {
+    line-height: 0;
+    left: 25px;
+    position: absolute;
+  }
+  .el-checkbox__input.is-focus .el-checkbox__inner   {
+    border-color: $pink;
+  }
+  .el-checkbox__label {
+    padding: 13px 15px 13px 50px;
+    background-color: #fff;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    border-radius: 0px;
+    border: 1px solid #ddd;
+    min-height: 30px;
+    font-weight: 400;
+    width: 100% ;
+  }
+  .el-checkbox__input.is-checked + .el-checkbox__label {
+    color: $pink;
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner,
+  .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: $pink;
+    border-color: $pink;
+  }
+  .el-checkbox__inner:hover {
+    border-color: $pink;
 }
 }

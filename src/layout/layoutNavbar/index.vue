@@ -1,5 +1,5 @@
 <template>
-  <div class="flex body_wrapper bg-bunting h-auto h-full h-screen">
+  <div class="flex body_wrapper bg-bunting h-auto h-full h-screen bg-main">
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
@@ -28,3 +28,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.bg-main{
+  background: url("../../assets/img/bg.png") center center no-repeat;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-position: 10% 70%;
+  background-size: 100%;
+}
+</style>
+

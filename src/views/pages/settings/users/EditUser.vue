@@ -1,123 +1,118 @@
 <template>
-    <div>
-        <div class="bgdark"></div>
-        <div class="container">
-            <transition name="el-zoom-in-top">
-                <el-row :gutter="20" v-show="true">
-                    <el-col :span="18" :offset="3">
-                        <el-row>
-                            <el-form :model="editUserForm" :rules="rules" ref="editUser">
-                                <div class="card-box first-margin">
-                                    <div
-                                            class="flex right"
-                                            style="text-align:right;padding-top:8px;padding-right: 8px;"
-                                    >
-                                        <el-col :span="24">
-                                            <router-link to="/settings?activeName=0">
-                                                <font-awesome-icon icon="times" size="lg" style="color: #1f1f1f"/>
-                                            </router-link>
-                                        </el-col>
-                                    </div>
-                                    <div class="card-header">
-                                        <h5>កែប្រែអ្នកប្រើប្រាស់</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <el-row>
-                                            <el-col :span="24">
-                                                <el-form-item :label="$t('user.tableData.tel')" prop="tel">
-                                                    <el-input type="number" v-model="editUserForm.tel" placeholder="15427757"></el-input>
-                                                </el-form-item>
-                                            </el-col>
-                                        </el-row>
-                                        <el-row :gutter="16">
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.chooseStores')">
-                                                    <el-select
-                                                            v-model="editUserForm.stores"
-                                                            multiple
-                                                            :placeholder="$t('user.chooseStores')"
-                                                            style="width: 100%;"
-                                                    >
-                                                        <el-option
-                                                                v-for="item in storeOptions"
-                                                                :key="item.value"
-                                                                :label="item.label"
-                                                                :value="item.value"
-                                                        ></el-option>
-                                                    </el-select>
-                                                </el-form-item>
-                                            </el-col>
-                                            <el-col :span="12">
-                                                <el-form-item :label="$t('user.chooseRoles')">
-                                                    <el-select
-                                                            v-model="editUserForm.roles"
-                                                            multiple
-                                                            :placeholder="$t('user.chooseRoles')"
-                                                            style="width: 100%;"
-                                                    >
-                                                        <el-option
-                                                                v-for="item in rolesOptions"
-                                                                :key="item.value"
-                                                                :label="item.label"
-                                                                :value="item.value"
-                                                        ></el-option>
-                                                    </el-select>
-                                                </el-form-item>
-                                            </el-col>
-                                        </el-row>
-                                        <el-row>
-                                            <el-switch
-                                                    v-model="editUserForm.profile.approved"
-                                                    :active-text="$t('user.approved')"
-                                                    inactive-text
-                                            ></el-switch>
-                                        </el-row>
-                                    </div>
-                                </div>
-                            </el-form>
-                            <div class="card-button first-margin">
-                                <div class="card-header" style="padding-left:0px;">
-                                    <el-button
-                                            class="s__btn"
-                                            @click="dialogFormVisible=true"
-                                            :loading="isLoading"
-                                    >{{$t("user.changePassword")}}</el-button>
-                                    <el-button
-                                            type="primary"
-                                            @click="handleSubmit"
-                                            :loading="isLoading"
-                                    >{{$t("user.edit")}}</el-button>
-                                </div>
-                            </div>
-                        </el-row>
-                    </el-col>
-                    <!--Modal change password-->
-                    <el-dialog :title="$t('user.changePassword')" :visible.sync="dialogFormVisible">
-                        <el-form :model="changePasswordForm" :rules="rules" ref="changePass">
-                            <el-form-item :label="$t('user.password')" prop="password">
-                                <el-input type="password" v-model="changePasswordForm.password" autocomplete="off"></el-input>
-                            </el-form-item>
-                            <el-form-item :label="$t('user.changePassword')" prop="confirmPassword">
-                                <el-input
-                                        type="password"
-                                        v-model="changePasswordForm.confirmPassword"
-                                        autocomplete="off"
-                                ></el-input>
-                            </el-form-item>
-                        </el-form>
-                        <span slot="footer" class="dialog-footer">
-              <el-button type="primary" @click="handleChangePassword">{{$t('user.changePassword')}}</el-button>
-            </span>
-                    </el-dialog>
-                </el-row>
-            </transition>
+  <transition name="el-zoom-in-top">
+    <content-box>
+      <div  v-show="true">
+        <el-form :model="editUserForm" :rules="rules" ref="editUser">
+          <el-col :span="24">
+            <router-link to="/settings?activeName=0">
+              <font-awesome-icon icon="times" size="lg" />
+            </router-link>
+          </el-col>
+          <div class="form-title border-b pb-3">
+            <h3 class="text-xl">កែប្រែអ្នកប្រើប្រាស់</h3>
+          </div>
+          <div class="card-body">
+            <el-row :gutter="40">
+              <el-col :xs="24" :sm="12" :lg="8">
+                <el-form-item :label="$t('user.tableData.tel')" prop="tel">
+                  <el-input type="number" v-model="editUserForm.tel" placeholder="15427757"></el-input>
+                </el-form-item>
+              </el-col>
+
+              <el-col :xs="24" :sm="12" :lg="8">
+                <el-form-item :label="$t('user.chooseStores')">
+                  <el-select
+                    v-model="editUserForm.stores"
+                    multiple
+                    :placeholder="$t('user.chooseStores')"
+                  >
+                    <el-option
+                      v-for="item in storeOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :xs="24" :sm="12" :lg="8">
+                <el-form-item :label="$t('user.chooseRoles')">
+                  <el-select
+                    v-model="editUserForm.roles"
+                    multiple
+                    :placeholder="$t('user.chooseRoles')"
+                    style="width: 100%;"
+                  >
+                    <el-option
+                      v-for="item in rolesOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row>
+              <el-switch
+                v-model="editUserForm.profile.approved"
+                :active-text="$t('user.approved')"
+                inactive-text
+              ></el-switch>
+            </el-row>
+          </div>
+        </el-form>
+
+        <div class="action xs:flex sm:flex lg:flex xs:justify-center sm:justify-center xl:justify-start">
+          <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{$t("user.edit")}}</el-button>
+
+          <el-button
+            class="s__btn"
+            @click="dialogFormVisible=true"
+            :loading="isLoading"
+          >{{$t("user.changePassword")}}</el-button>
         </div>
-    </div>
+
+        <!--Modal change password-->
+        <el-dialog :visible.sync="dialogFormVisible">
+          <div class="form-title border-b pb-3 mb-5">
+            <h3 class="text-xl">{{$t('user.changePassword')}}</h3>
+          </div>
+          <el-form :model="changePasswordForm" :rules="rules" ref="changePass">
+            <el-row>
+              <el-col :span="24">
+                <el-form-item :label="$t('user.password')" prop="password">
+                  <el-input
+                    type="password"
+                    v-model="changePasswordForm.password"
+                    autocomplete="off"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="24">
+                <el-form-item :label="$t('user.changePassword')" prop="confirmPassword">
+                  <el-input
+                    type="password"
+                    v-model="changePasswordForm.confirmPassword"
+                    autocomplete="off"
+                  ></el-input>
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+          <span class="action">
+            <el-button type="warning" @click="handleChangePassword">{{$t('user.changePassword')}}</el-button>
+          </span>
+        </el-dialog>
+      </div>
+    </content-box>
+  </transition>
 </template>
 
 <script>
   import { provider } from "@/service/provider";
   import axios from "axios";
+  import ContentBox from '../../../../components/ContentBox.vue';
 
   export default {
     data() {
@@ -195,6 +190,9 @@
           modules: []
         }
       };
+    },
+    components: {
+      ContentBox,
     },
     methods: {
       fetchStores() {
@@ -325,110 +323,3 @@
     }
   };
 </script>
-
-
-<style lang="scss" scoped>
-    @import url("https://fonts.googleapis.com/css?family=Battambang|Bokor|Chenla|Kantumruy|Kdam+Thmor|Khmer|Nokora|Odor+Mean+Chey|Roboto|Taprom");
-
-    .bgdark {
-        background-color: #1f1f1f !important;
-        height: 230px;
-    }
-    .card-box {
-        transition: box-shadow ease 0.2s;
-        box-shadow: 0 25px 50px rgba(8, 21, 66, 0.06);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        border: 0 solid rgba(0, 0, 0, 0.125);
-        border-radius: 0.25rem;
-        background-color: #fff;
-        background-clip: border-box;
-        .card-header {
-            margin-bottom: 0;
-            padding: 0.75rem 1.25rem;
-            color: inherit;
-            border-bottom: 0 solid rgba(0, 0, 0, 0.125);
-            background-color: transparent;
-            h5 {
-                font-size: 1.125rem;
-                margin: 0px;
-                font-family: "Chenla", "Roboto", cursive;
-                font-weight: bold;
-            }
-            p {
-                color: #8492a6 !important;
-                font-style: italic;
-                margin: 0;
-                font-size: 0.925rem;
-            }
-        }
-        .card-body {
-            padding: 0.75rem 1.25rem;
-        }
-    }
-
-    .card-button {
-        transition: box-shadow ease 0.2s;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-        word-wrap: break-word;
-        .card-header {
-            margin-bottom: 0;
-            padding: 0.75rem 1.25rem;
-            color: inherit;
-            border-bottom: 0 solid rgba(0, 0, 0, 0.125);
-            background-color: transparent;
-        }
-    }
-    .el-upload {
-        display: block;
-        text-align: center;
-        cursor: pointer;
-        outline: none;
-    }
-    .el-upload-dragger {
-        width: 100%;
-        height: 130px;
-    }
-    .first-margin {
-        margin: 30px 10px 30px 35px;
-    }
-    .second-margin {
-        margin: 30px 30px 30px 5px;
-    }
-    .lmargin {
-        margin: 30px 10px 30px 35px;
-    }
-    .container {
-        margin-top: -220px;
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-    .s__btn {
-        border-color: #f76613 !important;
-        background-color: #f76613;
-        color: #fff;
-        &:hover {
-            background-color: #f76613;
-            border-color: #f76613 !important;
-            opacity: 0.8;
-            color: #fff;
-        }
-    }
-    .el-switch__label.is-active {
-        color: #1f1f1f;
-    }
-    @media (min-width: 1200px) {
-        .container {
-            max-width: 1140px;
-        }
-    }
-</style>

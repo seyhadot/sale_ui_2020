@@ -1,42 +1,43 @@
 <template>
-    <el-col :span="24" v-loading="isLoading">
-        <el-row>
-            <div class="action">
-                <el-button icon="el-icon-plus" type="warning"  @click="handleGotoCreateUser">{{$t('user.add')}}</el-button>
-
-            </div>
-        </el-row>
-        <el-row>
-            <el-table
-                    :data="tableData.filter(data => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
-                    style="width: 100%"
-                    @row-click="handleClick"
-            >
-                <el-table-column :label="$t('user.tableData.accountName')" prop="username"></el-table-column>
-                <el-table-column :label="$t('user.tableData.createdAt')">
-                    <template slot-scope="scope">{{scope.row.createdAt | moment("DD/MM/YYYY HH:mm")}}</template>
-                </el-table-column>
-                <el-table-column :label="$t('user.tableData.status')">
-                    <template
-                            slot-scope="scope"
-                    >{{scope.row.profile.approved ? "បានអនុញ្ញាត" : "មិនទាន់បានអនុញ្ញាត"}}
-                    </template>
-                </el-table-column>
-                <el-table-column :label="$t('user.tableData.roles')">
-                    <template slot-scope="scope">{{scope.row.roles}}</template>
-                </el-table-column>
-                <el-table-column :label="$t('user.tableData.stores')">
-                    <template slot-scope="scope">{{scope.row.stores.map(map => map.name)}}</template>
-                </el-table-column>
-                <el-table-column align="right">
-                    <template slot="header" slot-scope="scope">
-                        <el-input v-model="search" size="small" :placeholder="$t('user.tableData.search')"/>
-                    </template>
-                </el-table-column>
-            </el-table>
-        </el-row>
-        <!-- Diaglog form -->
-    </el-col>
+  <el-col :span="24" v-loading="isLoading">
+    <el-row>
+      <div class="action">
+        <el-button
+          icon="el-icon-plus"
+          type="warning"
+          @click="handleGotoCreateUser"
+        >{{$t('user.add')}}</el-button>
+      </div>
+    </el-row>
+    <el-row>
+      <el-table
+        :data="tableData.filter(data => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
+        @row-click="handleClick"
+      >
+        <el-table-column :label="$t('user.tableData.accountName')" prop="username"></el-table-column>
+        <el-table-column :label="$t('user.tableData.createdAt')">
+          <template slot-scope="scope">{{scope.row.createdAt | moment("DD/MM/YYYY HH:mm")}}</template>
+        </el-table-column>
+        <el-table-column :label="$t('user.tableData.status')">
+          <template
+            slot-scope="scope"
+          >{{scope.row.profile.approved ? "បានអនុញ្ញាត" : "មិនទាន់បានអនុញ្ញាត"}}</template>
+        </el-table-column>
+        <el-table-column :label="$t('user.tableData.roles')">
+          <template slot-scope="scope">{{scope.row.roles}}</template>
+        </el-table-column>
+        <el-table-column :label="$t('user.tableData.stores')">
+          <template slot-scope="scope">{{scope.row.stores.map(map => map.name)}}</template>
+        </el-table-column>
+        <el-table-column align="right">
+          <template slot="header" slot-scope="scope">
+            <el-input v-model="search" size="small" :placeholder="$t('user.tableData.search')" />
+          </template>
+        </el-table-column>
+      </el-table>
+    </el-row>
+    <!-- Diaglog form -->
+  </el-col>
 </template>
 
 <script>
