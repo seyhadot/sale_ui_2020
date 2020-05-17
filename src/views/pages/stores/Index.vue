@@ -1,5 +1,5 @@
 <template>
-  <div class="xs:px-0 sm:px-10 lg:px-32 xl:px-56 mt-6">
+  <div class="xs:px-3 sm:px-10 lg:px-32 xl:px-56 mt-6">
     <div class="flex justify-between items-center">
       <div>
         <h1
@@ -37,6 +37,7 @@
         </div>
       </div>
     </div>
+
     <el-dialog title="Store" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>

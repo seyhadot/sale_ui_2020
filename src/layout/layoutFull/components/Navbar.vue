@@ -31,7 +31,7 @@
           </div>
         </li>
         <li class="flex justify-between items-center h-full hover:bg-bcg">
-          <router-link to="/store" class="flex h-full px-4">
+          <router-link to="/stores" class="flex h-full px-4">
             <div class="app-icon h-full flex justify-center items-center">
               <div class="app-icon-inner">
                 <div class="app-icon-block first"></div>

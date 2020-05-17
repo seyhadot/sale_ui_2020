@@ -13,7 +13,7 @@ export const constantRoutes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('@/views/Login.vue'),
     hidden: true
   },
   {
@@ -23,19 +23,13 @@ export const constantRoutes = [
     children: [
       {
         path: 'dashboard',
-        component: () => import('../views/Dashboard.vue'),
+        component: () => import('@/views/Dashboard.vue'),
         name: 'Dashboard',
         meta: { title: 'Dashboard', icon: 'dashboard' }
       },
       {
-        path: 'product',
-        component: () => import('../views/Product.vue'),
-        name: 'Product',
-        meta: { title: 'Product', icon: 'product' }
-      },
-      {
         path: 'user',
-        component: () => import('../views/User.vue'),
+        component: () => import('@/views/User.vue'),
         name: 'User',
         meta: { title: 'User', icon: 'user' }
       }
@@ -47,14 +41,14 @@ export const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Form.vue'),
+        component: () => import('@/views/Form.vue'),
         name: 'Form',
         meta: { title: 'Form', icon: 'form' }
       }
     ]
   },
   {
-    path: '/store',
+    path: '/stores',
     component: LayoutNavbar,
     children: [
       {
@@ -65,17 +59,65 @@ export const constantRoutes = [
       },
       {
         path: 'add',
-        component: () => import('../views/pages/stores/AddStore'),
+        component: () => import('@/views/pages/stores/AddStore'),
         name: 'Add Store',
         meta: { title: 'New Store', icon: 'store' }
       },
       {
         path: 'add/:id',
-        component: () => import('../views/pages/stores/AddStore'),
+        component: () => import('@/views/pages/stores/AddStore'),
         name: 'Edit Store',
         meta: { title: 'Edit Store', icon: 'store' }
       }
 
+    ]
+  },
+  {
+    path: '/products',
+    component: LayoutFull,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/pages/products/index.vue'),
+        name: 'Products',
+        meta: { title: 'Products', icon: 'product' }
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/pages/products/AddProduct.vue'),
+        name: 'Add Product',
+        meta: { title: 'New Product', icon: 'product' }
+      },
+      // {
+      //   path: 'add/:id',
+      //   component: () => import('../views/pages/stores/AddStore'),
+      //   name: 'Edit Store',
+      //   meta: { title: 'Edit Store', icon: 'store' }
+      // }
+    ]
+  },
+  {
+    path: '/categories',
+    component: LayoutFull,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/pages/categories/index.vue'),
+        name: 'Category',
+        meta: { title: 'Category', icon: 'category' }
+      },
+      {
+        path: 'add',
+        component: () => import('@/views/pages/categories/AddCategory.vue'),
+        name: 'Add Category',
+        meta: { title: 'New Category', icon: 'category' }
+      },
+      // {
+      //   path: 'add/:id',
+      //   component: () => import('../views/pages/stores/AddStore'),
+      //   name: 'Edit Store',
+      //   meta: { title: 'Edit Store', icon: 'store' }
+      // }
     ]
   },
 

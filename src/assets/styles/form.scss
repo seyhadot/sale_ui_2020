@@ -360,7 +360,7 @@
     left: 25px;
     position: absolute;
   }
-  .el-checkbox__input.is-focus .el-checkbox__inner   {
+  .el-checkbox__input.is-focus .el-checkbox__inner {
     border-color: $pink;
   }
   .el-checkbox__label {
@@ -373,7 +373,7 @@
     border: 1px solid #ddd;
     min-height: 30px;
     font-weight: 400;
-    width: 100% ;
+    width: 100%;
   }
   .el-checkbox__input.is-checked + .el-checkbox__label {
     color: $pink;
@@ -385,5 +385,14 @@
   }
   .el-checkbox__inner:hover {
     border-color: $pink;
+  }
 }
-}
+
+// store upload img
+// @media (max-width: 768px) {
+//   .my-upload .upload-img .el-upload--picture-card {
+//     border-radius: 50%;
+//     width: 78.2%;
+//     height: 200px;
+//   }
+// }

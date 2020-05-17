@@ -1,5 +1,5 @@
 <template>
-  <div class="content xs:p-5 sm:p-5 xl:p-10 xl:pt-0">
+  <div class="content xs:p-5 xs:pt-0 sm:p-5 xl:p-10 xl:pt-0">
     <div class="content-card bg-white xs:p-5 sm:p-5 xl:p-10 ">
       <slot></slot>
     </div>

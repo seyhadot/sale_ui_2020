@@ -3,7 +3,7 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
-        <div class="px-5 pt-4">
+        <div class="xs:px-0 px-5 pt-4">
           <div class="content-card xs:px-2 sm:px-3 lg:px-6 xs:py-2 sm:py-3 lg:py-6">
             <router-view :key="key" />
           </div>

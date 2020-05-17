@@ -3,24 +3,43 @@
     <el-form :model="storeForm" :rules="rules" ref="store">
       <div class="form-title text-white">
         <h3
-          class="xs:text-2xl sm:text-4xl lg:text-4xl font-bold text-white font-Raleway"
+          class="xs:text-2xl sm:text-4xl xs:text-center lg:text-left lg:text-4xl font-bold text-white font-Raleway"
         >{{$route.meta.title}}</h3>
       </div>
       <el-row class="mt-3" :gutter="40">
-        <el-col :xs="24" class="my-upload" :sm="24" :lg="6">
+        <el-col
+          :xs="14"
+          class="m-0 m-auto xs:mb-3 xs:float-none md:float-left"
+          :sm="24"
+          :lg="6"
+        >
+          <!-- <el-upload
+              v-loading="uploadProgress"
+              action="#"
+              list-type="picture-card"
+              :on-preview="handlePictureCardPreview"
+              :auto-upload="false"
+              :file-list="fileList"
+              :on-change="onUploadChange"
+              :on-remove="handleRemove"
+              class="w-full upload-img items-center justify-center flex "
+            >
+              <i class="el-icon-plus"></i>
+          </el-upload>-->
+
           <el-upload
-            v-loading="uploadProgress"
+            class="avatar-uploader text-center"
             action="#"
-            list-type="picture-card"
             :on-preview="handlePictureCardPreview"
             :auto-upload="false"
             :file-list="fileList"
             :on-change="onUploadChange"
             :on-remove="handleRemove"
-            class="w-full upload-img relative"
           >
-            <i class="el-icon-plus"></i>
+            <img v-if="dialogImageUrl" :src="dialogImageUrl" class="avatar" />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
+
         </el-col>
         <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
           <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
@@ -68,20 +87,20 @@
           <!-- ---selecttag -->
         </el-col>
       </el-row>
-      <el-row class="mt-5" :gutter="40">
-        <el-col class="px-5" :xs="24" :sm="24" :lg="6">
+      <el-row class="xs:mt-0 xl:mt-5" :gutter="40">
+        <el-col class="px-5 xs:bg-white xl:bg-transparent" :xs="24" :sm="24" :lg="6">
           <div class="checkbox mb-5">
             <el-form-item>
               <el-checkbox class="check-label" v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ</el-checkbox>
             </el-form-item>
           </div>
-          <div class="checkbox">
+          <div class="checkbox xs:mb-0 lg:mb-5 xl:mb-5">
             <el-form-item>
               <el-checkbox class="check-label" v-model="storeForm.isAddToBuyWhat">Add To Buywhat</el-checkbox>
             </el-form-item>
           </div>
         </el-col>
-        <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
+        <el-col class="bg-white p-5 xs:pt-0" :xs="24" :sm="24" :lg="18">
           <el-row class="mt-3" :gutter="40">
             <el-col class="p-0" :xs="24" :sm="24" :lg="12">
               <el-form-item label="ពិពណ៌នា">
@@ -95,14 +114,17 @@
             </el-col>
           </el-row>
           <div class="action mt-3">
-            <el-button type="warning" @click="onSubmit">រក្សាទុក</el-button>
+            <el-button type="warning" @click="onSubmit">
+              <i class="uil-check-circle mr-2"></i>
+              រក្សាទុក
+            </el-button>
             <!-- <router-link :to="-1">
             Cancel
             </router-link>-->
           </div>
         </el-col>
 
-        <el-col :xs="12" :sm="12" :lg="12">
+        <el-col class="xs:mb-0" :xs="12" :sm="12" :lg="12">
           <el-form-item>
             <label class="mr-3">Tags</label>
             <el-tag
@@ -408,87 +430,6 @@ export default {
   color: #1f1f1f;
 }
 
-.upload-img {
-  .el-upload-list--picture-card {
-    position: absolute;
-  }
-  .el-upload-list--picture-card .el-upload-list__item-actions {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    // left: 50%;
-    // top: 50%;
-    cursor: default;
-    text-align: center;
-    color: #fff;
-    opacity: 0;
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s;
-  }
-  .el-upload-list--picture-card .el-upload-list__item {
-    overflow: hidden;
-    background-color: #fff;
-    border: 0px solid #c0ccda;
-    border-radius: 6px;
-    box-sizing: border-box;
-    width: 148px;
-    height: 148px;
-    margin: 0 auto;
-    display: inline-block;
-    outline: none;
-  }
-  .el-upload-list--picture-card {
-    position: absolute;
-    top: 25px;
-    left: 40px;
-  }
-  .el-upload-list--picture-card .el-upload-list__item-actions {
-    outline: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    cursor: default;
-    text-align: center;
-    color: #fff;
-    opacity: 0;
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  // .el-upload-list__item-preview {
-  //   display: none;
-  // }
-  .el-loading-mask {
-    position: absolute;
-    z-index: 2000;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    /* left: 100px; */
-    padding-left: 100px;
-    transition: opacity 0.3s;
-  }
-}
-
-.my-upload {
-  .el-upload--picture-card {
-    border: 1px dashed #c0ccda;
-    border-radius: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 200px;
-    vertical-align: top;
-    padding: 30px;
-  }
-}
 
 .el-tag + .el-tag {
   margin-left: 10px;
@@ -506,5 +447,29 @@ export default {
   width: 120px;
   margin-left: 10px;
   vertical-align: bottom;
+}
+
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
 }
 </style>

@@ -60,10 +60,26 @@
               placement="right-start"
             >
               <router-link
-                to="product"
+                to="products"
                 class="transition ease-in duration-700 w-full flex items-center justify-center"
               >
                 <i class="uil-shopping-basket text-5xl"></i>
+                <!-- <span>Products</span> -->
+              </router-link>
+            </el-tooltip>
+          </li>
+          <li>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="$route.meta.title"
+              placement="right-start"
+            >
+              <router-link
+                to="categories"
+                class="transition ease-in duration-700 w-full flex items-center justify-center"
+              >
+                <i class="uil-chart-pie text-5xl"></i>
                 <!-- <span>Products</span> -->
               </router-link>
             </el-tooltip>
