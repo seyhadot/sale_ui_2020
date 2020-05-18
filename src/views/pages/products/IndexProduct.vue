@@ -39,9 +39,6 @@
             <th style="width: 120px;">
               <a href="javascript:void(0)">Active</a>
             </th>
-            <th style="width: 51px;">
-              <a href="javascript:void(0)">Earnings</a>
-            </th>
             <th style="width: 24px;" class="pl-0"></th>
           </tr>
         </thead>
@@ -93,39 +90,35 @@
                 </span>
               </span>
             </td>
-            <!-- <td
-              role="gridcell"
-              mat-cell
-              class="mat-cell cdk-cell cdk-column-stock mat-column-stock ng-tns-c158-5 ng-star-inserted"
-            >
-              <span class="flex items-center ng-tns-c158-5">
-                <span class="min-w-4 ng-tns-c158-5">37</span>
-                <span
-                  class="flex items-end ml-2 w-1 h-4 bg-green-100 rounded overflow-hidden ng-tns-c158-5 ng-star-inserted"
-                >
-                  <span class="flex w-full h-full bg-green-400 ng-tns-c158-5"></span>
-                </span>
-              </span>
-            </td> -->
 
             <td class="text-menu_low text-center">
               <i class="uil-check text-3xl text-green-600"></i>
               <!-- <i class="uil-multiply text-xl font-bold text-gray-600"></i> -->
             </td>
-            <td class="text-center">
-              <span>$12,402</span>
-            </td>
             <td class="text-right">
-              <a href class="text-gray-700">
+              <el-row class="flex">
+                <el-button @click="drawer = true" type="success" icon="el-icon-edit" circle></el-button>
+                <el-button type="danger" icon="el-icon-delete" circle></el-button>
+              </el-row>
+              <!-- <a href class="text-gray-700">
                 <i
                   class="flex items-center justify-center bg-menu_blue uil-ellipsis-v w-8 h-8 rounded-full"
                 ></i>
-              </a>
+              </a>-->
             </td>
             <div></div>
           </tr>
         </tbody>
       </table>
+      <el-drawer
+        title="Edit Product"
+        size="70%"
+        :visible.sync="drawer"
+        :direction="direction"
+        :before-close="handleClose"
+      >
+        <span>Hi, there!</span>
+      </el-drawer>
     </div>
   </content-box>
 </template>
@@ -149,7 +142,9 @@ export default {
       limit: 10,
       skip: 0,
       products: [],
-      company: null
+      company: null,
+       drawer: false,
+        direction: 'rtl',
     };
   },
    components: {
@@ -167,6 +162,13 @@ export default {
     }
   },
   methods: {
+     handleClose(done) {
+        this.$confirm('Are you sure you want to close this?')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+      },
     displayFacebookImageUrl(images) {
       if (images.length > 0) {
         return images[images.length - 4].url;

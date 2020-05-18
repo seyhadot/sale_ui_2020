@@ -1,5 +1,5 @@
-$body: #F1F5F8;
-$bg: #F1F5F8;
+$body: #f1f5f8;
+$bg: #f1f5f8;
 $yellow_dark: #d2a92f;
 $white: #fff;
 $input_bg: #f6f6f6;
@@ -8,8 +8,8 @@ $span_in_label: #505050;
 $blue: #324157;
 $light-blue: #3a71a8;
 $red: #c03639;
-$pink: #F4368E;
-$plum: #9E3792;
+$pink: #f4368e;
+$plum: #9e3792;
 $green: #38a169;
 $tiffany: #4ab7bd;
 $yellow: #fec171;
@@ -21,5 +21,9 @@ $menuBg: #304156;
 $menuHover: #263445;
 $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
-$menu: #4B4B4B;
-$bunting: #1E2E40;
+$menu: #4b4b4b;
+$bunting: #1e2e40;
+
+*:focus {
+  outline: none !important;
+}

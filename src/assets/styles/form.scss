@@ -107,6 +107,19 @@
   .el-button:hover::before {
     animation: thmBtnRipple 2s ease-out infinite;
   }
+  .el-button--primary {
+    color: $white;
+    border-color: #383EDF;
+    background: linear-gradient(90deg, #383EDF 0%, #0A3CA6 100%);
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    background-position: top;
+    position: relative;
+    &:hover {
+      background-color: #383EDF;
+      color: $white;
+    }
+  }
   .el-button--info {
     span {
       text-align: left;

@@ -4,7 +4,7 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full ">
-        <div class="bread_crumb content px-10 xs:px-5 py-5">
+        <div class="bread_crumb content px-10 xs:px-5 xl:px-10 py-5">
           <ul class="flex font-bold">
             <!-- <li>
               <a href>{{$route.meta.name}}</a>

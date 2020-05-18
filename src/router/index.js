@@ -78,7 +78,7 @@ export const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('@/views/pages/products/index.vue'),
+        component: () => import('@/views/pages/products/IndexProduct.vue'),
         name: 'Products',
         meta: { title: 'Products', icon: 'product' }
       },
@@ -102,7 +102,7 @@ export const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('@/views/pages/categories/index.vue'),
+        component: () => import('@/views/pages/categories/IndexCategory.vue'),
         name: 'Category',
         meta: { title: 'Category', icon: 'category' }
       },
