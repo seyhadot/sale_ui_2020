@@ -8,7 +8,7 @@
       width="50%"
       :before-close="handleDrawerClose"
     >
-      <el-row :gutter="20">
+      <el-row :gutter="40">
         <el-col :span="24">
           <el-select
             filterable
@@ -67,8 +67,11 @@
               </el-col>
             </div>
             <div class="card-header">
-              <h5>{{displayTitle}}</h5>
-              <p>{{$t('form.hint')}}</p>
+              <label class="mr-sm-2 form-label">
+                <h3 class="text-3xl font-bold text-bunting">{{$route.meta.title}}</h3>
+              </label>
+
+              <p></p>
             </div>
             <div class="card-body">
               <el-form-item>
@@ -92,14 +95,14 @@
                   <img width="100%" :src="dialogImageUrl" alt />
                 </el-dialog>
               </el-form-item>
-              <el-row :gutter="20">
-                <el-col :span="12">
+              <el-row :gutter="40">
+                <el-col :span="8">
                   <el-form-item :label="$t('product.form.name')" prop="name">
                     <el-input placeholder="ABC.." v-model="addProduct.name"></el-input>
                   </el-form-item>
                 </el-col>
 
-                <el-col :span="12">
+                <!-- <el-col :span="8">
                   <el-form-item :label="$t('product.form.price')" prop="price">
                     <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
                       <template slot="append">
@@ -107,10 +110,9 @@
                       </template>
                     </el-input>
                   </el-form-item>
-                </el-col>
-              </el-row>
-              <el-row :gutter="20">
-                <el-col :span="12">
+                </el-col>-->
+
+                <el-col :span="8">
                   <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
                     <el-autocomplete
                       style="width: 100%;"
@@ -121,7 +123,7 @@
                     ></el-autocomplete>
                   </el-form-item>
                 </el-col>
-                <el-col :span="12">
+                <el-col :span="8">
                   <el-form-item :label="$t('product.form.category')">
                     <el-select
                       style="width: 100%"
@@ -138,9 +140,8 @@
                     </el-select>
                   </el-form-item>
                 </el-col>
-              </el-row>
-              <el-row :gutter="20">
-                <el-col :span="12">
+
+                <el-col :span="8">
                   <el-form-item label="Sub category">
                     <el-select
                       style="width: 100%"
@@ -160,11 +161,11 @@
                     </el-select>
                   </el-form-item>
                 </el-col>
-              </el-row>
 
-              <el-row>
-                <el-col :span="14">
-                  <el-form-item :label="$t('product.form.type')">
+                <el-col :span="8">
+                  <el-form-item>
+                    <label for>{{$t('product.form.type')}}</label>
+                    <br />
                     <el-radio
                       v-model="addProduct.type"
                       v-for="(o,i) in productTypes"
@@ -173,21 +174,21 @@
                     >{{o.toUpperCase()}}</el-radio>
                   </el-form-item>
                 </el-col>
-                <transition name="el-fade-in">
-                  <el-col :span="6" v-show="addProduct.type == 'stock'">
-                    <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
-                      <el-date-picker
-                        v-model="addProduct.expiredAt"
-                        type="datetime"
-                        :picker-options="options"
-                        :placeholder="$t('product.form.expired')"
-                      ></el-date-picker>
-                    </el-form-item>
-                  </el-col>
-                </transition>
+
+                <el-col :span="8" v-show="addProduct.type == 'stock'">
+                  <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
+                    <label for></label>
+                    <el-date-picker
+                      v-model="addProduct.expiredAt"
+                      type="datetime"
+                      :picker-options="options"
+                      :placeholder="$t('product.form.expired')"
+                    ></el-date-picker>
+                  </el-form-item>
+                </el-col>
               </el-row>
 
-              <el-row>
+              <!-- <el-row>
                 <el-col :span="6">
                   <el-form-item :label="$t('product.form.addToSlide')">
                     <el-checkbox v-model="addProduct.isAddToSlide"></el-checkbox>
@@ -208,18 +209,17 @@
                     </el-form-item>
                   </el-col>
                 </transition>
-              </el-row>
+              </el-row>-->
             </div>
           </div>
 
-            <div class="action" style="padding-left:0px;">
-              <el-button
-                type="warning"
-                @click="handleSave"
-                :loading="isLoading"
-              >{{$t('product.save')}}</el-button>
-            </div>
-
+          <div class="action" style="padding-left:0px;">
+            <el-button
+              type="warning"
+              @click="handleSave"
+              :loading="isLoading"
+            >{{$t('product.save')}}</el-button>
+          </div>
         </el-form>
       </el-col>
     </el-row>

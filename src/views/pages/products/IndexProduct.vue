@@ -59,7 +59,7 @@
                   <slot v-else>
                     <img
                       :src="getImageUrl(o.imageUrl)"
-                      class="avatar-img rounded-lg"
+                      class="avatar-img rounded-md"
                       style="height:48px;width:48px;"
                     />
                   </slot>
@@ -112,12 +112,21 @@
       </table>
       <el-drawer
         title="Edit Product"
-        size="70%"
+        size="60%"
         :visible.sync="drawer"
         :direction="direction"
         :before-close="handleClose"
       >
-        <span>Hi, there!</span>
+        <el-row class="flex mt-3 px-10" :gutter="40">
+          <el-col :span="12">
+            <label for>Order Name</label>
+            <el-input clear placeholder="Please input" v-model="input"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <label for>My License Number</label>
+            <el-input clear placeholder="Please input" v-model="input"></el-input>
+          </el-col>
+        </el-row>
       </el-drawer>
     </div>
   </content-box>
