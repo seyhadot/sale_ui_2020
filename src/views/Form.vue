@@ -1,7 +1,7 @@
 <template>
   <content-box>
     <div class="content-card bg-white px-0 py-2">
-      <div class="bread_crumb">
+      <!-- <div class="bread_crumb">
         <ul class="flex">
           <li>
             <a href>Order Form</a>
@@ -10,7 +10,7 @@
             <a href>Order Form</a>
           </li>
         </ul>
-      </div>
+      </div> -->
       <div class="form-conrol">
         <div class="form-title border-b pb-3 mt-5">
           <h3 class="text-xl">1. Order Details</h3>
@@ -29,12 +29,7 @@
           <el-col :xs="12" :sm="12" :lg="6">
             <label for>Action</label>
             <el-select v-model="value" placeholder="Select">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-col>
           <el-col :xs="12" :sm="12" :lg="6">
@@ -56,23 +51,13 @@
               <span>add new Destination</span>
             </label>
             <el-select v-model="value" placeholder="Select">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-col>
           <el-col :xs="12" :sm="12" :lg="12">
             <label for>Distination License Number</label>
             <el-select v-model="value" placeholder="Select">
-              <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+              <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-col>
           <el-col :xs="24" :sm="12" :lg="8">
@@ -105,7 +90,7 @@
 import ContentBox from '../components/ContentBox.vue'
 export default {
   components: {
-    ContentBox,
-  },
+    ContentBox
+  }
 }
 </script>

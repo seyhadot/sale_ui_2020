@@ -30,8 +30,8 @@ export default {
 </script>
 
 <style lang="scss">
-.bg-main{
-  background: url("../../assets/img/bg.png") center center no-repeat;
+.bg-main {
+  background: url('../../assets/img/bg.png') center center no-repeat;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -39,4 +39,3 @@ export default {
   background-size: 100%;
 }
 </style>
-

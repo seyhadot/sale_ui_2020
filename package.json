@@ -15,6 +15,7 @@
     "fibers": "^5.0.0",
     "firebase": "^7.14.3",
     "moment": "^2.25.3",
+    "path-to-regexp": "^6.1.0",
     "postcss-nested": "^4.2.1",
     "sass": "^1.26.5",
     "superagent": "^5.2.2",

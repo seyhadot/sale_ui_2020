@@ -48,16 +48,9 @@
             </td>
 
             <td>
-              <div
-                class="flex flex flex-no-wrap items-center rounded-circle"
-                style="white-space: nowrap;"
-              >
+              <div class="flex flex flex-no-wrap items-center rounded-circle" style="white-space: nowrap;">
                 <div class="avatar avatar-sm mr-3">
-                  <img
-                    src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg"
-                    alt="Avatar"
-                    class="avatar-img rounded-full"
-                  />
+                  <img src="http://luma.humatheme.com/assets/images/people/110/guy-2.jpg" alt="Avatar" class="avatar-img rounded-full" />
                 </div>
                 <div class>
                   <div class>
@@ -110,7 +103,7 @@ export default {
     }
   },
   components: {
-    ContentBox,
-  },
+    ContentBox
+  }
 }
 </script>

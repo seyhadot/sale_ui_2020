@@ -1,12 +1,12 @@
 <template>
   <div class="h-screen bg-menu_yellow bg_cover w-full">
     <div class="bg-logo w-full">
-            <img src="../assets/img/login/cover.png" alt class="w-full h-screen" />
+      <img src="../assets/img/login/cover.png" alt class="w-full h-screen" />
     </div>
     <div class="forny-container absolute pt-10" style="right: 18%;">
       <div class="forny-inner w-72 flex flex-col items-center justify-center">
         <div class="forny-logo relative" style="top: 70px;">
-                    <img src="../assets/img/login/logo.png" class="w-40 h-40 rounded-full" />
+          <img src="../assets/img/login/logo.png" class="w-40 h-40 rounded-full" />
         </div>
         <div class="forny-form w-72 bg-white pt-16 rounded-lg pb-16">
           <div class="text-center text-xs my-3 text-gray-600">
@@ -109,7 +109,7 @@ export default {
     handleRememberFor1day(flagAddToCookie) {
       if (flagAddToCookie) {
         this.$cookie.set('salewhat::account::username', `${this.loginForm.username}`, { expires: '24h' })
-        this.$cookie.set('salewhat::account::password', `${this.loginForm.password}`,{ expires: '24h' })
+        this.$cookie.set('salewhat::account::password', `${this.loginForm.password}`, { expires: '24h' })
       } else {
         //clear cookie
         this.$cookie.delete('salewhat::account::username')
@@ -138,13 +138,13 @@ export default {
                 if (!err) {
                   let body = result.body
                   if (body.code == 201) {
-                    const user = body.data;
+                    const user = body.data
                     this.$store.commit('setUser', {
                       token: body.token,
                       user
                     })
-                    if(user.stores && user.stores.length > 1) {
-                      this.$router.push({name: 'Store'})
+                    if (user.stores && user.stores.length > 1) {
+                      this.$router.push({ name: 'Store' })
                     } else {
                       this.$router.push('/')
                     }

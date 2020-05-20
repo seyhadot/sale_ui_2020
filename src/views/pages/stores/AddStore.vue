@@ -2,17 +2,10 @@
   <div class="content-card xs:w-12/12 sm:w-12/12 lg:w-8/12 px-10 m-auto">
     <el-form :model="storeForm" :rules="rules" ref="store">
       <div class="form-title text-white">
-        <h3
-          class="xs:text-2xl sm:text-4xl xs:text-center lg:text-left lg:text-4xl font-bold text-white font-Raleway"
-        >{{$route.meta.title}}</h3>
+        <h3 class="xs:text-2xl sm:text-4xl xs:text-center lg:text-left lg:text-4xl font-bold text-white font-Raleway">{{ $route.meta.title }}</h3>
       </div>
       <el-row class="mt-3" :gutter="40">
-        <el-col
-          :xs="14"
-          class="m-0 m-auto xs:mb-3 xs:float-none md:float-left"
-          :sm="24"
-          :lg="6"
-        >
+        <el-col :xs="14" class="m-0 m-auto xs:mb-3 xs:float-none md:float-left" :sm="24" :lg="6">
           <!-- <el-upload
               v-loading="uploadProgress"
               action="#"
@@ -39,50 +32,26 @@
             <img v-if="dialogImageUrl" :src="dialogImageUrl" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
-
         </el-col>
         <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
           <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
             <el-input v-model="storeForm.name" placeholder="E-commerce Name"></el-input>
           </el-form-item>
-          <!-- <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
+          <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
             <el-input v-model="storeForm.shortcutName" placeholder="SWEM"></el-input>
-          </el-form-item>-->
+          </el-form-item>
           <!-- <el-form-item label="តំណរភ្ជាប់រូបភាព">
             <el-input v-model="storeForm.coverImgUrl" placeholder></el-input>
           </el-form-item>-->
           <el-form-item label="Users">
-            <el-select
-              v-model="storeForm.users"
-              clearable
-              multiple
-              placeholder="All"
-              style="max-width: 100%; width: 100%;"
-            >
-              <el-option
-                v-for="item in userOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+            <el-select v-model="storeForm.users" clearable multiple placeholder="All" style="max-width: 100%; width: 100%;">
+              <el-option v-for="item in userOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </el-form-item>
           <!-- ---selecttag -->
           <label for>Tag</label>
-          <el-select
-            v-model="value"
-            multiple
-            filterable
-            allow-create
-            default-first-option
-            placeholder="Choose tags for your article"
-          >
-            <el-option
-              v-for="item in options1"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
+          <el-select v-model="value" multiple filterable allow-create default-first-option placeholder="Choose tags for your article">
+            <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value"></el-option>
           </el-select>
           <!-- ---selecttag -->
         </el-col>
@@ -127,13 +96,7 @@
         <el-col class="xs:mb-0" :xs="12" :sm="12" :lg="12">
           <el-form-item>
             <label class="mr-3">Tags</label>
-            <el-tag
-              :key="languageTag"
-              v-for="languageTag in storeForm.tags"
-              closable
-              :disable-transitions="false"
-              @close="handleCloseTag(languageTag)"
-            >{{ languageTag }}</el-tag>
+            <el-tag :key="languageTag" v-for="languageTag in storeForm.tags" closable :disable-transitions="false" @close="handleCloseTag(languageTag)">{{ languageTag }}</el-tag>
             <el-input
               class="input-new-tag"
               v-if="inputTagVisible"
@@ -143,13 +106,7 @@
               @keyup.enter.native="handleInputTag"
               @blur="handleInputTag"
             ></el-input>
-            <el-button
-              icon="el-icon-plus"
-              v-else
-              class="button-new-tag"
-              size="small"
-              @click="showTagInput"
-            ></el-button>
+            <el-button icon="el-icon-plus" v-else class="button-new-tag" size="small" @click="showTagInput"></el-button>
           </el-form-item>
         </el-col>
       </el-row>
@@ -164,17 +121,21 @@ import axios from 'axios'
 export default {
   data() {
     return {
-        options1: [{
+      options1: [
+        {
           value: 'HTML',
           label: 'HTML'
-        }, {
+        },
+        {
           value: 'CSS',
           label: 'CSS'
-        }, {
+        },
+        {
           value: 'JavaScript',
           label: 'JavaScript'
-        }],
-        value: [],
+        }
+      ],
+      value: [],
       inputTagVisible: false,
       inputTagValue: '',
       storeId: null,
@@ -429,7 +390,6 @@ export default {
 .el-switch__label.is-active {
   color: #1f1f1f;
 }
-
 
 .el-tag + .el-tag {
   margin-left: 10px;

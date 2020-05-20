@@ -2,26 +2,15 @@
   <div class="xs:px-3 sm:px-10 lg:px-32 xl:px-56 mt-6">
     <div class="flex justify-between items-center">
       <div>
-        <h1
-          class="xs:text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-Raleway"
-        >{{$route.meta.title}}</h1>
+        <h1 class="xs:text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-Raleway">{{ $route.meta.title }}</h1>
       </div>
-      <button
-        v-if="ifIsSuper"
-        class="more-app border-2 px-4 py h-10 line text-white font-bold font-Raleway"
-        @click="handleGoToAddStore"
-      >
+      <button v-if="ifIsSuper" class="more-app border-2 px-4 py h-10 line text-white font-bold font-Raleway" @click="handleGoToAddStore">
         <span class="uil-plus mr-2 font-normal"></span> New Store
-        <span class="caret text-white"></span>  
+        <span class="caret text-white"></span>
       </button>
     </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-10">
-      <div
-        :class="setStyleActiveStore(store)"
-        :key="store.id"
-        v-for="store in userStores"
-        class="store bg-bcg ml-0 flex justify-center relative items-center align-middle"
-      >
+      <div :class="setStyleActiveStore(store)" :key="store.id" v-for="store in userStores" class="store bg-bcg ml-0 flex justify-center relative items-center align-middle">
         <div class="absolute top-0 right-0 pr-3 text-menu_profile pt-2 edit_setting">
           <el-button class="p-0 z-10" type="text" @click="handleEdit(store.id)">
             <i class="uil-cog"></i>
@@ -58,9 +47,9 @@ export default {
     }
   },
   methods: {
-    handleActiveStore(store){
-      this.$store.commit("setActiveStore", store);
-      this.$router.push('/dashboard');
+    handleActiveStore(store) {
+      this.$store.commit('setActiveStore', store)
+      this.$router.push('/dashboard')
     },
     handleEdit(id) {
       this.$router.push({ name: 'Edit Store', params: { id } })
@@ -102,12 +91,12 @@ export default {
           this.$message.error(err.message)
         })
     },
-    setStyleActiveStore(store){
-         const {activeStore} = this.$store.state.user;
-         if(store.id === activeStore){
-           return 'active-store';
-         }
-         return '';
+    setStyleActiveStore(store) {
+      const { activeStore } = this.$store.state.user
+      if (store.id === activeStore) {
+        return 'active-store'
+      }
+      return ''
     }
   },
   computed: {
@@ -123,8 +112,8 @@ export default {
     }
   },
   created() {
-    const {user} = this.$store.state.user;
-    if(provider.isSuper(user.roles)){
+    const { user } = this.$store.state.user
+    if (provider.isSuper(user.roles)) {
       this.fetchStores()
     } else {
       this.storeData = user.stores

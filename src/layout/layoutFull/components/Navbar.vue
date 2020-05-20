@@ -1,8 +1,5 @@
 <template>
-  <header
-    class="h-60px header_scroll w-full bg-white"
-    :class="{ header_fixed: scrollPosition > 100 }"
-  >
+  <header class="h-60px header_scroll w-full bg-white" :class="{ header_fixed: scrollPosition > 100 }">
     <nav class="flex justify-between items-center h-full pl-40">
       <div class="h-full">
         <ul class="flex h-full pl-5">
@@ -13,18 +10,12 @@
       </div>
       <ul class="flex h-full">
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">
-          <a
-            @click="toggleFullScreen"
-            class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise"
-          >
+          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise">
             <i class="uil-focus"></i>
           </a>
         </li>
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">
-          <a
-            @click="toggleFullScreen"
-            class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise"
-          >
+          <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise">
             <i class="uil-bell text-2xl"></i>
           </a>
         </li>
@@ -40,33 +31,17 @@
             <img class="rounded-full w-8 h-8 ml-2" src="@/assets/img/login/user.png" />
             <span class="caret text-gray-400"></span>
           </a>
-          <div
-            class="icon-browse grid-dropdown grid-open"
-            v-show="dropDownMenu"
-            style="right: 56px; top: 60px;"
-          >
+          <div class="icon-browse grid-dropdown grid-open" v-show="dropDownMenu" style="right: 56px; top: 60px;">
             <router-link to="/settings" class="icon-menu-item">
               <i class="uil-shop"></i>
               <span>Settings</span>
             </router-link>
-            <a href="#" class="icon-menu-item">
-              <i class="uil-envelope-alt"></i> Messages
-            </a>
-            <a href="#" class="icon-menu-item">
-              <i class="uil-bookmark"></i> Bookmark
-            </a>
-            <a href="#" class="icon-menu-item">
-              <i class="uil-shopping-basket"></i> Cart
-            </a>
-            <a href="#" class="icon-menu-item">
-              <i class="uil-shield-check"></i> Privacy
-            </a>
-            <a href="#" class="icon-menu-item">
-              <i class="uil-bolt-alt"></i> Upgrade
-            </a>
-            <el-button type="text" @click="handleLogout" class="more-app text-cerise">
-              <i class="uil-sign-out-alt"></i> Logout
-            </el-button>
+            <a href="#" class="icon-menu-item"> <i class="uil-envelope-alt"></i> Messages </a>
+            <a href="#" class="icon-menu-item"> <i class="uil-bookmark"></i> Bookmark </a>
+            <a href="#" class="icon-menu-item"> <i class="uil-shopping-basket"></i> Cart </a>
+            <a href="#" class="icon-menu-item"> <i class="uil-shield-check"></i> Privacy </a>
+            <a href="#" class="icon-menu-item"> <i class="uil-bolt-alt"></i> Upgrade </a>
+            <el-button type="text" @click="handleLogout" class="more-app text-cerise"> <i class="uil-sign-out-alt"></i> Logout </el-button>
           </div>
         </li>
         <li class="flex justify-between items-center h-full hover:bg-bcg">
@@ -96,16 +71,16 @@ export default {
       openDropDown: false,
       dropDownMenu: false,
       fullScreen: false,
-      showStar: false,
+      showStar: false
     }
   },
   methods: {
     handleLogout() {
       this.$cookie.delete('salewhat::account::username')
       this.$cookie.delete('salewhat::account::password')
-      setTimeout(()=>{
-         this.$router.push('/not_authorized')
-      }, 1000);
+      setTimeout(() => {
+        this.$router.push('/not_authorized')
+      }, 1000)
     },
     toggleDropDownMenu() {
       this.dropDownMenu = !this.dropDownMenu
