@@ -9,6 +9,7 @@ import './assets/styles/global.scss'
 import { MediaQueries, CommonBands } from 'vue-media-queries'
 import { store } from './store/store'
 import '../src/plugins/vue-cookie'
+import numeral from 'numeral';
 Vue.use(require('vue-moment'))
 
 const mediaQueries = new MediaQueries({
@@ -27,3 +28,8 @@ new Vue({
   mixins: [CommonBands.Tailwind.mixin],
   render: (h) => h(App)
 }).$mount('#app')
+Vue.filter('numeralGen', function (val, store, showCurrency = true) {
+  const suffix = showCurrency ? store.baseCurrency === "KHR" ? "៛" : "$" : "";
+  const formatVal = store && store.baseCurrency === 'KHR' ? numeral(val).format('"0,0"') : numeral(val).format('"0,0.00"');
+  return ` ${formatVal} ${suffix}`;
+});

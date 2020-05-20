@@ -17,7 +17,8 @@ export const User = {
         _id: map._id,
         shortcutName: map.shortcutName,
         storeName: map.name,
-        desc: map.desc
+        desc: map.desc,
+        baseCurrency: map.baseCurrency
       }))
       state.activeStore = state.stores.length === 1 ? state.stores[0]._id : null
     },
