@@ -69,7 +69,7 @@
               </div>
             </td>
             <td>
-              <span class="Price text-menu_low">{{ o.price | numeralGen(company) }}</span>
+              <span class="Price text-menu_low">{{ o.price | numeralGen(storeObj) }}</span>
             </td>
             <td class="Number text-center text-menu_low">
               <span>{{ o.skewNumber }}</span>
@@ -131,6 +131,7 @@ import ContentBox from '../../../components/ContentBoxNoBorder.vue'
 export default {
   data() {
     return {
+      input: '',
       checked: true,
       isLoading: true,
       total: 0,
@@ -253,13 +254,18 @@ export default {
         })
         window.open(url.href, '_blank')
       }
+    },
+
+  },
+  computed: {
+    storeObj() {
+      const {activeStore, stores} = this.$store.state.user;
+      return stores.find(o => o._id === activeStore);
     }
   },
   created() {
     this.fetchProduct()
     this.countProduct()
-    const { company } = this.$store.state
-    this.company = company
     setTimeout(() => {
       this.isLoading = false
     }, 300)
