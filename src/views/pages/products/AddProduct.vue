@@ -1,7 +1,5 @@
 <template>
   <content-box>
-    <!--        Price options drawer-->
-
     <el-dialog title="Add Product Options" :visible.sync="priceOptionsDrawer" width="50%" :before-close="handleDrawerClose">
       <el-row :gutter="40">
         <el-col :span="24">
@@ -40,11 +38,11 @@
         <el-form :model="addProduct" :rules="rules" ref="addProductForm">
           <div class="card-header">
             <div class="form-title border-b pb-3 mt-5">
-              <h3 class="text-xl">{{ $route.meta.title }}</h3>
+              <h3 class="text-xl">{{ $t('product.add') }}</h3>
             </div>
           </div>
           <div class="card-body">
-            <el-form-item>
+            <el-form-item >
               <div>
                 <label for>{{ $t('product.form.photo') }}</label>
               </div>
@@ -58,10 +56,11 @@
                 :file-list="fileList"
                 :on-change="onUploadChange"
                 :on-remove="handleRemoveFile"
+                class="mb-5"
               >
                 <i class="el-icon-upload"></i>
               </el-upload>
-              <el-dialog :visible.sync="dialogVisible">
+              <el-dialog :visible.sync="dialogVisible" >
                 <img width="100%" :src="dialogImageUrl" alt />
               </el-dialog>
             </el-form-item>
@@ -410,8 +409,8 @@ export default {
             .then((res) => {
               this.isLoading = false
               if (res.data.code === 201) {
-                this.$router.push('/product')
                 this.$message.success('ប្រតិបត្តិការបានជោគជ័យ')
+                this.$router.push('/products')
                 if (this.id) {
                   // if id exist we will return the product after update
                   this.$router.push('/settings?activeName=2')

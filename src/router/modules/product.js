@@ -7,7 +7,8 @@ const productRouter = {
   name: 'Products',
   meta: {
     title: 'Products',
-    icon: 'products'
+    enName: 'Products',
+    khName: 'ទំនិញ'
   },
   children: [
     {
@@ -20,7 +21,10 @@ const productRouter = {
       path: 'add',
       component: () => import('@/views/pages/products/AddProduct.vue'),
       name: 'Add Product',
-      meta: { title: 'New Product' }
+      meta: {
+        title: 'New Product', enName: 'New Product',
+        khName: 'បង្កើតទំនិញថ្មី'
+      }
     },
     // {
     //   path: 'add/:id',

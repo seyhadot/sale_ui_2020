@@ -30,15 +30,20 @@
                         <el-input v-model="categoryModel.desc"></el-input>
                       </el-form-item>
                     </el-col>
+                    <el-col :span="12">
+                      <el-form-item label="Price">
+                        <el-input v-model="categoryModel.price"></el-input>
+                      </el-form-item>
+                    </el-col>
                   </el-row>
-                  <el-row :gutter="20">
-                    <el-form-item label="Price">
-                      <el-input v-model="categoryModel.price"></el-input>
-                    </el-form-item>
-                  </el-row>
+
                   <el-row>
                     <el-form-item :label="$t('category.tableData.status')">
-                      <el-switch v-model="categoryModel.isUsable" :active-text="$t('category.tableData.unusable')" :inactive-text="$t('category.tableData.usable')"></el-switch>
+                      <el-switch
+                        v-model="categoryModel.isUsable"
+                        :active-text="$t('category.tableData.unusable')"
+                        :inactive-text="$t('category.tableData.usable')"
+                      ></el-switch>
                     </el-form-item>
                   </el-row>
                 </div>

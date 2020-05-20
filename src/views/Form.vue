@@ -48,7 +48,7 @@
           <el-col :xs="12" :sm="12" :lg="12">
             <label for>
               Distination
-              <span>add new Destination</span>
+              <span class="span1">add new Destination</span>
             </label>
             <el-select v-model="value" placeholder="Select">
               <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"></el-option>

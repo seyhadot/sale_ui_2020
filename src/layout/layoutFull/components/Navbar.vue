@@ -11,7 +11,7 @@
       <ul class="flex h-full">
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">
           <a @click="toggleFullScreen" class="cursor-pointer flex items-center h-full px-3 text-bunting text-lg hover:text-cerise">
-            <i class="uil-focus"></i>
+            <i class="uil-focus text-xl"></i>
           </a>
         </li>
         <li class="flex items-center h-full" v-if="$resize && $mq.above(690)">

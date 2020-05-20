@@ -11,7 +11,7 @@
           <div class="form-title border-b pb-3">
             <h3 class="text-xl">កែប្រែអ្នកប្រើប្រាស់</h3>
           </div>
-          <div class="card-body">
+          <div class="card-body mt-5">
             <el-row :gutter="40">
               <el-col :xs="24" :sm="12" :lg="8">
                 <el-form-item :label="$t('user.tableData.tel')" prop="tel">
@@ -43,7 +43,7 @@
         <div class="action xs:flex sm:flex lg:flex xs:justify-center sm:justify-center xl:justify-start">
           <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{ $t('user.edit') }}</el-button>
 
-          <el-button class="s__btn" @click="dialogFormVisible = true" :loading="isLoading">{{ $t('user.changePassword') }}</el-button>
+          <el-button type="success" @click="dialogFormVisible = true" :loading="isLoading">{{ $t('user.changePassword') }}</el-button>
         </div>
 
         <!--Modal change password-->

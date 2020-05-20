@@ -4,7 +4,7 @@
       <div class="card-header">
         <form class="form-inline flex justify-between mb-5">
           <label class="mr-sm-2 form-label">
-            <h3 class="text-3xl font-bold text-bunting">{{ $route.meta.name }}</h3>
+            <h3 class="text-3xl font-bold text-bunting">{{ $t('product.all') }}</h3>
           </label>
           <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" circle></el-button>
         </form>
@@ -57,7 +57,11 @@
                     <img :src="displayFacebookImageUrl(o.imageUrl)" class="avatar-img rounded-md" />
                   </slot>
                   <slot v-else>
-                    <img :src="getImageUrl(o.imageUrl)" class="avatar-img rounded-md" style="height: 48px; width: 48px;" />
+                    <img
+                      :src="getImageUrl(o.imageUrl)"
+                      class="avatar-img rounded-md"
+                      style="height: 48px; width: 48px;"
+                    />
                   </slot>
                 </div>
                 <div>
@@ -106,17 +110,30 @@
           </tr>
         </tbody>
       </table>
-      <el-drawer title="Edit Product" size="60%" :visible.sync="drawer" :direction="direction" :before-close="handleClose">
-        <el-row class="flex mt-3 px-10" :gutter="40">
-          <el-col :span="12">
-            <label for>Order Name</label>
-            <el-input clear placeholder="Please input" v-model="input"></el-input>
-          </el-col>
-          <el-col :span="12">
-            <label for>My License Number</label>
-            <el-input clear placeholder="Please input" v-model="input"></el-input>
-          </el-col>
-        </el-row>
+      <el-drawer
+        :before-close="handleClose"
+        size="60%"
+        :direction="direction"
+        custom-class="demo-drawer"
+        ref="drawer"
+        title="Edit Product"
+        :visible.sync="drawer"
+      >
+        <div class="demo-drawer__content">
+          <el-form :model="form">
+            <el-row class="flex mt-3 px-10" :gutter="40">
+              <add-product></add-product>
+            </el-row>
+          </el-form>
+          <div class="demo-drawer__footer px-10 action action_draw pb-5">
+            <el-button
+              type="warning"
+              @click="$refs.drawer.closeDrawer()"
+              :loading="loading"
+            >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>
+            <el-button @click="cancelForm" class="ml-5">Cancel</el-button>
+          </div>
+        </div>
       </el-drawer>
     </div>
   </content-box>
@@ -127,6 +144,7 @@ import axios from 'axios'
 import { provider } from '../../../service/provider'
 import _ from 'lodash'
 import ContentBox from '../../../components/ContentBoxNoBorder.vue'
+import AddProduct from './AddProduct.vue';
 
 export default {
   data() {
@@ -146,7 +164,9 @@ export default {
     }
   },
   components: {
-    ContentBox
+    ContentBox,
+    AddProduct
+
   },
   watch: {
     query: _.debounce(function (val) {

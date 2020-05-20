@@ -17,12 +17,12 @@
             <el-row :gutter="40">
               <el-col :span="12">
                 <el-form-item :label="$t('user.tableData.accountName')" prop="username">
-                  <el-input v-model="createUserForm.username" placeholder="Kevin"></el-input>
+                  <el-input v-model="createUserForm.username" placeholder="Username"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
                 <el-form-item :label="$t('user.tableData.tel')" prop="tel">
-                  <el-input type="number" v-model="createUserForm.tel" placeholder="15427757"></el-input>
+                  <el-input type="number" v-model="createUserForm.tel" placeholder="000-000-0000"></el-input>
                 </el-form-item>
               </el-col>
 
@@ -54,7 +54,7 @@
             </el-row>
             <el-switch v-model="createUserForm.profile.approved" :active-text="$t('user.approved')" inactive-text></el-switch>
           </div>
-          <div class="action">
+          <div class="action mt-5">
             <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{ $t('user.add') }}</el-button>
           </div>
         </el-form>
@@ -126,8 +126,8 @@ export default {
       },
       createUserForm: {
         username: '',
-        password: '',
-        confirmPassword: '',
+        password: '000000',
+        confirmPassword: '000000',
         tel: '',
         profile: {
           approved: true
@@ -188,6 +188,7 @@ export default {
             .then((res) => {
               if (res.data.code === 201) {
                 this.$message.success('បង្កើតអ្នកប្រើប្រាស់បានជោគជ័យ')
+                this.$router.push('/settings')
                 this.createUserForm = {
                   username: '',
                   password: '',

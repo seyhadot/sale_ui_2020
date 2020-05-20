@@ -1,120 +1,122 @@
 <template>
-    <div class="content-card xs:w-12/12 sm:w-12/12 lg:w-8/12 px-10 m-auto">
-        <el-form :model="storeForm" :rules="rules" ref="store">
-            <div class="form-title text-white">
-                <h3 class="xs:text-2xl sm:text-4xl xs:text-center lg:text-left lg:text-4xl font-bold text-white font-Raleway">
-                    {{ $route.meta.title }}</h3>
-            </div>
-            <el-row class="mt-3" :gutter="40">
-                <el-col :xs="14" class="m-0 m-auto xs:mb-3 xs:float-none md:float-left" :sm="24" :lg="6">
-                    <el-upload
-                        v-loading="uploadProgress"
-                        action="#"
-                        list-type="picture-card"
-                        :on-preview="handlePictureCardPreview"
-                        :show-file-list="false"
-                        :auto-upload="false"
-                        :file-list="fileList"
-                        :on-change="onUploadChange"
-                        :on-remove="handleRemove"
-                        class="avatar-uploader text-center"
-                      >
-                      <img v-if="storeForm.logoUrl" :src="storeForm.logoUrl" class="avatar"/>
-                      <i class="el-icon-plus avatar-uploader-icon"></i>
-                    </el-upload>
-
-<!--                    <el-upload-->
-<!--                            v-loading="uploadProgress"-->
-<!--                            class="avatar-uploader text-center"-->
-<!--                            action="#"-->
-<!--                            :show-file-list="false"-->
-<!--                            :on-preview="handlePictureCardPreview"-->
-<!--                            :auto-upload="false"-->
-<!--                            :file-list="fileList"-->
-<!--                            :on-change="onUploadChange"-->
-<!--                            :on-remove="handleRemove"-->
-<!--                    >-->
-<!--                        <img v-if="storeForm.logoUrl" :src="storeForm.logoUrl" class="avatar"/>-->
-<!--                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>-->
-<!--                    </el-upload>-->
-                </el-col>
-                <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
-                    <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
-                        <el-input v-model="storeForm.name" placeholder="E-commerce Name"></el-input>
-                    </el-form-item>
-                    <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
-                        <el-input v-model="storeForm.shortcutName" placeholder="SWEM"></el-input>
-                    </el-form-item>
-                    <!-- <el-form-item label="តំណរភ្ជាប់រូបភាព">
+  <div class="content-card xs:w-12/12 sm:w-12/12 lg:w-8/12 px-10 m-auto">
+    <el-form :model="storeForm" :rules="rules" ref="store">
+      <div class="form-title text-white">
+        <h3
+          class="xs:text-2xl sm:text-4xl xs:text-center lg:text-left lg:text-4xl xl:pl-10 font-bold text-white font-Raleway"
+        >{{ $route.meta.title }}</h3>
+      </div>
+      <el-row class="mt-3" :gutter="40">
+        <el-col :xs="14" class="xs:mb-3" :sm="24" :lg="6">
+          <el-upload
+            v-loading="uploadProgress"
+            class="avatar-uploader w-full text-center"
+            list-type="picture-card"
+            action="#"
+            :show-file-list="false"
+            :on-preview="handlePictureCardPreview"
+            :auto-upload="false"
+            :file-list="fileList"
+            :on-change="onUploadChange"
+            :on-remove="handleRemove"
+          >
+            <img v-if="storeForm.logoUrl" :src="storeForm.logoUrl" class="h-full w-full rounded-md" />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+          <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="storeForm.logoUrl" alt />
+          </el-dialog>
+        </el-col>
+        <el-col class="bg-white p-5" :xs="24" :sm="24" :lg="18">
+          <el-form-item label="ឈ្មោះសាខាហាង" prop="name">
+            <el-input v-model="storeForm.name" placeholder="E-commerce Name"></el-input>
+          </el-form-item>
+          <el-form-item label="ឈ្មោះកាត់" prop="shortcutName">
+            <el-input v-model="storeForm.shortcutName" placeholder="SWEM"></el-input>
+          </el-form-item>
+          <!-- <el-form-item label="តំណរភ្ជាប់រូបភាព">
                       <el-input v-model="storeForm.coverImgUrl" placeholder></el-input>
-                    </el-form-item>-->
-                    <el-form-item label="Users">
-                        <el-select v-model="storeForm.users" clearable multiple placeholder="All"
-                                   style="max-width: 100%; width: 100%;">
-                            <el-option v-for="item in userOptions" :key="item.value" :label="item.label"
-                                       :value="item.value"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <!-- ---selecttag -->
-                    <label for>Tag</label>
-                    <el-select @change="onTagChange" v-model="storeForm.tags" multiple filterable allow-create
-                               default-first-option
-                               placeholder="Choose tags for your store">
-                        <el-option v-for="item in tagOptions" :key="item.value" :label="item.label"
-                                   :value="item.value"></el-option>
-                    </el-select>
-                  <label for>Base currency</label>
-                  <el-select v-model="storeForm.baseCurrency"
-                               placeholder="Base Currency">
-                        <el-option v-for="item in ['USD', 'KHR']" :key="item" :label="item"
-                                   :value="item"></el-option>
-                    </el-select>
-                    <!-- ---selecttag -->
-                </el-col>
-            </el-row>
-            <el-row class="xs:mt-0 xl:mt-5" :gutter="40">
-                <el-col class="px-5 xs:bg-white xl:bg-transparent" :xs="24" :sm="24" :lg="6">
-                    <div class="checkbox mb-5">
-                        <el-form-item>
-                            <el-checkbox class="check-label" v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ
-                            </el-checkbox>
-                        </el-form-item>
-                    </div>
-                    <div class="checkbox xs:mb-0 lg:mb-5 xl:mb-5">
-                        <el-form-item>
-                            <el-checkbox class="check-label" v-model="storeForm.isAddToBuyWhat">Add To Buywhat
-                            </el-checkbox>
-                        </el-form-item>
-                    </div>
-                </el-col>
-                <el-col class="bg-white p-5 xs:pt-0" :xs="24" :sm="24" :lg="18">
-                    <el-row class="mt-3" :gutter="40">
-                        <el-col class="p-0" :xs="24" :sm="24" :lg="12">
-                            <el-form-item label="ពិពណ៌នា">
-                                <el-input type="textarea" v-model="storeForm.desc" rows="5"></el-input>
-                            </el-form-item>
-                        </el-col>
-                        <el-col class="p-0" :xs="24" :sm="24" :lg="12">
-                            <el-form-item label="អាស័យដ្ឋាន" prop="address">
-                                <el-input type="textarea" v-model="storeForm.address" rows="5"></el-input>
-                            </el-form-item>
-                        </el-col>
-                    </el-row>
-                    <div class="action mt-3">
-                        <el-button type="warning" @click="onSubmit">
-                            <i class="uil-check-circle mr-2"></i>
-                            រក្សាទុក
-                        </el-button>
-                        <!-- <router-link :to="-1">
+          </el-form-item>-->
+          <el-form-item label="Users">
+            <el-select
+              v-model="storeForm.users"
+              clearable
+              multiple
+              placeholder="All"
+              style="max-width: 100%; width: 100%;"
+            >
+              <el-option
+                v-for="item in userOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <!-- ---selecttag -->
+          <label for>Tag</label>
+          <el-select
+            @change="onTagChange"
+            v-model="storeForm.tags"
+            multiple
+            filterable
+            allow-create
+            default-first-option
+            placeholder="Choose tags for your store"
+          >
+            <el-option
+              v-for="item in tagOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+          <label for>Base currency</label>
+          <el-select v-model="storeForm.baseCurrency" placeholder="Base Currency">
+            <el-option v-for="item in ['USD', 'KHR']" :key="item" :label="item" :value="item"></el-option>
+          </el-select>
+          <!-- ---selecttag -->
+        </el-col>
+      </el-row>
+      <el-row class="xs:mt-0 xl:mt-5" :gutter="40">
+        <el-col class="px-5 xs:bg-white xl:bg-transparent" :xs="24" :sm="24" :lg="6">
+          <div class="checkbox mb-5">
+            <el-form-item>
+              <el-checkbox class="check-label" v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ</el-checkbox>
+            </el-form-item>
+          </div>
+          <div class="checkbox xs:mb-0 lg:mb-5 xl:mb-5">
+            <el-form-item>
+              <el-checkbox class="check-label" v-model="storeForm.isAddToBuyWhat">Add To Buywhat</el-checkbox>
+            </el-form-item>
+          </div>
+        </el-col>
+        <el-col class="bg-white p-5 xs:pt-0" :xs="24" :sm="24" :lg="18">
+          <el-row class="mt-3" :gutter="40">
+            <el-col class="p-0" :xs="24" :sm="24" :lg="12">
+              <el-form-item label="ពិពណ៌នា">
+                <el-input type="textarea" v-model="storeForm.desc" rows="5"></el-input>
+              </el-form-item>
+            </el-col>
+            <el-col class="p-0" :xs="24" :sm="24" :lg="12">
+              <el-form-item label="អាស័យដ្ឋាន" prop="address">
+                <el-input type="textarea" v-model="storeForm.address" rows="5"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+          <div class="action mt-3">
+            <el-button type="warning" @click="onSubmit">
+              <i class="uil-check-circle mr-2"></i>
+              រក្សាទុក
+            </el-button>
+            <!-- <router-link :to="-1">
                         Cancel
-                        </router-link>-->
-                    </div>
-                </el-col>
-
-
-            </el-row>
-        </el-form>
-    </div>
+            </router-link>-->
+          </div>
+        </el-col>
+      </el-row>
+    </el-form>
+  </div>
 </template>
 <script>
   // import GoogleMap from "@/components/GoogleMap";
@@ -418,57 +420,36 @@
 </script>
 
 <style lang="scss">
-    .el-switch.is-checked .el-switch__core {
-        border-color: #1f1f1f;
-        background-color: #1f1f1f;
-    }
+.el-switch.is-checked .el-switch__core {
+  border-color: #1f1f1f;
+  background-color: #1f1f1f;
+}
 
-    .el-switch__label.is-active {
-        color: #1f1f1f;
-    }
+.el-switch__label.is-active {
+  color: #1f1f1f;
+}
 
-    .el-tag + .el-tag {
-        margin-left: 10px;
-    }
+.el-tag + .el-tag {
+  margin-left: 10px;
+}
 
-    .button-new-tag {
-        margin-left: 10px;
-        height: 32px;
-        line-height: 30px;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
+.button-new-tag {
+  margin-left: 10px;
+  height: 32px;
+  line-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
-    .input-new-tag {
-        width: 120px;
-        margin-left: 10px;
-        vertical-align: bottom;
-    }
-
-    .avatar-uploader .el-upload {
-        border: 1px dashed #d9d9d9;
-        border-radius: 6px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .avatar-uploader .el-upload:hover {
-        border-color: #409eff;
-    }
-
-    .avatar-uploader-icon {
-        font-size: 28px;
-        color: #8c939d;
-        width: 178px;
-        height: 178px;
-        line-height: 178px;
-        text-align: center;
-    }
-
-    .avatar {
-        width: 178px;
-        height: 178px;
-        display: block;
-    }
+.input-new-tag {
+  width: 120px;
+  margin-left: 10px;
+  vertical-align: bottom;
+}
+.el-upload--picture-card {
+  width: 100%;
+}
+.el-loading-mask {
+  border-radius: 0.375rem;
+}
 </style>
