@@ -34,7 +34,7 @@
             </div>
             <div>
               <el-form-item class="action flex w-full justify-center">
-                <el-button type="primary" class="btn-block w-48" @click="handleLogin" :loading="isLoading">{{ showLoadingText }} </el-button>
+                <el-button type="warning" class="btn-block w-48" @click="handleLogin" :loading="isLoading">{{ showLoadingText }} </el-button>
               </el-form-item>
               <el-form-item class="action flex w-full justify-center">
                 <el-checkbox v-model="isRemember">Remember for 24 hours</el-checkbox>

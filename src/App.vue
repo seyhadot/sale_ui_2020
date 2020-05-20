@@ -4,7 +4,7 @@
       <div class="loader-wrapper">
         <div class="typewriter">
           <div v-loading="isLoading">
-            <h1 style="">សូមមេត្តារង់ចាំ...</h1>
+            <h1 style>សូមមេត្តារង់ចាំ...</h1>
           </div>
         </div>
       </div>
@@ -34,6 +34,6 @@ export default {
 body {
   background: $body;
   outline: none;
-  font-family: 'Khmer', 'Exo 2', sans-serif;
+  font-family: 'Exo 2', 'KhmerR', sans-serif;
 }
 </style>
