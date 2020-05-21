@@ -27,10 +27,20 @@
           >{{ scope.row.profile.approved ? 'បានអនុញ្ញាត' : 'មិនទាន់បានអនុញ្ញាត' }}</template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.roles')">
-          <template slot-scope="scope">{{ scope.row.roles }}</template>
+          <template slot-scope="scope">
+            <span :key="role" v-for="role in scope.row.roles">
+              <el-tag type="warning">
+                {{role}}
+              </el-tag>
+            </span>
+          </template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.stores')">
-          <template slot-scope="scope">{{ scope.row.stores.map((map) => map.name) }}</template>
+          <template slot-scope="scope">
+            <el-tag :key="store._id" v-for="store in scope.row.stores">
+              {{store.name}}
+            </el-tag>
+          </template>
         </el-table-column>
         <!-- <el-table-column align="right">
           <template slot="header" slot-scope="scope">

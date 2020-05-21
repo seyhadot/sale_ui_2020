@@ -240,8 +240,13 @@ export default {
       this.$refs['editUser'].validate((valid) => {
         if (valid) {
           this.isLoading = true
-          if (this.editUserForm.modules.length === 0) {
-            this.editUserForm.modules.push(this.$store.state.defaultModule)
+          let { modules } = this.editUserForm;
+          if (!modules || modules.length === 0) {
+            if(!modules) {
+              modules = [this.$store.state.defaultModule];
+            } else {
+              modules.push(this.$store.state.defaultModule);
+            }
           }
           axios
             .post(url, this.editUserForm, {
