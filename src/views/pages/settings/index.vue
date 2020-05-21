@@ -13,7 +13,7 @@
 
 <script>
 import User from './users/User.vue'
-import ContentBox from '../../../components/ContentBox.vue'
+import ContentBox from '@/components/ContentBox.vue'
 export default {
   components: {
     User,

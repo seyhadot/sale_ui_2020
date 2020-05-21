@@ -4,7 +4,7 @@
       <div class="card-header">
         <form class="form-inline flex justify-between mb-5">
           <label class="mr-sm-2 form-label">
-            <h3 class="text-3xl font-bold text-bunting">{{ $t('product.all') }}</h3>
+            <h3 class="text-2xl font-bold text-blue-500">{{ $t('product.title') }}</h3>
           </label>
           <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" circle></el-button>
         </form>
@@ -122,7 +122,6 @@
         <div class="demo-drawer__content">
           <el-form :model="form">
             <el-row class="flex mt-3 px-10" :gutter="40">
-              <add-product></add-product>
             </el-row>
           </el-form>
           <div class="demo-drawer__footer px-10 action action_draw pb-5">
@@ -131,7 +130,7 @@
               @click="$refs.drawer.closeDrawer()"
               :loading="loading"
             >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>
-            <el-button @click="cancelForm" class="ml-5">Cancel</el-button>
+            <el-button @click="$refs.drawer.closeDrawer()" class="ml-5">Cancel</el-button>
           </div>
         </div>
       </el-drawer>
@@ -141,10 +140,9 @@
 
 <script>
 import axios from 'axios'
-import { provider } from '../../../service/provider'
+import { provider } from '@/service/provider'
 import _ from 'lodash'
-import ContentBox from '../../../components/ContentBoxNoBorder.vue'
-import AddProduct from './AddProduct.vue';
+import ContentBox from '@/components/ContentBoxNoBorder.vue'
 
 export default {
   data() {
@@ -165,8 +163,6 @@ export default {
   },
   components: {
     ContentBox,
-    AddProduct
-
   },
   watch: {
     query: _.debounce(function (val) {

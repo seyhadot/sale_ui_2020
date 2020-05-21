@@ -28,6 +28,7 @@ export const appLocale = {
       chooseStores: 'Choose stores',
       chooseRoles: 'Choose roles',
       approved: 'Approved',
+      cancel: 'Cancel',
       tableData: {
         accountName: 'Account Name',
         tel: 'Telephone',
@@ -155,11 +156,12 @@ export const appLocale = {
       chooseStores: 'ជ្រើសរើសហាង',
       chooseRoles: 'ជ្រើសរើសតួនាទី',
       approved: 'បើកសិទ្ធ',
+      cancel: 'បោះបង់',
       tableData: {
         tel: 'លេខទូរស័ព្ទ',
         accountName: 'គណនីឈ្មោះ',
         createdAt: 'បង្កើតនៅថ្ងៃទី',
-        status: 'សា្ថានភាព',
+        status: 'សា្ថនភាព',
         roles: 'តួនាទី',
         stores: 'ហាង',
         search: 'ស្វែងរកគណនី...'

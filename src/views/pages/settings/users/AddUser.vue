@@ -10,7 +10,7 @@
           </el-col>
 
           <div class="form-title border-b pb-3">
-            <h3 class="text-xl">{{ $t('user.add') }}</h3>
+            <h3 class="text-xl text-blue-500">{{ $t('user.add') }}</h3>
           </div>
 
           <div class="card-body mt-5">
@@ -55,7 +55,10 @@
             <el-switch v-model="createUserForm.profile.approved" :active-text="$t('user.approved')" inactive-text></el-switch>
           </div>
           <div class="action mt-5">
-            <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{ $t('user.add') }}</el-button>
+            <el-button type="warning" @click="handleSubmit" :loading="isLoading">
+              <i class="uil-check-circle mr-2"></i> 
+              {{ $t('user.add') }}</el-button>
+            <btn-cancel></btn-cancel>
           </div>
         </el-form>
       </div>
@@ -66,7 +69,8 @@
 <script>
 import { provider } from '@/service/provider'
 import axios from 'axios'
-import ContentBox from '../../../../components/ContentBox.vue'
+import ContentBox from '@/components/ContentBox.vue'
+import BtnCancel from '@/components/BtnCancel.vue'
 
 export default {
   data() {
@@ -139,7 +143,8 @@ export default {
     }
   },
   components: {
-    ContentBox
+    ContentBox,
+    BtnCancel
   },
   methods: {
     fetchStores() {

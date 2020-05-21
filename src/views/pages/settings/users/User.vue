@@ -1,18 +1,30 @@
 <template>
   <el-col :span="24" v-loading="isLoading">
     <el-row>
-      <div class="action">
-        <el-button icon="el-icon-plus" type="warning" @click="handleGotoCreateUser">{{ $t('user.add') }}</el-button>
+      <div class="action mb-5 flex justify-between">
+        <el-button
+          icon="el-icon-plus"
+          type="warning"
+          @click="handleGotoCreateUser"
+        >{{ $t('user.add') }}</el-button>
+        <el-col :span="8">
+          <el-input v-model="search" size="large" class="search" :placeholder="$t('user.tableData.search')" clearable />
+        </el-col>
       </div>
     </el-row>
     <el-row>
-      <el-table :data="tableData.filter((data) => !search || data.username.toLowerCase().includes(search.toLowerCase()))" @row-click="handleClick">
+      <el-table
+        :data="tableData.filter((data) => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
+        @row-click="handleClick"
+      >
         <el-table-column :label="$t('user.tableData.accountName')" prop="username"></el-table-column>
         <el-table-column :label="$t('user.tableData.createdAt')">
           <template slot-scope="scope">{{ scope.row.createdAt | moment('DD/MM/YYYY HH:mm') }}</template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.status')">
-          <template slot-scope="scope">{{ scope.row.profile.approved ? 'បានអនុញ្ញាត' : 'មិនទាន់បានអនុញ្ញាត' }}</template>
+          <template
+            slot-scope="scope"
+          >{{ scope.row.profile.approved ? 'បានអនុញ្ញាត' : 'មិនទាន់បានអនុញ្ញាត' }}</template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.roles')">
           <template slot-scope="scope">{{ scope.row.roles }}</template>
@@ -20,11 +32,10 @@
         <el-table-column :label="$t('user.tableData.stores')">
           <template slot-scope="scope">{{ scope.row.stores.map((map) => map.name) }}</template>
         </el-table-column>
-        <el-table-column align="right">
+        <!-- <el-table-column align="right">
           <template slot="header" slot-scope="scope">
-            <el-input v-model="search" size="small" :placeholder="$t('user.tableData.search')" />
           </template>
-        </el-table-column>
+        </el-table-column>-->
       </el-table>
     </el-row>
     <!-- Diaglog form -->
@@ -32,7 +43,7 @@
 </template>
 
 <script>
-import { provider } from '../../../../service/provider'
+import { provider } from '@/service/provider'
 import axios from 'axios'
 
 export default {
@@ -40,7 +51,6 @@ export default {
     return {
       isLoading: true,
       dialogFormVisible: false,
-
       search: '',
       select: '',
       tableData: []

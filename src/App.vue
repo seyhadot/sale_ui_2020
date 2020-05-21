@@ -31,11 +31,12 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Khmer&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Basic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 body {
   background: $body;
   outline: none;
   font-size: 1rem;
-  font-family: 'Exo 2', 'KhmerR', sans-serif;
+  font-family: 'Poppins', 'Exo 2', 'KhmerR', sans-serif;
 }
 </style>

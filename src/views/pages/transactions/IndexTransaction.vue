@@ -28,11 +28,11 @@
 
 <script>
 import ContentBox from '@/components/ContentBox.vue'
-import Overview from "./pages/transactions/Overview.vue";
-import Customer from "./pages/transactions/Customer.vue";
-import Order from "./pages/transactions/Order.vue";
-import Payment from "./pages/transactions/Payment.vue";
-import InventoryTransaction from "./pages/transactions/InventoryTransaction.vue";
+import Overview from "./Overview.vue";
+import Customer from "./Customer.vue";
+import Order from "./Order.vue";
+import Payment from "./Payment.vue";
+import InventoryTransaction from "./InventoryTransaction.vue";
 export default {
   components: {
     Overview,

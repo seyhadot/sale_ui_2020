@@ -21,29 +21,64 @@
 
               <el-col :xs="24" :sm="12" :lg="8">
                 <el-form-item :label="$t('user.chooseStores')">
-                  <el-select v-model="editUserForm.stores" multiple :placeholder="$t('user.chooseStores')">
-                    <el-option v-for="item in storeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  <el-select
+                    v-model="editUserForm.stores"
+                    multiple
+                    :placeholder="$t('user.chooseStores')"
+                  >
+                    <el-option
+                      v-for="item in storeOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="12" :lg="8">
                 <el-form-item :label="$t('user.chooseRoles')">
-                  <el-select v-model="editUserForm.roles" multiple :placeholder="$t('user.chooseRoles')" style="width: 100%;">
-                    <el-option v-for="item in rolesOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                  <el-select
+                    v-model="editUserForm.roles"
+                    multiple
+                    :placeholder="$t('user.chooseRoles')"
+                    style="width: 100%;"
+                  >
+                    <el-option
+                      v-for="item in rolesOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
-              <el-switch v-model="editUserForm.profile.approved" :active-text="$t('user.approved')" inactive-text></el-switch>
+              <el-switch
+                v-model="editUserForm.profile.approved"
+                :active-text="$t('user.approved')"
+                inactive-text
+              ></el-switch>
             </el-row>
           </div>
         </el-form>
 
-        <div class="action xs:flex sm:flex lg:flex xs:justify-center sm:justify-center xl:justify-start">
-          <el-button type="warning" @click="handleSubmit" :loading="isLoading">{{ $t('user.edit') }}</el-button>
-
-          <el-button type="success" @click="dialogFormVisible = true" :loading="isLoading">{{ $t('user.changePassword') }}</el-button>
+        <div
+          class="action flex justify-between"
+        >
+          <div class="">
+            <el-button
+              type="warning"
+              @click="handleSubmit"
+              :loading="isLoading"
+            ><i class="uil-check-circle mr-2"></i> {{ $t('user.edit') }}</el-button>
+            <el-button
+              type="success"
+              @click="dialogFormVisible = true"
+              :loading="isLoading"
+            ><i class="uil-keyhole-square-full mr-2"></i> {{ $t('user.changePassword') }}</el-button>
+          </div>
+          <btn-cancel></btn-cancel>
         </div>
 
         <!--Modal change password-->
@@ -55,19 +90,30 @@
             <el-row>
               <el-col :span="24">
                 <el-form-item :label="$t('user.password')" prop="password">
-                  <el-input type="password" v-model="changePasswordForm.password" autocomplete="off"></el-input>
+                  <el-input
+                    type="password"
+                    v-model="changePasswordForm.password"
+                    autocomplete="off"
+                  ></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item :label="$t('user.changePassword')" prop="confirmPassword">
-                  <el-input type="password" v-model="changePasswordForm.confirmPassword" autocomplete="off"></el-input>
+                  <el-input
+                    type="password"
+                    v-model="changePasswordForm.confirmPassword"
+                    autocomplete="off"
+                  ></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
           </el-form>
-          <span class="action">
-            <el-button type="warning" @click="handleChangePassword">{{ $t('user.changePassword') }}</el-button>
-          </span>
+          <div class="action mt-5">
+            <el-button type="warning" @click="handleChangePassword">
+              <i class="uil-check-circle mr-2"></i>
+              {{ $t('user.changePassword') }}
+            </el-button>
+          </div>
         </el-dialog>
       </div>
     </content-box>
@@ -77,7 +123,8 @@
 <script>
 import { provider } from '@/service/provider'
 import axios from 'axios'
-import ContentBox from '../../../../components/ContentBox.vue'
+import ContentBox from '@/components/ContentBox.vue'
+import BtnCancel from '@/components/BtnCancel.vue'
 
 export default {
   data() {
@@ -155,7 +202,8 @@ export default {
     }
   },
   components: {
-    ContentBox
+    ContentBox,
+    BtnCancel
   },
   methods: {
     fetchStores() {

@@ -9,7 +9,7 @@ const storeRouter = {
   children: [
     {
       path: '',
-      component: () => import('@/views/pages/stores/Index'),
+      component: () => import('@/views/pages/stores/IndexStore'),
       name: 'Store',
       meta: { title: 'Store' }
     },

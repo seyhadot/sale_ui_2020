@@ -38,10 +38,10 @@
         <el-form :model="addProduct" :rules="rules" ref="addProductForm">
           <div class="card-header">
             <div class="form-title border-b pb-3 mt-5">
-              <h3 class="text-xl">{{ $t('product.add') }}</h3>
+              <h3 class="text-xl text-blue-500">{{ $t('product.add') }}</h3>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body mt-5">
             <el-form-item >
               <div>
                 <label for>{{ $t('product.form.photo') }}</label>
@@ -149,7 +149,10 @@
           </div>
 
           <div class="action" style="padding-left: 0px;">
-            <el-button type="warning" @click="handleSave" :loading="isLoading">{{ $t('product.save') }}</el-button>
+            <el-button type="warning" @click="handleSave" :loading="isLoading">
+              <i class="uil-check-circle mr-2"></i>
+              {{ $t('product.save') }}</el-button>
+            <btn-cancel></btn-cancel>
           </div>
         </el-form>
       </el-col>
@@ -158,15 +161,17 @@
 </template>
 
 <script>
-import { app, provider } from '../../../service/provider'
-import ContentBox from '../../../components/ContentBox.vue'
+import { app, provider } from '@/service/provider'
+import ContentBox from '@/components/ContentBox.vue'
+import BtnCancel from '@/components/BtnCancel.vue'
 import moment from 'moment'
 import axios from 'axios'
 import _ from 'lodash'
 
 export default {
   components: {
-    ContentBox
+    ContentBox,
+    BtnCancel
   },
   data() {
     let validateFinishAddedToSlideDate = (rule, value, callback) => {

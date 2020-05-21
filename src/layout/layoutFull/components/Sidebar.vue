@@ -45,9 +45,17 @@
             </el-tooltip>
           </li>
           <li>
-            <el-tooltip class="item" effect="dark" content="User" placement="right-start">
-              <router-link to="/user" class="transition ease-in duration-700 w-full flex items-center justify-center">
-                <i class="uil-user text-5xl"></i>
+            <el-tooltip class="item" effect="dark" content="Transaction" placement="right-start">
+              <router-link to="/transactions" class="transition ease-in duration-700 w-full flex items-center justify-center">
+                <i class="uil-document-layout-left text-5xl"></i>
+                <!-- <span>Users</span> -->
+              </router-link>
+            </el-tooltip>
+          </li>
+          <li>
+            <el-tooltip class="item" effect="dark" content="Report" placement="right-start">
+              <router-link to="/reports" class="transition ease-in duration-700 w-full flex items-center justify-center">
+                <i class="uil-arrow-growth text-5xl"></i>
                 <!-- <span>Users</span> -->
               </router-link>
             </el-tooltip>

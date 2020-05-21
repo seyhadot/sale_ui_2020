@@ -79,7 +79,7 @@
         </el-row>
         <div class="action mt-3">
           <el-button type="warning">Submit</el-button>
-          <el-button type>Cancel</el-button>
+          <el-button type="primary">Cancel</el-button>
         </div>
       </div>
     </div>

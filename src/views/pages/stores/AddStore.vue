@@ -109,9 +109,7 @@
               <i class="uil-check-circle mr-2"></i>
               រក្សាទុក
             </el-button>
-            <!-- <router-link :to="-1">
-                        Cancel
-            </router-link>-->
+            <btn-cancel></btn-cancel>
           </div>
         </el-col>
       </el-row>
@@ -121,9 +119,13 @@
 <script>
   // import GoogleMap from "@/components/GoogleMap";
   import { provider, app } from '@/service/provider'
+  import BtnCancel from '@/components/BtnCancel.vue'
   import axios from 'axios'
 
   export default {
+    components: {
+      BtnCancel,
+    },
     data() {
       return {
         tagOptions: [],
