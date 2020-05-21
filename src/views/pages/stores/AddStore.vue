@@ -37,7 +37,7 @@
           <!-- <el-form-item label="តំណរភ្ជាប់រូបភាព">
                       <el-input v-model="storeForm.coverImgUrl" placeholder></el-input>
           </el-form-item>-->
-          <el-form-item label="Users">
+          <el-form-item label="Users" v-show="isSuper">
             <el-select
               v-model="storeForm.users"
               clearable
@@ -85,7 +85,7 @@
               <el-checkbox class="check-label" v-model="storeForm.closeOrder">បិទការកម្ម៉ង់ទិញ</el-checkbox>
             </el-form-item>
           </div>
-          <div class="checkbox xs:mb-0 lg:mb-5 xl:mb-5">
+          <div class="checkbox xs:mb-0 lg:mb-5 xl:mb-5" v-show="isSuper">
             <el-form-item>
               <el-checkbox class="check-label" v-model="storeForm.isAddToBuyWhat">Add To Buywhat</el-checkbox>
             </el-form-item>
@@ -125,6 +125,12 @@
   export default {
     components: {
       BtnCancel,
+    },
+    computed: {
+      isSuper() {
+        const {user} = this.$store.state.user;
+        return provider.isSuper(user.roles);
+      }
     },
     data() {
       return {

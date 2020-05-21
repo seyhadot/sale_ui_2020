@@ -73,18 +73,6 @@
                 </template>
             </el-table-column>
             <el-table-column
-                    :label="$t('customer.tableData.dueAmount')"
-                    show-overflow-tooltip>
-                <template slot-scope="scope">
-                    <slot v-if="calculateDueAmount(scope.row) > 0">
-                        <router-link :to="generateRouteUrl(scope.row)">{{calculateDueAmount(scope.row) | numeralGen($store.state.company,false )}}</router-link>
-                    </slot>
-                    <slot v-else>
-                        {{calculateDueAmount(scope.row)}}
-                    </slot>
-                </template>
-            </el-table-column>
-            <el-table-column
                     fixed="right"
                     label=""
                     width="120">
@@ -135,13 +123,7 @@
             generateRouteUrl(row) {
                 return  `/payments/add?txt=${row.name}` ;
             },
-            calculateDueAmount(row) {
-                const {company} = this.$store.state;
-                const exchangeRateObj = company.exchangeRate.find(o => o.from === row.orderAsCurrency && o.to === company.defaultCurrency)
-                const fnConvert = (currentOrder) => company.defaultCurrency === currentOrder.orderAsCurrency ? currentOrder.total : currentOrder.total * exchangeRateObj.exchangeRate;
-                const reducer = (accumulate, currentOrder) => accumulate + fnConvert(currentOrder); //convert currency
-                return row.orderDocs.reduce(reducer, 0);
-            },
+
             handleClickDetail(row) {
                 this.$router.push(`/customers/${row._id}/show`);
             },

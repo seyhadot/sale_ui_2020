@@ -97,7 +97,7 @@
             </td>
             <td class="text-right">
               <el-row class="flex">
-                <el-button @click="drawer = true" type="success" icon="el-icon-edit" circle></el-button>
+                <el-button @click="handleEdit(o)" type="success" icon="el-icon-edit" circle></el-button>
                 <el-button type="danger" icon="el-icon-delete" circle></el-button>
               </el-row>
               <!-- <a href class="text-gray-700">
@@ -122,6 +122,8 @@
         <div class="demo-drawer__content">
           <el-form :model="form">
             <el-row class="flex mt-3 px-10" :gutter="40">
+              <!-- Edit by kevin-->
+              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
             </el-row>
           </el-form>
           <div class="demo-drawer__footer px-10 action action_draw pb-5">
@@ -143,7 +145,7 @@ import axios from 'axios'
 import { provider } from '@/service/provider'
 import _ from 'lodash'
 import ContentBox from '@/components/ContentBoxNoBorder.vue'
-
+import EditProduct from './EditProduct';
 export default {
   data() {
     return {
@@ -152,16 +154,19 @@ export default {
       isLoading: true,
       total: 0,
       currentPage: 1,
+      title: '',
       query: '',
       limit: 10,
       skip: 0,
       products: [],
       company: null,
       drawer: false,
-      direction: 'rtl'
+      direction: 'rtl',
+      currentSelectedProduct: null,
     }
   },
   components: {
+    EditProduct,
     ContentBox,
   },
   watch: {
@@ -176,6 +181,11 @@ export default {
     }
   },
   methods: {
+    handleEdit(product) {
+        this.title = "Edit " + product.name;
+        this.currentSelectedProduct = product;
+        this.drawer  = true;
+    },
     handleClose(done) {
       this.$confirm('Are you sure you want to close this?')
         .then((_) => {
@@ -209,6 +219,7 @@ export default {
         })
         .then((res) => {
           if (res.data.code === 201) {
+            this.drawer = false;
             this.products = res.data.data
           }
         })
