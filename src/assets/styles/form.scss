@@ -532,3 +532,30 @@
   margin: 0px;
   height: 44px;
 }
+
+
+
+// customer searching
+.el-row .el-col .customer-search input.el-input__inner{
+  background: $white;
+  border: 1px solid #ddd;
+  margin-top:0;
+}
+.el-row .el-col .customer-search input.el-input__inner:focus {
+  background: $white; 
+}
+.customer-search{
+  position: relative;
+  i{
+    position: absolute;
+    top:12px;
+    left: 10px;
+    font-size: 1.7em;
+    color: darkgray;
+    z-index: 99;
+  }
+  .el-input__inner{
+    height: 50px;
+    padding-left: 50px;
+  }
+}

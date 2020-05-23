@@ -1,7 +1,7 @@
 <template>
-    <el-row>
-        <el-button icon="el-icon-plus" type="primary" @click="handleCreateCustomer">{{$t('customer.add')}}</el-button>
-        <el-row type="flex" style="padding: 20px">
+  <el-row :gutter="40" class="pt-5">
+    <!-- <el-button icon="el-icon-plus" type="primary" @click="handleCreateCustomer">{{$t('customer.add')}}</el-button> -->
+    <!-- <el-row type="flex" style="padding: 20px">
             <el-col :span="16">
                 <el-dropdown trigger="click" style="cursor: pointer" @command="handleCommand">
                       <span class="el-dropdown-link">
@@ -91,152 +91,242 @@
                         :total="total">
                 </el-pagination>
             </el-row>
-        </transition>
-    </el-row>
+    </transition>-->
+    <el-col :span="5">
+      <div class="p-0">
+        <div
+          class="h-full overflow-scroll overflow-hidden overflow-x-scroll overflow-hidden font-sans"
+        >
+          <div class="customer-search">
+            <i class="uil-search"></i>
+            <el-input v-model="search" :placeholder="$t('customer.search')" clearable />
+          </div>
+          <ul v-for="(value, key) in grouped" :key="value._id">
+            <h2 class="bg-cerise px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
+            <li v-for="customer in value" :key="customer._id" class="py-3 border-b">
+              <a href class>
+                <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
+                <span class="text-gray-500">{{customer.tel}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </el-col>
+    <el-col :span="19">
+      <el-row class="bg-gray-700 h-full p-10 customer-bg">
+        <el-col :span="16">
+          <div class="customer-detail">
+            <h1 class="text-5xl text-white font-bold mb-8 flex items-center">Heng Seyha</h1>
+            <div class="content-detail flex mb-5">
+              <i class="uil-calling text-white text-4xl"></i>
+              <div class="text-base text-white font-bold ml-3">
+                <div>086 844487</div>
+                <div>092 844487</div>
+              </div>
+            </div>
+            <div class="content-detail flex mb-5">
+              <i class="uil-mailbox text-white text-4xl"></i>
+              <div
+                class="text-base w-64 text-white font-bold ml-3 flex items-center"
+              >terminal@gmail.com</div>
+            </div>
+            <div class="content-detail flex mb-5">
+              <i class="uil-atm-card text-white text-4xl"></i>
+              <div class="text-base w-64 text-white font-bold ml-3 flex items-center">00881721</div>
+            </div>
+            <div class="content-detail flex">
+              <i class="uil-location-point text-white text-4xl"></i>
+              <div class="text-base w-64 text-white font-bold ml-3 flex items-center">
+                <div>Street 119, Krong Battambang, Cambodia</div>
+              </div>
+            </div>
+            <div class="flex w-full justify-center mt-10">
+              <div class="w-7/12 border-b "></div>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div class="flex h-full flex-col justify-between">
+            <div class="credit-card bg-blue-400 h-56 rounded-lg mb-10"></div>
+            <div class="credit-card bg-gray-700 h-56 rounded-lg"></div>
+          </div>
+        </el-col>
+      </el-row>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-    import {provider} from '@/service/provider';
-    import axios from 'axios';
-    import _ from 'lodash';
-    import numeral from 'numeral';
-    export default {
-        data() {
-            return {
-                search: "",
-                selectCustomer: "",
-                total: 0,
-                page: 1,
-                tableData: [],
-                multipleSelection: []
-            }
-        },
-        watch: {
-            search: _.debounce(function () {
-                this.fetchCustomer();
-            }, 200),
-            page(val) {
-                this.fetchCustomer();
-            }
-        },
-        methods: {
-            generateRouteUrl(row) {
-                return  `/payments/add?txt=${row.name}` ;
-            },
-
-            handleClickDetail(row) {
-                this.$router.push(`/customers/${row._id}/show`);
-            },
-            handleCommand(command) {
-
-                switch (command) {
-                    case 'edit':
-                        this.$router.push(`/customers/${this.multipleSelection[0]._id}/edit`);
-                        break;
-                    case 'remove':
-                        this.handleToggleActive(false);
-                        break;
-                    case 'active':
-                        this.handleToggleActive(true);
-                        break;
-                    case 'deselect':
-                        this.toggleSelection();
-                        break;
-                }
-            },
-            handleToggleActive(arg) {
-                const {token, user} = this.$store.state.user;
-                const url = `${provider.baseURL}${provider.prefix}/customers/removes`;
-                const ids = this.multipleSelection.map(map => map._id);
-                const body = {
-                    ids,
-                    selector: {
-                        createdBy: user._id,
-                        isActive: arg
-                    }
-                };
-                this.$alert(`${arg ? 'Activate' : "Deactivate"} ${this.multipleSelection.map(map => map.name)}`, 'បញ្ជាក់', {
-                    confirmButtonText: 'OK',
-                    callback: action => {
-                        if (action === 'confirm') {
-                            axios.post(url, body, {
-                                headers: {
-                                    token
-                                }
-                            })
-                                .then((res) => {
-                                    if (res.data.code === 201) {
-                                        this.multipleSelection.forEach(o => {
-                                            o.isActive = arg;
-                                        });
-                                        this.$message.success("Success");
-                                        this.toggleSelection();
-                                    } else {
-                                        this.$message.error(res.data.message)
-                                    }
-                                }).catch((err) => this.$message.error(err.message));
-                        }
-                    }
-                });
-
-
-            },
-            isDisableCommand() {
-                return this.multipleSelection.length === 0;
-            },
-            isDisableEdit() {
-                return this.multipleSelection.length === 0 || this.multipleSelection.length > 1;
-            },
-            toggleSelection() {
-                this.$refs.customerTable.clearSelection();
-            },
-            handleSelectionChange(val) {
-                this.multipleSelection = val;
-            },
-            handleCreateCustomer() {
-                this.$router.push('/customers/add')
-            },
-            fetchCustomer() {
-                const {token, activeStore} = this.$store.state.user;
-                const url = `${provider.baseURL}${provider.prefix}/customers?q=${this.search}&page=${this.page}&s=${activeStore}`;
-                axios.get(url, {
-                    headers: {
-                        token
-                    }
-                })
-                    .then((res) => {
-                        if (res.data.code === 201) {
-                            this.tableData = res.data.data;
-                        } else {
-                            this.$message.error(res.data.message);
-                        }
-                    }).catch((err) => {
-                    this.$message.error(err.message);
-                })
-            },
-            countCustomer() {
-                const {token, activeStore} = this.$store.state.user;
-                const url = `${provider.baseURL}${provider.prefix}/customers/count?s=${activeStore}`;
-                axios.get(url, {
-                    headers: {
-                        token
-                    }
-                })
-                    .then((res) => {
-                        if (res.data.code === 201) {
-                            this.total = res.data.data;
-                        } else {
-                            this.$message.error(res.data.message);
-                        }
-                    }).catch((err) => {
-                    this.$message.error(err.message);
-                })
-            }
-        },
-        created() {
-            this.fetchCustomer();
-            this.countCustomer();
-        }
+import {
+  provider
+} from '@/service/provider';
+import axios from 'axios';
+import _ from 'lodash';
+import numeral from 'numeral';
+export default {
+  data() {
+    return {
+      search: "",
+      selectCustomer: "",
+      total: 0,
+      page: 1,
+      tableData: [],
+      multipleSelection: []
     }
+  },
+  watch: {
+    search: _.debounce(function () {
+      this.fetchCustomer();
+    }, 200),
+    page(val) {
+      this.fetchCustomer();
+    }
+  },
+  methods: {
+    generateRouteUrl(row) {
+      return `/payments/add?txt=${row.name}`;
+    },
+    handleClickDetail(row) {
+      this.$router.push(`/customers/${row._id}/show`);
+    },
+    handleCommand(command) {
+
+      switch (command) {
+        case 'edit':
+          this.$router.push(`/customers/${this.multipleSelection[0]._id}/edit`);
+          break;
+        case 'remove':
+          this.handleToggleActive(false);
+          break;
+        case 'active':
+          this.handleToggleActive(true);
+          break;
+        case 'deselect':
+          this.toggleSelection();
+          break;
+      }
+    },
+    handleToggleActive(arg) {
+      const {
+        token,
+        user
+      } = this.$store.state.user;
+      const url = `${provider.baseURL}${provider.prefix}/customers/removes`;
+      const ids = this.multipleSelection.map(map => map._id);
+      const body = {
+        ids,
+        selector: {
+          createdBy: user._id,
+          isActive: arg
+        }
+      };
+      this.$alert(`${arg ? 'Activate' : "Deactivate"} ${this.multipleSelection.map(map => map.name)}`, 'បញ្ជាក់', {
+        confirmButtonText: 'OK',
+        callback: action => {
+          if (action === 'confirm') {
+            axios.post(url, body, {
+                headers: {
+                  token
+                }
+              })
+              .then((res) => {
+                if (res.data.code === 201) {
+                  this.multipleSelection.forEach(o => {
+                    o.isActive = arg;
+                  });
+                  this.$message.success("Success");
+                  this.toggleSelection();
+                } else {
+                  this.$message.error(res.data.message)
+                }
+              }).catch((err) => this.$message.error(err.message));
+          }
+        }
+      });
+
+    },
+    isDisableCommand() {
+      return this.multipleSelection.length === 0;
+    },
+    isDisableEdit() {
+      return this.multipleSelection.length === 0 || this.multipleSelection.length > 1;
+    },
+    toggleSelection() {
+      this.$refs.customerTable.clearSelection();
+    },
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
+    },
+    handleCreateCustomer() {
+      this.$router.push('/customers/add')
+    },
+    fetchCustomer() {
+      const {
+        token,
+        activeStore
+      } = this.$store.state.user;
+      const url = `${provider.baseURL}${provider.prefix}/customers?q=${this.search}&page=${this.page}&s=${activeStore}`;
+      axios.get(url, {
+          headers: {
+            token
+          }
+        })
+        .then((res) => {
+          if (res.data.code === 201) {
+            this.tableData = res.data.data;
+          } else {
+            this.$message.error(res.data.message);
+          }
+        }).catch((err) => {
+          this.$message.error(err.message);
+        })
+    },
+    countCustomer() {
+      const {
+        token,
+        activeStore
+      } = this.$store.state.user;
+      const url = `${provider.baseURL}${provider.prefix}/customers/count?s=${activeStore}`;
+      axios.get(url, {
+          headers: {
+            token
+          }
+        })
+        .then((res) => {
+          if (res.data.code === 201) {
+            this.total = res.data.data;
+          } else {
+            this.$message.error(res.data.message);
+          }
+        }).catch((err) => {
+          this.$message.error(err.message);
+        })
+    }
+  },
+  computed: {
+    grouped() {
+      return _.groupBy(this.tableData, (item) => {
+        return item.name.charAt(0)
+      })
+    }
+  },
+  created() {
+    this.fetchCustomer();
+    this.countCustomer();
+  }
+}
 </script>
 
+
+<style lang="scss" scoped>
+.customer-bg {
+  // background: url('../../../assets/img/customer-bg.png') rgba(244, 54, 143, 0.616) center center no-repeat;
+  background-image: url('../../../assets/img/customer-bg.png'), linear-gradient(to right, #F4368E, #9E3792), ;
+  background-size: 100%;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  background-position: 20% 30%;
+}
+</style>

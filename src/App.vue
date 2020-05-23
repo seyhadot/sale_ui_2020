@@ -4,7 +4,7 @@
       <div class="loader-wrapper">
         <div class="typewriter">
           <div v-loading="isLoading">
-            <h1 style>សូមមេត្តារង់ចាំ...</h1>
+            <h1>សូមមេត្តារង់ចាំ...</h1>
           </div>
         </div>
       </div>
@@ -23,7 +23,10 @@ export default {
     setTimeout(() => {
       this.isLoading = false
     }, 1300)
-  }
+  },
+    components: {
+     
+    },
 }
 </script>
 
@@ -35,6 +38,7 @@ export default {
 
 body {
   background: $body;
+  height: 100%;
   outline: none;
   font-size: 1rem;
   font-family: 'Poppins', 'Exo 2', 'KhmerR', sans-serif;

@@ -1,83 +1,73 @@
 <template>
-    <div>
-        <div class="bgdark"></div>
-        <div class="container">
-            <transition name="el-zoom-in-top">
-                <el-row :gutter="20" v-show="true">
-                    <el-col :span="20" :offset="2">
-                        <el-form ref="addPaymentForm">
-                            <div class="card-box first-margin">
-                                <div class="flex right" style="text-align:right;padding-top:8px;">
-                                    <el-col :span="24">
-                                        <router-link to="/transactions?activeName=3">
-                                            <font-awesome-icon icon="times" size="lg" style="color: #1f1f1f"/>
-                                        </router-link>
-                                    </el-col>
-                                </div>
-                                <div class="card-header">
-                                    <h5>{{displayTitle}}</h5>
-                                    <p>{{$t('form.hint')}}</p>
-                                </div>
-                                <div class="card-body">
-                                    <el-row :gutter="20">
-                                        <el-col :span="8">
-                                            <el-form-item label="Customer" prop="name">
-                                                <el-autocomplete
-                                                        ref="customerName"
-                                                        style="width: 100%"
-                                                        v-model="customerName"
-                                                        :fetch-suggestions="querySearch"
-                                                        placeholder="15427757"
-                                                        :trigger-on-focus="false"
-                                                        @select="handleSelect"
-                                                ></el-autocomplete>
-                                            </el-form-item>
-                                        </el-col>
-                                        <el-col :offset="8" :span="6">
-                                                <h4>Amount Recieved</h4>
-                                                <h1 style="margin: 0px;font-size: 25px;color: green"><b>KHR 20,0000</b></h1>
-                                        </el-col>
-                                    </el-row>
-                                    <el-row :gutter="20">
-                                        <el-col :span="24">
-                                            <el-form-item label="Outstanding Transactions">
-                                                <el-table
-                                                        border
-                                                        ref="multipleTable"
-                                                        :data="orders"
-                                                        style="width: 100%"
-                                                        @selection-change="handleSelectionChange">
-                                                    <el-table-column
-                                                            type="selection"
-                                                            width="55">
-                                                    </el-table-column>
-                                                    <el-table-column
-                                                            label="Date"
-                                                            width="500">
-                                                        <template slot-scope="scope">{{ scope.row.date }}</template>
-                                                    </el-table-column>
-                                                    <el-table-column
-                                                            property="name"
-                                                            label="Name"
-                                                            width="120">
-                                                    </el-table-column>
-                                                    <el-table-column
-                                                            property="address"
-                                                            label="Address"
-                                                            show-overflow-tooltip>
-                                                    </el-table-column>
-                                                </el-table>
-                                            </el-form-item>
-                                        </el-col>
-                                    </el-row>
-                                </div>
-                            </div>
-                        </el-form>
+  <div>
+    <div class="bgdark"></div>
+    <div class="container">
+      <transition name="el-zoom-in-top">
+        <el-row :gutter="20" v-show="true">
+          <el-col :span="20" :offset="2">
+            <el-form ref="addPaymentForm">
+              <div class="card-box first-margin">
+                <div class="flex right" style="text-align:right;padding-top:8px;">
+                  <el-col :span="24">
+                    <router-link to="/transactions?activeName=3">
+                      <font-awesome-icon icon="times" size="lg" style="color: #1f1f1f" />
+                    </router-link>
+                  </el-col>
+                </div>
+                <div class="card-header">
+                  <h5>{{displayTitle}}</h5>
+                  <p>{{$t('form.hint')}}</p>
+                </div>
+                <div class="card-body">
+                  <el-row :gutter="20">
+                    <el-col :span="8">
+                      <el-form-item label="Customer" prop="name">
+                        <el-autocomplete
+                          ref="customerName"
+                          style="width: 100%"
+                          v-model="customerName"
+                          :fetch-suggestions="querySearch"
+                          placeholder="15427757"
+                          :trigger-on-focus="false"
+                          @select="handleSelect"
+                        ></el-autocomplete>
+                      </el-form-item>
                     </el-col>
-                </el-row>
-            </transition>
-        </div>
+                    <el-col :offset="8" :span="6">
+                      <h4>Amount Recieved</h4>
+                      <h1 style="margin: 0px;font-size: 25px;color: green">
+                        <b>KHR 20,0000</b>
+                      </h1>
+                    </el-col>
+                  </el-row>
+                  <el-row :gutter="20">
+                    <el-col :span="24">
+                      <el-form-item label="Outstanding Transactions">
+                        <el-table
+                          border
+                          ref="multipleTable"
+                          :data="orders"
+                          style="width: 100%"
+                          @selection-change="handleSelectionChange"
+                        >
+                          <el-table-column type="selection" width="55"></el-table-column>
+                          <el-table-column label="Date" width="500">
+                            <template slot-scope="scope">{{ scope.row.date }}</template>
+                          </el-table-column>
+                          <el-table-column property="name" label="Name" width="120"></el-table-column>
+                          <el-table-column property="address" label="Address" show-overflow-tooltip></el-table-column>
+                        </el-table>
+                      </el-form-item>
+                    </el-col>
+                  </el-row>
+                </div>
+              </div>
+            </el-form>
+          </el-col>
+        </el-row>
+      </transition>
     </div>
+  </div>
 </template>
 
 <script>
@@ -183,12 +173,12 @@
     }
 </script>
 <style lang="scss" scoped>
-    .container {
-        margin-top: -220px;
-        width: 100%;
-        margin-right: auto;
-        margin-left: auto;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
+.container {
+  margin-top: -220px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 </style>

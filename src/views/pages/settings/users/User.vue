@@ -29,7 +29,7 @@
         <el-table-column :label="$t('user.tableData.roles')">
           <template slot-scope="scope">
             <span :key="role" v-for="role in scope.row.roles">
-              <el-tag type="warning">
+              <el-tag type="warning" class="mr-2">
                 {{role}}
               </el-tag>
             </span>

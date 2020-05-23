@@ -123,7 +123,7 @@
           <el-form :model="form">
             <el-row class="flex mt-3 px-10" :gutter="40">
               <!-- Edit by kevin-->
-              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
+              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="s"></edit-product>
             </el-row>
           </el-form>
           <div class="demo-drawer__footer px-10 action action_draw pb-5">

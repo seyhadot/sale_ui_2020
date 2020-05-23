@@ -1,6 +1,10 @@
 *:focus {
   outline: none !important;
 }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 
 .body_wrapper {
   .sidebar {
@@ -353,6 +357,14 @@ main .content {
       }
     }
   }
+  .header_scroll{
+    .pl-40{
+      transition: all 0.5s ease-in-out;
+      -webkit-animation: bounceInLeft 1000ms ease-in-out;
+      animation: bounceInLeft 1000ms ease-in-out;
+      padding-left: 5rem;
+    }
+  }
   main .content {
     margin-left: 80px;
     transition: 0.5s;
@@ -499,4 +511,7 @@ main .content {
       transition: 0.5s;
     }
   }
+}
+.h-half{
+  height: 80vh;
 }

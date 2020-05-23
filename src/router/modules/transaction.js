@@ -1,4 +1,4 @@
-import LayoutFull from '@/layout/layoutFull'
+import LayoutFull from '@/layout/layoutNoMain'
 
 const reportRouter = {
   path: '/transactions',

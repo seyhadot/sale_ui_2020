@@ -1,6 +1,6 @@
 <template>
   <content-box>
-    <transition name="el-zoom-in-top">
+    <transition name="el-zoom-in-top" class>
       <el-row :gutter="20" v-show="true">
         <el-col :span="24">
           <el-form :model="customerModel" :rules="rules" ref="customerForm">
@@ -129,6 +129,8 @@
                             .then(res => {
                                 if (res.data.code === 201) {
                                     this.$message.success("ប្រតិបត្តិការជោគជ័យ");
+                                    this.$router.push("/transactions");
+
                                     if (this.customerModel._id) {
                                         this.$router.push("/transactions?activeName=3");
                                     } else {

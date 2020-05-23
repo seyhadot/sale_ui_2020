@@ -1,9 +1,7 @@
 <template>
   <!-- <content-box> -->
-    <el-row class="content xs:p-5 xs:pt-0 sm:p-5 xl:p-10 xl:pt-0">
-      <el-card>
+      <div class="p-10 h-full shadow-none">
         <el-tabs v-model="activeName">
-        
           <el-tab-pane :label="$t('customer.title')">
             <span slot="label">{{$t('customer.title')}}</span>
             <transition name="el-zoom-in-top">
@@ -20,8 +18,7 @@
             </transition>
           </el-tab-pane>
         </el-tabs>
-      </el-card>
-    </el-row>
+      </div>
   <!-- </content-box> -->
 </template>
 
