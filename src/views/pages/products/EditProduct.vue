@@ -167,6 +167,7 @@
         categoryOptions: [],
         id: null,
         direction: 'rtl',
+        currentProduct: null,
         productOptionsArr: [],
         priceOptionsDrawer: false,
         isLoading: false,
@@ -489,6 +490,7 @@
     watch: {
       product(val){
         if (val) 
+          console.log(val)
           this.getProductById(val._id);
           this.id = val._id;
       },
@@ -514,11 +516,6 @@
       }
     },
     computed: {
-      product(val){
-        if (val) 
-          this.getProductById(val._id);
-          this.id = val._id;
-      },
       pricePlaceHolder() {
         return this.companyDoc && this.companyDoc.defaultCurrency === 'KHR' ? '20,000' : '2'
       },
@@ -533,12 +530,7 @@
       }
     },
     created() {
-      const { _id: id } = this.product;
-      if (id) {
-        this.id = id
-        this.getProductById(id)
-      }
-
+     
       //TODO: After sale ui
       this.fetchCompany()
       this.fetchCategories()
