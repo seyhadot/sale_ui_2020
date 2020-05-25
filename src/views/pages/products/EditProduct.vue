@@ -487,6 +487,11 @@
       }
     },
     watch: {
+      product(val){
+        if (val) 
+          this.getProductById(val._id);
+          this.id = val._id;
+      },
       'addProduct.isAddToSlide'(val) {
         if (val) {
           this.addProduct.finishedAddToSlideAt = moment().toDate()
@@ -509,6 +514,11 @@
       }
     },
     computed: {
+      product(val){
+        if (val) 
+          this.getProductById(val._id);
+          this.id = val._id;
+      },
       pricePlaceHolder() {
         return this.companyDoc && this.companyDoc.defaultCurrency === 'KHR' ? '20,000' : '2'
       },
@@ -528,7 +538,6 @@
         this.id = id
         this.getProductById(id)
       }
-
 
       //TODO: After sale ui
       this.fetchCompany()
