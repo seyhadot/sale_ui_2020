@@ -123,7 +123,7 @@
           <el-form :model="form">
             <el-row class="flex mt-3 px-10" :gutter="40">
               <!-- Edit by kevin-->
-              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="s"></edit-product>
+              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
             </el-row>
           </el-form>
           <div class="demo-drawer__footer px-10 action action_draw pb-5">
@@ -133,6 +133,7 @@
               :loading="loading"
             >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>
             <el-button @click="$refs.drawer.closeDrawer()" class="ml-5">Cancel</el-button>
+
           </div>
         </div>
       </el-drawer>
@@ -149,6 +150,8 @@ import EditProduct from './EditProduct';
 export default {
   data() {
     return {
+      form: {},
+      loading: false,
       input: '',
       checked: true,
       isLoading: true,
@@ -182,15 +185,11 @@ export default {
   },
   methods: {
     handleEdit(product) {
-
-      console.log(product);
         this.title = "Edit " + product.name;
         this.currentSelectedProduct = product;
         this.drawer  = true;
     },
     handleClose(done) {
-      console.log('handle edit');
-      this.currentSelectedProduct = null;
       done();
     },
     displayFacebookImageUrl(images) {
@@ -262,7 +261,6 @@ export default {
         .catch((err) => {})
     },
     handleCommand(o, command) {
-      console.log(command)
       if (command === 'edit') {
         this.$router.push(`/products/${o._id}/edit`)
       } else if (command === 'remove') {

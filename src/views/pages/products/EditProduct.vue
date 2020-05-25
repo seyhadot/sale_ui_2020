@@ -377,6 +377,24 @@
         xhr.open('GET', blob)
         xhr.send()
       },
+      clearProperty() {
+        this.fileList = []
+
+        this.addProduct = {
+          price: 0,
+          name: '',
+          skewNumber: '',
+          type: 'none-stock',
+          isAddToSlide: false,
+          finishedAddToSlideAt: null,
+          priceOptions: [],
+          imageUrl: [],
+          expiredAt: null,
+          createdBy: '',
+          categoryId: ''
+        } //clear property after success
+
+      },
       handleSave() {
         const { token, user, activeStore } = this.$store.state.user
         //if id is exist we return edit url else we return add url
@@ -400,21 +418,10 @@
                   this.$router.push('/products')
                   if (this.id) {
                     // if id exist we will return the product after update
+                    this.clearProperty() ;
                     this.fnFetchProduct();
                   } else {
-                    this.addProduct = {
-                      price: 0,
-                      name: '',
-                      skewNumber: '',
-                      type: 'none-stock',
-                      isAddToSlide: false,
-                      finishedAddToSlideAt: null,
-                      priceOptions: [],
-                      imageUrl: [],
-                      expiredAt: null,
-                      createdBy: '',
-                      categoryId: ''
-                    } //clear property after success
+                    this.clearProperty() ;
                   }
                 } else {
                   this.$message.error(res.data.message)
@@ -489,8 +496,9 @@
     },
     watch: {
       product(val){
-        if (val) 
-          console.log(val)
+        this.clearProperty() ;
+
+        if (val)
           this.getProductById(val._id);
           this.id = val._id;
       },
@@ -530,7 +538,14 @@
       }
     },
     created() {
-     
+      this.clearProperty() ;
+
+      const {_id: id} = this.product;
+      if (id) {
+        this.getProductById(id);
+        this.id = id;
+      }
+
       //TODO: After sale ui
       this.fetchCompany()
       this.fetchCategories()
