@@ -102,7 +102,7 @@
             <el-input v-model="search" :placeholder="$t('customer.search')" clearable />
           </div>
           <ul v-for="(value, key) in grouped" :key="value._id">
-            <h2 class="bg-cerise px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
+            <h2 class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
             <li v-for="customer in value" :key="customer._id" class="py-3 border-b">
               <a href="#" @click="handleClickCustomer(customer)" class>
                 <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
@@ -113,7 +113,7 @@
         </div>
       </div>
     </el-col>
-    <el-col :span="19">
+    <el-col :span="19" class="rounded-px6">
       <customer-detail :customer="selectedCustomer"></customer-detail>
     </el-col>
   </el-row>
@@ -297,5 +297,6 @@ export default {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   background-position: 20% 30%;
+  border-radius: 6px;
 }
 </style>

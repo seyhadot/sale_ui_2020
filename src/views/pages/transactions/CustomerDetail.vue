@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="flex w-full justify-center mt-10">
-            <div class="w-7/12 border-b"></div>
+            <div class="w-7/12 border-b border-2"></div>
           </div>
         </div>
       </el-col>
@@ -52,6 +52,3 @@
   }
   }
 </script>
-
-<style lang="scss" scoped>
-</style>

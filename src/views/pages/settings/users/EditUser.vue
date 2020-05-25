@@ -76,7 +76,7 @@
               type="success"
               @click="dialogFormVisible = true"
               :loading="isLoading"
-            ><i class="uil-keyhole-circle"></i> {{ $t('user.changePassword') }}</el-button>
+            ><i class="uil-keyhole-circle mr-2"></i> {{ $t('user.changePassword') }}</el-button>
           </div>
           <btn-cancel></btn-cancel>
         </div>

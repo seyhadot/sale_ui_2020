@@ -4,7 +4,7 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
-        <div class="bread_crumb content px-10 xs:px-5 xl:px-10 py-5">
+        <div class="bread_crumb content xs:px-10 pt-5">
           <ul class="flex font-bold">
             <el-breadcrumb class="app-breadcrumb" separator="/">
               <transition-group el-fade-in-linear name="breadcrumb">
@@ -103,7 +103,6 @@ export default {
   display: inline-block;
   font-size: 14px;
   line-height: 50px;
-  margin-left: 8px;
   .no-redirect {
     color: #97a8be;
     cursor: text;

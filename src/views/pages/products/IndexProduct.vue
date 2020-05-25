@@ -2,17 +2,40 @@
   <content-box>
     <div class="table-responsive">
       <div class="card-header">
-        <form class="form-inline flex justify-between mb-5">
-          <label class="mr-sm-2 form-label">
-            <h3 class="text-2xl font-bold text-blue-500">{{ $t('product.title') }}</h3>
-          </label>
-          <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" circle></el-button>
-        </form>
+        <div class="flex justify-between items-center mb-4">
+            <!-- <h3 class="text-2xl font-bold text-blue-500">{{ $t('product.title') }}</h3> -->
+            <form class="form-inline-search my-2 my-lg-0">
+              <div class>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-search"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input
+                  type="text"
+                  class="form-control product-search"
+                  id="input-search"
+                  placeholder="Search ..."
+                />
+              </div>
+            </form>
+            <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" class="btn-new-product" ></el-button>
+        </div>
       </div>
 
       <table class="table">
         <thead>
-          <tr>
+          <tr class="t-head">
             <th style="width: 18px;">
               <div class="custom-control custom-checkbox text-left">
                 <el-checkbox v-model="checked"></el-checkbox>
@@ -73,7 +96,7 @@
               </div>
             </td>
             <td>
-              <span class="Price text-menu_low">{{ o.price | numeralGen(storeObj) }}</span>
+              <span class="text-menu_low">{{ o.price | numeralGen(storeObj) }}</span>
             </td>
             <td class="Number text-center text-menu_low">
               <span>{{ o.skewNumber }}</span>
@@ -82,7 +105,7 @@
               <span class="Category chip chip-outline-secondary">{{ o.categoryDoc.name }}</span>
             </td>
 
-            <td class="text-center flex justify-center items-center">
+            <td class="flex justify-center">
               <span class="flex items-center text-center mt-3">
                 <span class="w-4">12</span>
                 <span class="flex ml-2 w-1 h-4 bg-red-500 rounded overflow-hidden">
@@ -123,7 +146,11 @@
           <el-form :model="form">
             <el-row class="flex mt-3 flex-col h-full px-10" :gutter="40">
               <!-- Edit by kevin-->
-              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
+              <edit-product
+                :fn-fetch-product="fetchProduct"
+                :product="currentSelectedProduct"
+                :title="title"
+              ></edit-product>
             </el-row>
           </el-form>
           <!-- <div class="demo-drawer__footer px-10 action action_draw pb-5">
@@ -134,7 +161,7 @@
             >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>
             <el-button @click="$refs.drawer.closeDrawer()" class="ml-5">Cancel</el-button>
 
-          </div> -->
+          </div>-->
         </div>
       </el-drawer>
     </div>

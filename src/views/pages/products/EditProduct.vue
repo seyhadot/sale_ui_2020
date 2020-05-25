@@ -28,39 +28,35 @@
             <img width="100%" :src="dialogImageUrl" alt />
           </el-dialog>
         </el-form-item>
-        <el-row :gutter="40">
+        <el-row :gutter="40" class="mt-3">
           <el-col :span="12">
             <el-form-item :label="$t('product.form.name')" prop="name">
               <el-input placeholder="ABC.." v-model="addProduct.name"></el-input>
             </el-form-item>
           </el-col>
 
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item :label="$t('product.form.cost')" v-show="isAdmin">
-              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.cost">
-
-              </el-input>
+              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.cost"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item :label="$t('product.form.wholeSalePrice')" prop="wholeSalePrice">
-              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.wholeSalePrice">
-
-              </el-input>
+              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.wholeSalePrice"></el-input>
             </el-form-item>
           </el-col>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item :label="$t('product.form.price')" prop="price">
               <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
                 <template slot="append">
-                  <el-button type="success" @click="handleClickPriceOptions">Add Price
+                  <el-button type="success" @click="handleClickPriceOptions">
+                    Add Price
                     Options
                   </el-button>
                 </template>
               </el-input>
             </el-form-item>
           </el-col>
-
 
           <el-col :span="12">
             <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
@@ -112,7 +108,7 @@
             </el-form-item>
           </el-col>
 
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item>
               <label for>{{ $t('product.form.type') }}</label>
               <br />
@@ -124,12 +120,12 @@
               >{{ o.toUpperCase() }}</el-radio>
             </el-form-item>
           </el-col>
-          <el-col :span="8" v-show="addProduct.type === 'stock'">
+          <el-col :span="12" v-show="addProduct.type === 'stock'">
             <el-form-item :label="$t('product.form.qtyOnHand')">
               <el-input-number placeholder="0" v-model="addProduct.qtyOnHand"></el-input-number>
             </el-form-item>
           </el-col>
-          <el-col :span="8" v-show="addProduct.type == 'stock'">
+          <el-col :span="12" v-show="addProduct.type == 'stock'">
             <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
               <el-date-picker
                 v-model="addProduct.expiredAt"
@@ -139,32 +135,30 @@
               ></el-date-picker>
             </el-form-item>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="8">
+          <el-col :span="12">
             <el-form-item :label="$t('product.form.barcode')">
               <el-select
-                      v-model="addProduct.barcodes"
-                      multiple
-                      filterable
-                      allow-create
-                      default-first-option
-                      placeholder="Add barcodes">
+                v-model="addProduct.barcodes"
+                multiple
+                filterable
+                allow-create
+                default-first-option
+                placeholder="Add barcodes"
+              >
                 <el-option
-                        v-for="item in []"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
-                </el-option>
+                  v-for="item in []"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                ></el-option>
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row>
           <el-col :span="8">
-            <el-form-item label="">
-              <el-checkbox v-model="addProduct.isAddOn">{{$t('product.form.isAddOn')}}
-              </el-checkbox>
+            <el-form-item label>
+              <el-checkbox v-model="addProduct.isAddOn">{{$t('product.form.isAddOn')}}</el-checkbox>
             </el-form-item>
           </el-col>
         </el-row>
@@ -179,7 +173,7 @@
 
       <div class="demo-drawer__footer action action_draw pb-5">
         <el-button type="warning" @click="handleSave" :loading="isLoading">
-          <i class="uil-check-circle mr-2"></i>
+          <i class="uil-check-circle mr-4"></i>
           {{ $t('product.save') }}
         </el-button>
         <!-- <el-button
@@ -187,7 +181,7 @@
               @click="$refs.drawer.closeDrawer()"
               :loading="loading"
         >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>-->
-        <el-button type="primary" @click="$refs.drawer.closeDrawer()" class="ml-5">
+        <el-button type="primary" @click="$refs.drawer.closeDrawer()" class="ml-10">
           <i class="uil-times-circle mr-2"></i>
           {{ $t('user.cancel') }}
         </el-button>

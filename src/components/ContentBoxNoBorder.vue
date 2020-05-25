@@ -1,6 +1,6 @@
 <template>
-  <div class="content xs:p-5 xs:pt-0 sm:p-5 xl:p-10 xl:pt-0">
-    <div class="content-card bg-white xs:p-5 sm:p-5 xl:p-10">
+  <div class="content">
+    <div class="content-card xs:px-5 sm:px-5 xl:px-10">
       <slot></slot>
     </div>
   </div>

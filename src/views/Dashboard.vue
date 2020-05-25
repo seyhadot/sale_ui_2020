@@ -4,7 +4,7 @@
       <h2 class="text-lg font-medium truncate mr-5">General Report</h2>
     </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xs:gap-6 sm:gap-10 xl:gap-8 mt-3">
-      <div v-for="x in 4" class="w-full intro-y transition ease-out duration-700">
+      <div v-for="x in 4" :key="x.id" class="w-full intro-y transition ease-out duration-700">
         <div class="report-box zoom-in">
           <div class="box p-5">
             <div class="flex">
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="chart mt-4 -m-4">
+    <div class="chart mt-10 -m-4">
       <div class="lg:flex-row xl:flex mb-4">
         <div class="xs:w-1/1 lg:w-1/2 m-4">
           <div class="intro-y block flex justify-between items-center h-10 mb-3 xs:mt-8 xl:mt-0">
