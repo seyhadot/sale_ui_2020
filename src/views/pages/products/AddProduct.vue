@@ -150,7 +150,7 @@
 
           <div class="action" style="padding-left: 0px;">
             <el-button type="warning" @click="handleSave" :loading="isLoading">
-              <!-- <i class="uil-check-circle mr-2"></i> -->
+              <i class="uil-check-circle mr-2"></i>
               {{ $t('product.save') }}</el-button>
             <btn-cancel></btn-cancel>
           </div>

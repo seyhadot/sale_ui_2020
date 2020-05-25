@@ -20,24 +20,24 @@
             </th>
 
             <th class="text-left">
-              <a href="javascript:void(0)">Name</a>
+              <a href="#">Name</a>
             </th>
 
             <th class="text-left" style="width: 120px;">
-              <a href="javascript:void(0)">Price</a>
+              <a href="#">Price</a>
             </th>
             <th style="width: 150px;">
-              <a href="javascript:void(0)">Sku</a>
+              <a href="#">Sku</a>
             </th>
 
             <th class="text-center" style="width: 80px;">
-              <a href="javascript:void(0)">Category</a>
+              <a href="#">Category</a>
             </th>
 
             <th style="width: 37px;">Stock</th>
 
             <th style="width: 120px;">
-              <a href="javascript:void(0)">Active</a>
+              <a href="#">Active</a>
             </th>
             <th style="width: 24px;" class="pl-0"></th>
           </tr>
@@ -121,12 +121,12 @@
       >
         <div class="demo-drawer__content">
           <el-form :model="form">
-            <el-row class="flex mt-3 px-10" :gutter="40">
+            <el-row class="flex mt-3 flex-col h-full px-10" :gutter="40">
               <!-- Edit by kevin-->
               <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
             </el-row>
           </el-form>
-          <div class="demo-drawer__footer px-10 action action_draw pb-5">
+          <!-- <div class="demo-drawer__footer px-10 action action_draw pb-5">
             <el-button
               type="warning"
               @click="$refs.drawer.closeDrawer()"
@@ -134,7 +134,7 @@
             >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>
             <el-button @click="$refs.drawer.closeDrawer()" class="ml-5">Cancel</el-button>
 
-          </div>
+          </div> -->
         </div>
       </el-drawer>
     </div>

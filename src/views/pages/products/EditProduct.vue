@@ -1,6 +1,11 @@
 <template>
-  <el-row :gutter="40" v-show="true" class="px-10">
-    <el-form :model="addProduct" :rules="rules" ref="addProductForm">
+  <el-row :gutter="40" v-show="true" class="px-10 h-full">
+    <el-form
+      :model="addProduct"
+      :rules="rules"
+      ref="addProductForm"
+      class="flex flex-col h-full justify-between"
+    >
       <div class="card-body mt-5">
         <el-form-item>
           <div>
@@ -105,7 +110,6 @@
 
           <el-col :span="8" v-show="addProduct.type == 'stock'">
             <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
-              <label for></label>
               <el-date-picker
                 v-model="addProduct.expiredAt"
                 type="datetime"
@@ -117,11 +121,27 @@
         </el-row>
       </div>
 
-      <div class="action" style="padding-left: 0px;">
+      <!-- <div class="action" style="padding-left: 0px;">
           <el-button type="warning" @click="handleSave" :loading="isLoading">
             <i class="uil-check-circle mr-2"></i>
             {{ $t('product.save') }}
           </el-button>
+      </div>-->
+
+      <div class="demo-drawer__footer action action_draw pb-5">
+        <el-button type="warning" @click="handleSave" :loading="isLoading">
+          <i class="uil-check-circle mr-2"></i>
+          {{ $t('product.save') }}
+        </el-button>
+        <!-- <el-button
+              type="warning"
+              @click="$refs.drawer.closeDrawer()"
+              :loading="loading"
+        >{{ loading ? 'Submitting ...' : 'Submit' }}</el-button>-->
+        <el-button type="primary" @click="$refs.drawer.closeDrawer()" class="ml-5">
+          <i class="uil-times-circle mr-2"></i>
+          {{ $t('user.cancel') }}
+        </el-button>
       </div>
     </el-form>
   </el-row>
@@ -415,7 +435,6 @@
                 this.isLoading = false
                 if (res.data.code === 201) {
                   this.$message.success('ប្រតិបត្តិការបានជោគជ័យ')
-                  this.$router.push('/products')
                   if (this.id) {
                     // if id exist we will return the product after update
                     this.clearProperty() ;

@@ -20,14 +20,14 @@
               </router-link>
             </el-tooltip>
           </li>
-          <li>
+          <!-- <li>
             <el-tooltip class="item" effect="dark" content="Form" placement="right-start">
               <router-link to="/form" class="transition ease-in duration-700 w-full flex items-center justify-center">
                 <i class="uil-comment-alt-dots text-5xl"></i>
-                <!-- <span>Form</span> -->
+                <span>Form</span>
               </router-link>
             </el-tooltip>
-          </li>
+          </li> -->
           <li>
             <el-tooltip class="item" effect="dark" content="Products" placement="right-start">
               <router-link to="/products" class="transition ease-in duration-700 w-full flex items-center justify-center">
