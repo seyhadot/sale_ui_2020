@@ -1,8 +1,5 @@
 <template>
-  <el-button type="primary" @click="btnCancel()">
-    <i class="uil-times-circle mr-2"></i>
-    {{ $t('user.cancel') }}
-    </el-button>
+  <el-button type="primary" @click="btnCancel()">{{ $t('user.cancel') }}</el-button>
 </template>
 
 <script>

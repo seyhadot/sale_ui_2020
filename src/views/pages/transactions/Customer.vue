@@ -104,7 +104,7 @@
           <ul v-for="(value, key) in grouped" :key="value._id">
             <h2 class="bg-cerise px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
             <li v-for="customer in value" :key="customer._id" class="py-3 border-b">
-              <a href class>
+              <a href="#" @click="handleClickCustomer(customer)" class>
                 <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
                 <span class="text-gray-500">{{customer.tel}}</span>
               </a>
@@ -114,45 +114,7 @@
       </div>
     </el-col>
     <el-col :span="19">
-      <el-row class="bg-gray-700 h-full p-10 customer-bg">
-        <el-col :span="16">
-          <div class="customer-detail">
-            <h1 class="text-5xl text-white font-bold mb-8 flex items-center">Heng Seyha</h1>
-            <div class="content-detail flex mb-5">
-              <i class="uil-calling text-white text-4xl"></i>
-              <div class="text-base text-white font-bold ml-3">
-                <div>086 844487</div>
-                <div>092 844487</div>
-              </div>
-            </div>
-            <div class="content-detail flex mb-5">
-              <i class="uil-mailbox text-white text-4xl"></i>
-              <div
-                class="text-base w-64 text-white font-bold ml-3 flex items-center"
-              >terminal@gmail.com</div>
-            </div>
-            <div class="content-detail flex mb-5">
-              <i class="uil-atm-card text-white text-4xl"></i>
-              <div class="text-base w-64 text-white font-bold ml-3 flex items-center">00881721</div>
-            </div>
-            <div class="content-detail flex">
-              <i class="uil-location-point text-white text-4xl"></i>
-              <div class="text-base w-64 text-white font-bold ml-3 flex items-center">
-                <div>Street 119, Krong Battambang, Cambodia</div>
-              </div>
-            </div>
-            <div class="flex w-full justify-center mt-10">
-              <div class="w-7/12 border-b "></div>
-            </div>
-          </div>
-        </el-col>
-        <el-col :span="8">
-          <div class="flex h-full flex-col justify-between">
-            <div class="credit-card bg-blue-400 h-56 rounded-lg mb-10"></div>
-            <div class="credit-card bg-gray-700 h-56 rounded-lg"></div>
-          </div>
-        </el-col>
-      </el-row>
+      <customer-detail :customer="selectedCustomer"></customer-detail>
     </el-col>
   </el-row>
 </template>
@@ -164,11 +126,15 @@ import {
 import axios from 'axios';
 import _ from 'lodash';
 import numeral from 'numeral';
+import CustomerDetail from './CustomerDetail.vue'
 export default {
+  components: {
+    CustomerDetail,
+  },
   data() {
     return {
       search: "",
-      selectCustomer: "",
+      selectedCustomer: null,
       total: 0,
       page: 1,
       tableData: [],
@@ -184,6 +150,9 @@ export default {
     }
   },
   methods: {
+    handleClickCustomer(customer){
+      this.selectedCustomer = customer;
+    },
     generateRouteUrl(row) {
       return `/payments/add?txt=${row.name}`;
     },
@@ -322,7 +291,7 @@ export default {
 <style lang="scss" scoped>
 .customer-bg {
   // background: url('../../../assets/img/customer-bg.png') rgba(244, 54, 143, 0.616) center center no-repeat;
-  background-image: url('../../../assets/img/customer-bg.png'), linear-gradient(to right, #F4368E, #9E3792), ;
+  background-image: url('../../../assets/img/customer-bg.png'), linear-gradient(to right, #f4368e, #9e3792);
   background-size: 100%;
   -moz-transition: all 0.5s;
   -webkit-transition: all 0.5s;

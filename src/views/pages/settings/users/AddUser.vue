@@ -56,7 +56,6 @@
           </div>
           <div class="action mt-5">
             <el-button type="warning" @click="handleSubmit" :loading="isLoading">
-              <i class="uil-check-circle mr-2"></i> 
               {{ $t('user.add') }}</el-button>
             <btn-cancel></btn-cancel>
           </div>

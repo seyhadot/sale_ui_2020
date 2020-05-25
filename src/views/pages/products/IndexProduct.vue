@@ -182,16 +182,16 @@ export default {
   },
   methods: {
     handleEdit(product) {
+
+      console.log(product);
         this.title = "Edit " + product.name;
         this.currentSelectedProduct = product;
         this.drawer  = true;
     },
     handleClose(done) {
-      this.$confirm('Are you sure you want to close this?')
-        .then((_) => {
-          done()
-        })
-        .catch((_) => {})
+      console.log('handle edit');
+      this.currentSelectedProduct = null;
+      done();
     },
     displayFacebookImageUrl(images) {
       if (images.length > 0) {

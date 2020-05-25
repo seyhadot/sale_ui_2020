@@ -71,12 +71,12 @@
               type="warning"
               @click="handleSubmit"
               :loading="isLoading"
-            ><i class="uil-check-circle mr-2"></i> {{ $t('user.edit') }}</el-button>
+            > {{ $t('user.edit') }}</el-button>
             <el-button
               type="success"
               @click="dialogFormVisible = true"
               :loading="isLoading"
-            ><i class="uil-keyhole-square-full mr-2"></i> {{ $t('user.changePassword') }}</el-button>
+            > {{ $t('user.changePassword') }}</el-button>
           </div>
           <btn-cancel></btn-cancel>
         </div>
