@@ -35,15 +35,32 @@
             </el-form-item>
           </el-col>
 
-          <!-- <el-col :span="8">
-                                <el-form-item :label="$t('product.form.price')" prop="price">
-                                  <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
-                                    <template slot="append">
-                                      <el-button type="success" @click="handleClickPriceOptions">Add Price Options</el-button>
-                                    </template>
-                                  </el-input>
-                                </el-form-item>
-          </el-col>-->
+          <el-col :span="8">
+            <el-form-item :label="$t('product.form.cost')" v-show="isAdmin">
+              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.cost">
+
+              </el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item :label="$t('product.form.wholeSalePrice')" prop="wholeSalePrice">
+              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.wholeSalePrice">
+
+              </el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item :label="$t('product.form.price')" prop="price">
+              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
+                <template slot="append">
+                  <el-button type="success" @click="handleClickPriceOptions">Add Price
+                    Options
+                  </el-button>
+                </template>
+              </el-input>
+            </el-form-item>
+          </el-col>
+
 
           <el-col :span="12">
             <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
@@ -107,7 +124,11 @@
               >{{ o.toUpperCase() }}</el-radio>
             </el-form-item>
           </el-col>
-
+          <el-col :span="8" v-show="addProduct.type === 'stock'">
+            <el-form-item :label="$t('product.form.qtyOnHand')">
+              <el-input-number placeholder="0" v-model="addProduct.qtyOnHand"></el-input-number>
+            </el-form-item>
+          </el-col>
           <el-col :span="8" v-show="addProduct.type == 'stock'">
             <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
               <el-date-picker
@@ -116,6 +137,34 @@
                 :picker-options="options"
                 :placeholder="$t('product.form.expired')"
               ></el-date-picker>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="8">
+            <el-form-item :label="$t('product.form.barcode')">
+              <el-select
+                      v-model="addProduct.barcodes"
+                      multiple
+                      filterable
+                      allow-create
+                      default-first-option
+                      placeholder="Add barcodes">
+                <el-option
+                        v-for="item in []"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                </el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="8">
+            <el-form-item label="">
+              <el-checkbox v-model="addProduct.isAddOn">{{$t('product.form.isAddOn')}}
+              </el-checkbox>
             </el-form-item>
           </el-col>
         </el-row>
@@ -214,7 +263,12 @@
           createdBy: '',
           categoryId: '',
           subCategories: [],
-          priceOptions: []
+          priceOptions: [],
+          isAddOn: false,
+          cost: 0,
+          wholeSalePrice: 0,
+          barcodes: [],
+          qtyOnHand: 0,
         },
         rules: {
           finishedAddToSlideAt: [{ validator: validateFinishAddedToSlideDate, trigger: 'blur' }],
@@ -401,17 +455,23 @@
         this.fileList = []
 
         this.addProduct = {
+          cost: 0,
+          qtyOnHand: 0,
           price: 0,
+          wholeSalePrice: 0,
           name: '',
           skewNumber: '',
           type: 'none-stock',
           isAddToSlide: false,
           finishedAddToSlideAt: null,
-          priceOptions: [],
           imageUrl: [],
           expiredAt: null,
           createdBy: '',
-          categoryId: ''
+          categoryId: '',
+          subCategories: [],
+          priceOptions: [],
+          isAddOn: false,
+          barcodes: []
         } //clear property after success
 
       },
@@ -543,6 +603,10 @@
       }
     },
     computed: {
+      isAdmin() {
+        const {user} = this.$store.state.user;
+        return provider.isAdmin(user.roles);
+      },
       pricePlaceHolder() {
         return this.companyDoc && this.companyDoc.defaultCurrency === 'KHR' ? '20,000' : '2'
       },
