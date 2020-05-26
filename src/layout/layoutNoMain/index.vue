@@ -1,9 +1,9 @@
 <template>
-  <div class="flex body_wrapper bg-white">
+  <div class="flex body_wrapper">
     <sidebar class="sidebar-container" />
     <div class="wrapper_main w-full">
       <Navbar />
-      <main class="w-full bg-white">
+      <main class="w-full">
         <div class="content">
           <router-view :key="key" />
         </div>

@@ -184,13 +184,11 @@ small {
   border-color: #d3d3d3;
   color: #888ea8;
 }
-.btn-new-product {
+button.el-button.btn-new-product {
   height: 48px;
   padding: 10px 15px;
   border-radius: 6px;
-  // box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
   box-shadow: -1px 4px 4px rgb(0, 80, 255);
-
 }
 
 .el-input-number {
@@ -213,4 +211,18 @@ small {
 }
 .el-checkbox__inner:hover{
   border-color: $pink;
+}
+
+.el-row .el-col .el-input input.el-input__inner {
+  height: 48px;
+  margin-left: 20px;
+  background: $white;
+  box-shadow: -1px 4px 4px rgba(109, 122, 151, 0.12);
+}
+.el-input__prefix, .el-input__suffix {
+  top: -3px;
+  right:0px;
+}
+.el-input--suffix .el-input__inner {
+  padding-right: 15px;
 }

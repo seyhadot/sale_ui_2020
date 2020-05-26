@@ -1,24 +1,54 @@
 <template>
-  <div>
+  <div class="action-form">
     <el-row>
-      <el-col :span="10">
-        <el-button icon="el-icon-plus" type="primary" @click="handleCreateNew">Create new</el-button>
+      <el-col :span="24">
+        <div class="flex justify-between items-center">
+          <div class="w-4/12 flex">
+            <form class="form-inline-search my-2 my-lg-0">
+              <div class>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-search"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input
+                  type="text"
+                  class="form-control product-search"
+                  id="input-search"
+                  placeholder="Search ..."
+                  v-model="search"
+                />
+              </div>
+            </form>
+            <el-select v-model="filterTypeVal" clearable placeholder="All">
+              <el-option
+                v-for="item in filterTypeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </div>
+          <el-button icon="uil-plus" type="primary" @click="handleCreateNew" class="btn-new-product"></el-button>
+        </div>
       </el-col>
     </el-row>
     <br />
     <el-row :gutter="10">
-      <el-col :span="6">
-        <el-select v-model="filterTypeVal" clearable placeholder="All">
-          <el-option
-            v-for="item in filterTypeOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-col>
       <el-col :span="16">
-        <el-input v-model="search" placeholder="Search..."></el-input>
+        <!-- <div class="form-inline-search">
+          <el-input v-model="search" placeholder="Search..."></el-input>
+        </div>-->
       </el-col>
       <!-- Dialog -->
       <el-dialog title="Product Options" :visible.sync="dialogVisible">
@@ -237,3 +267,12 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+.action-form {
+  .el-input input.el-input__inner {
+    background: #f6f6f6;
+    border: 1px solid #f6f6f6;
+    margin: 0px;
+  }
+}
+</style>

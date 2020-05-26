@@ -29,7 +29,7 @@
                 />
               </div>
             </form>
-            <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" class="btn-new-product" ></el-button>
+            <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" class="btn-new-product"></el-button>
         </div>
       </div>
 
