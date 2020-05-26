@@ -1,5 +1,5 @@
 <template>
-  <div class="content xs:p-5 xs:pt-0 sm:p-5 xl:p-5 xl:pt-0 mx-10">
+  <div class="content xs:px-5 xl:px-10 pt-3 pb-3">
     <div class="px-2">
       <div class="flex -mx-3">
         <div class="w-1/2 px-1">

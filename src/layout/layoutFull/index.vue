@@ -4,7 +4,7 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
-        <div class="bread_crumb content xs:px-10 pt-8 pb-3">
+        <div class="bread_crumb content xs:px-5 xl:px-10 pt-8 pb-3">
           <ul class="flex font-bold">
             <el-breadcrumb class="app-breadcrumb" separator="•">
               <transition-group el-fade-in-linear name="breadcrumb">
