@@ -26,7 +26,7 @@
           <br />
           <hr />
           <el-row :gutter="20">
-            <el-col :span="20">
+            <el-col :span="24">
               <el-table :data="addProduct.priceOptions">
                 <el-table-column label="Option Name">
                   <template slot-scope="scope">{{ displayProductionName(scope.row.priceOptionId) }}</template>
@@ -43,7 +43,7 @@
                       type="text"
                       size="small"
                       icon="el-icon-delete"
-                    >Remove</el-button>
+                    ></el-button>
                   </template>
                 </el-table-column>
               </el-table>
@@ -56,12 +56,12 @@
     <el-row :gutter="40" v-show="true">
       <el-col :span="24">
         <el-form :model="addProduct" :rules="rules" ref="addProductForm">
-          <div class="card-header">
+          <div class>
             <div class="form-title border-b pb-3 mt-5">
               <h3 class="text-xl text-blue-500">{{ $t('product.add') }}</h3>
             </div>
           </div>
-          <div class="card-body mt-5">
+          <div class="mt-5">
             <el-form-item>
               <div>
                 <label for>{{ $t('product.form.photo') }}</label>
@@ -112,7 +112,25 @@
                   </el-input>
                 </el-form-item>
               </el-col>
-
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.barcode')">
+                  <el-select
+                    v-model="addProduct.barcodes"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    placeholder="Add barcodes"
+                  >
+                    <el-option
+                      v-for="item in []"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
               <el-col :span="8">
                 <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
                   <el-autocomplete
@@ -124,6 +142,7 @@
                   ></el-autocomplete>
                 </el-form-item>
               </el-col>
+
               <el-col :span="8">
                 <el-form-item :label="$t('product.form.category')">
                   <el-select
@@ -168,27 +187,6 @@
                     :picker-options="options"
                     :placeholder="$t('product.form.expired')"
                   ></el-date-picker>
-                </el-form-item>
-              </el-col>
-            </el-row>
-            <el-row>
-              <el-col :span="8">
-                <el-form-item :label="$t('product.form.barcode')">
-                  <el-select
-                    v-model="addProduct.barcodes"
-                    multiple
-                    filterable
-                    allow-create
-                    default-first-option
-                    placeholder="Add barcodes"
-                  >
-                    <el-option
-                      v-for="item in []"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    ></el-option>
-                  </el-select>
                 </el-form-item>
               </el-col>
             </el-row>

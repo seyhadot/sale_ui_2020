@@ -221,10 +221,12 @@ button.el-button.btn-new-product {
   box-shadow: -1px 4px 4px rgba(109, 122, 151, 0.12);
 
 }
+.dropdown-caret{
 .el-input__prefix, .el-input__suffix {
   top: -3px;
   right: 5px;
 }
 .el-input--suffix .el-input__inner {
   padding-right: 15px;
+}
 }

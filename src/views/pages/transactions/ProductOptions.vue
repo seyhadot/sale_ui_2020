@@ -30,7 +30,7 @@
                 />
               </div>
             </form>
-            <el-select v-model="filterTypeVal" clearable placeholder="All">
+            <el-select v-model="filterTypeVal" clearable class="dropdown-caret" placeholder="All">
               <el-option
                 v-for="item in filterTypeOptions"
                 :key="item.value"

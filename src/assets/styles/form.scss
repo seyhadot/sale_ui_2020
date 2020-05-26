@@ -567,3 +567,28 @@
     top: 2px;
   }
 }
+
+.el-input-number__decrease,
+.el-input-number__increase {
+  top: 9px;
+  padding: 4px;
+}
+
+.el-dialog__header {
+  padding: 12px 26px;
+  border: 1px solid #e0e6ed;
+  .el-dialog__title {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #3b3f5c;
+  }
+  .el-dialog__headerbtn {
+    top: 15px;
+    right: 25px;
+  }
+}
+
+.el-input__suffix {
+  top: -2px;
+}
