@@ -45,7 +45,7 @@
                 </div>-->
             </el-col>
             <!-- Dialog -->
-            <el-dialog title="Table " :visible.sync="dialogVisible" @close="handleClose">
+            <el-dialog title="Table " :visible.sync="dialogVisible" >
                 <el-form :model="tableForm" :rules="rules" ref="product-options-form">
                     <el-form-item label="Name" prop="name">
                         <el-col :span="12">
@@ -126,14 +126,7 @@
       }
     },
     methods: {
-      handleClose() {
-        this.tableForm = {
-          name: '',
-          number: 0,
-          chair: 0
-        }
-        this.id = ''
-      },
+
       handleCreateNew() {
         this.dialogVisible = true
         this.id = ''
@@ -189,6 +182,9 @@
         const url = `${provider.baseURL}${provider.prefix}/table/upsert`
         this.tableForm.createdBy = user._id
         this.tableForm.storeId = activeStore
+        if (this.id) {
+          this.tableForm._id = this.id;
+        }
         this.$refs['product-options-form'].validate(valid => {
           if (valid) {
             this.tableForm.modifiedBy = user._id
