@@ -1,64 +1,64 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="10">
-                <el-button icon="el-icon-plus" type="primary" @click="handleCreateNew">Create new</el-button>
-
+  <div>
+    <el-row>
+      <el-col :span="10">
+        <el-button icon="el-icon-plus" type="primary" @click="handleCreateNew">Create new</el-button>
+      </el-col>
+    </el-row>
+    <br />
+    <el-row :gutter="10">
+      <el-col :span="6">
+        <el-select v-model="filterTypeVal" clearable placeholder="All">
+          <el-option
+            v-for="item in filterTypeOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="16">
+        <el-input v-model="search" placeholder="Search..."></el-input>
+      </el-col>
+      <!-- Dialog -->
+      <el-dialog title="Product Options" :visible.sync="dialogVisible">
+        <el-form :model="ProductOptionsForm" :rules="rules" ref="product-options-form">
+          <el-form-item label="Type" prop="type">
+            <el-select v-model="ProductOptionsForm.type" placeholder="Select options">
+              <el-option
+                v-for="item in typeOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="Label" prop="label">
+            <el-col :span="12">
+              <el-input v-model="ProductOptionsForm.label" @keypress.native.enter="handleSave"></el-input>
             </el-col>
-        </el-row>
-        <br>
-        <el-row :gutter="10">
-
-            <el-col :span="6">
-                <el-select v-model="filterTypeVal" clearable placeholder="All">
-                    <el-option
-                            v-for="item in filterTypeOptions"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-            </el-col>
-            <el-col :span="16">
-                <el-input v-model="search" placeholder="Search..."></el-input>
-            </el-col>
-            <!-- Dialog -->
-            <el-dialog title="Product Options" :visible.sync="dialogVisible">
-                <el-form :model="ProductOptionsForm" :rules="rules" ref="product-options-form">
-                    <el-form-item label="Type" prop="type">
-                        <el-select v-model="ProductOptionsForm.type" placeholder="Select options">
-                            <el-option
-                                    v-for="item in typeOptions"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item label="Label" prop="label">
-                        <el-col :span="12">
-                            <el-input v-model="ProductOptionsForm.label" @keypress.native.enter="handleSave"></el-input>
-                        </el-col>
-                    </el-form-item>
-
-                </el-form>
-                <span slot="footer" class="dialog-footer">
-                    <el-button @click="dialogVisible = false">Cancel</el-button>
-                    <el-button type="primary" @click="handleSave">Save</el-button>
-                </span>
-            </el-dialog>
-            <!-- End dialog -->
-
-        </el-row>
-        <el-row>
-            <div>
-                <virtual-list :size="70" :remain="8">
-                    <item @item-action="handleItemAction" v-for="item of filteredProductOptionsArr" :key="item.id"
-                          :item="item"/>
-                </virtual-list>
-            </div>
-        </el-row>
-    </div>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="handleSave">Save</el-button>
+        </span>
+      </el-dialog>
+      <!-- End dialog -->
+    </el-row>
+    <el-row>
+      <div>
+        <virtual-list :size="70" :remain="8">
+          <item
+            @item-action="handleItemAction"
+            v-for="item of filteredProductOptionsArr"
+            :key="item.id"
+            :item="item"
+          />
+        </virtual-list>
+      </div>
+    </el-row>
+  </div>
 </template>
 
 
