@@ -21,7 +21,7 @@
         props: {
             item: {
                 type: Object
-            }
+            },
         },
         computed: {
             itemStyle () {
