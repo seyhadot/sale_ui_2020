@@ -18,7 +18,8 @@ export const User = {
         shortcutName: map.shortcutName,
         storeName: map.name,
         desc: map.desc,
-        baseCurrency: map.baseCurrency
+        baseCurrency: map.baseCurrency,
+        tags: map.tags
       }))
       state.activeStore = state.stores.length === 1 ? state.stores[0]._id : null
     },
