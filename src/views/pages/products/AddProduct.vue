@@ -4,8 +4,7 @@
       title="Add Product Options"
       :visible.sync="priceOptionsDrawer"
       width="50%"
-      :before-close="handleDrawerClose"
-    >
+      :before-close="handleDrawerClose">
       <el-row :gutter="40">
         <el-col :span="24">
           <el-select
@@ -23,26 +22,24 @@
           </el-select>
         </el-col>
         <el-col :span="24">
-          <br />
-          <hr />
           <el-row :gutter="20">
             <el-col :span="24">
-              <el-table :data="addProduct.priceOptions">
-                <el-table-column label="Option Name">
+              <el-table :data="addProduct.priceOptions" class="dialog-table-option">
+                <el-table-column label="Name">
                   <template slot-scope="scope">{{ displayProductionName(scope.row.priceOptionId) }}</template>
                 </el-table-column>
-                <el-table-column label="Price">
+                <el-table-column label="Price" class="text-center">
                   <template slot-scope="scope">
                     <el-input-number v-model="scope.row.price"></el-input-number>
                   </template>
                 </el-table-column>
-                <el-table-column fixed="right" label="Operations" width="120">
+                <el-table-column fixed="right" label width="120">
                   <template slot-scope="scope">
                     <el-button
                       @click="handleRemovePriceOption(scope.row.priceOptionId)"
-                      type="text"
-                      size="small"
                       icon="el-icon-delete"
+                      class="bg-red-600 border-red-700 text-white hover:text-red-700 hover:border-red-700"
+                      circle
                     ></el-button>
                   </template>
                 </el-table-column>
@@ -105,8 +102,7 @@
                   <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
                     <template slot="append">
                       <el-button type="success" @click="handleClickPriceOptions">
-                        Add Price
-                        Options
+                        <i class="icon-feather-user"></i>
                       </el-button>
                     </template>
                   </el-input>

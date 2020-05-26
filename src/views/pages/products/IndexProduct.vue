@@ -3,33 +3,51 @@
     <div class="table-responsive">
       <div class="card-header">
         <div class="flex justify-between items-center mb-4">
-            <!-- <h3 class="text-2xl font-bold text-blue-500">{{ $t('product.title') }}</h3> -->
-            <form class="form-inline-search my-2 my-lg-0">
-              <div class="pl-1">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-search"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input
-                  type="text"
-                  class="form-control product-search"
-                  id="input-search"
-                  placeholder="Search ..."
-                />
-              </div>
-            </form>
-            <el-button type="primary" @click="handleCreateProduct" icon="uil-plus" class="btn-new-product"></el-button>
+          <form class="form-inline-search my-2 my-lg-0">
+            <div class="pl-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                type="text"
+                class="form-control product-search"
+                id="input-search"
+                placeholder="Search ..."
+              />
+            </div>
+          </form>
+          <div>
+            <el-button
+              type="primary"
+              @click="handleCreateProduct"
+              icon="icon-feather-archive text-xl"
+              class="btn-new-product"
+            ></el-button>
+            <el-button
+              type="primary"
+              @click="handleCreateProduct"
+              icon="icon-feather-grid text-xl"
+              class="btn-new-product"
+            ></el-button>
+          </div>
+          <el-button
+            type="primary"
+            @click="handleCreateProduct"
+            icon="icon-feather-plus text-xl"
+            class="btn-new-product"
+          ></el-button>
         </div>
       </div>
 
@@ -63,7 +81,12 @@
               <a href="#">Active</a>
             </th>
             <th style="width: 24px;" class="pl-0">
-                <el-button type="" icon="el-icon-delete" circle></el-button>
+              <el-button
+                type
+                icon="el-icon-delete"
+                class="bg-red-600 text-white hover:text-red-700 hover:border-red-700"
+                circle
+              ></el-button>
             </th>
           </tr>
         </thead>
@@ -125,7 +148,6 @@
                 <el-button @click="handleEdit(o)" type="success" icon="el-icon-edit" circle></el-button>
               </el-row>
             </td>
-            <div></div>
           </tr>
         </tbody>
       </table>

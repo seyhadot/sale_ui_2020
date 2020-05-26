@@ -103,8 +103,8 @@
           </div>
           <ul v-for="(value, key) in grouped" :key="value._id">
             <h2 class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
-            <li v-for="customer in value" :key="customer._id" class="py-3 border-b">
-              <a href="#" @click="handleClickCustomer(customer)" class>
+            <li v-for="customer in value" :key="customer._id" class="py-3 border-b cursor-pointer" @click="handleClickCustomer(customer)">
+              <a href="#">
                 <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
                 <span class="text-gray-500">{{customer.tel}}</span>
               </a>
@@ -298,5 +298,8 @@ export default {
   transition: all 0.5s;
   background-position: 20% 30%;
   border-radius: 6px;
+}
+ul li:last-child{
+  border-bottom: none;
 }
 </style>

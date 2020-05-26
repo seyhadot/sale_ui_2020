@@ -120,6 +120,24 @@
               >{{ o.toUpperCase() }}</el-radio>
             </el-form-item>
           </el-col>
+          <el-col :span="12">
+            <el-form-item :label="$t('product.form.barcode')">
+              <el-select
+                v-model="addProduct.barcodes"
+                multiple
+                filterable
+                allow-create
+                default-first-option
+                placeholder="Add barcodes">
+                <el-option
+                  v-for="item in []"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                ></el-option>
+              </el-select>
+            </el-form-item>
+          </el-col>
           <el-col :span="12" v-show="addProduct.type === 'stock'">
             <el-form-item :label="$t('product.form.qtyOnHand')">
               <el-input-number placeholder="0" v-model="addProduct.qtyOnHand"></el-input-number>
@@ -133,25 +151,6 @@
                 :picker-options="options"
                 :placeholder="$t('product.form.expired')"
               ></el-date-picker>
-            </el-form-item>
-          </el-col>
-          <el-col :span="12">
-            <el-form-item :label="$t('product.form.barcode')">
-              <el-select
-                v-model="addProduct.barcodes"
-                multiple
-                filterable
-                allow-create
-                default-first-option
-                placeholder="Add barcodes"
-              >
-                <el-option
-                  v-for="item in []"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                ></el-option>
-              </el-select>
             </el-form-item>
           </el-col>
         </el-row>
