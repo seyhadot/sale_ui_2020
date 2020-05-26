@@ -4,8 +4,8 @@
       <el-col :span="24">
         <div class="flex justify-between items-center">
           <div class="w-4/12 flex">
-            <form class="form-inline-search my-2 my-lg-0">
-              <div class>
+            <form class="form-inline-search my-2 my-lg-0 mr-5">
+              <div class="pl-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

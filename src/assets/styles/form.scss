@@ -58,9 +58,9 @@
       .el-textarea__inner:focus {
         border: 1px solid $yellow;
         background: $input_bg;
-        border-color: rgba(234,76,137,0.4);
-        -webkit-box-shadow: 0 0 0 4px rgba(234,76,137,0.1);
-        box-shadow: 0 0 0 4px rgba(234,76,137,0.1);
+        border-color: rgba(234, 76, 137, 0.4);
+        -webkit-box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
+        box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
       }
     }
     .el-input {
@@ -74,9 +74,9 @@
       input.el-input__inner:focus {
         border: 1px solid $yellow;
         background: $input_bg;
-        border-color: rgba(234,76,137,0.4);
-        -webkit-box-shadow: 0 0 0 4px rgba(234,76,137,0.1);
-        box-shadow: 0 0 0 4px rgba(234,76,137,0.1);
+        border-color: rgba(234, 76, 137, 0.4);
+        -webkit-box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
+        box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
       }
       .el-select__caret {
         color: $dropdown_caret;
@@ -90,7 +90,7 @@
     }
   }
 }
-.action_draw .el-button+.el-button {
+.action_draw .el-button + .el-button {
   margin-left: 40px;
 }
 .action {
@@ -124,7 +124,7 @@
     background-position: top;
     position: relative;
     &:hover {
-      background-color: #383EDF;
+      background-color: #383edf;
       color: $white;
     }
   }
@@ -143,7 +143,7 @@
     &:hover {
       background-color: $pink;
       color: $white;
-      border: 1px solid  $white;
+      border: 1px solid $white;
     }
   }
   .el-button--success {
@@ -153,7 +153,7 @@
     color: $white;
     border-color: $white;
     background-size: auto 200%;
-    background-image: linear-gradient(90deg, #b1f150 0%, #388e3c 100% );
+    background-image: linear-gradient(90deg, #b1f150 0%, #388e3c 100%);
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
     background-position: top;
@@ -161,7 +161,7 @@
     &:hover {
       background-color: $pink;
       color: $white;
-      border: 1px solid  $white;
+      border: 1px solid $white;
     }
   }
   .el-button--danger {
@@ -216,7 +216,8 @@
 .el-date-table td.available:hover {
   color: $pink;
 }
-.el-date-editor.el-input, .el-date-editor.el-input__inner {
+.el-date-editor.el-input,
+.el-date-editor.el-input__inner {
   width: 100%;
 }
 .el-range-editor.is-active,
@@ -407,26 +408,25 @@
   }
 }
 
-
 .el-button--success {
   color: $white;
-  background-color: #0AAE7D;
-  border-color: #0AAE7D;
-  &:hover{
-    background-color: #0AAE7D;
-    border-color: #0AAE7D;
+  background-color: #0aae7d;
+  border-color: #0aae7d;
+  &:hover {
+    background-color: #0aae7d;
+    border-color: #0aae7d;
     opacity: 0.7;
   }
-  &:focus{
-    background-color: #0AAE7D;
-    border-color: #0AAE7D;
+  &:focus {
+    background-color: #0aae7d;
+    border-color: #0aae7d;
   }
 }
 .el-button--primary {
   color: $white;
-  background-color: #1F6BFF;
-  border-color: #1F6BFF;
-  &:focus{
+  background-color: #1f6bff;
+  border-color: #1f6bff;
+  &:focus {
     background-color: #2f53df;
     border-color: #2449dd;
     opacity: 0.7;
@@ -436,29 +436,28 @@
   color: $white;
   background-color: $pink;
   border-color: $pink;
-  box-shadow: inset 0 1px 0 hsla(0,0%,100%,.15), 0 1px 1px rgba(39,44,51,.075);
-  &:hover{
+  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.15), 0 1px 1px rgba(39, 44, 51, 0.075);
+  &:hover {
     background-color: $pink;
-    border-color: $pink;  
+    border-color: $pink;
     opacity: 0.7;
   }
 }
-
 
 // drawer
 .el-drawer__header {
   margin-bottom: 0px;
   padding: 10px 20px 0;
-  span{
+  span {
     font-size: 1.5em;
     padding-left: 0.8em;
     color: $bunting;
   }
-  .el-drawer__close-btn{
+  .el-drawer__close-btn {
     color: $bunting;
   }
 }
-.el-button{
+.el-button {
   transition: all 0.5s ease-out 0s;
   height: 42px;
   padding: 10px 20px;
@@ -467,44 +466,43 @@
   border-color: $pink;
   background: $pink;
 }
-.el-radio__input.is-checked+.el-radio__label {
+.el-radio__input.is-checked + .el-radio__label {
   color: $pink;
 }
 .el-radio__inner:hover {
   border-color: $pink;
 }
-.el-checkbox__input.is-checked+.el-checkbox__label {
+.el-checkbox__input.is-checked + .el-checkbox__label {
   color: $pink;
 }
-.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
   background-color: $pink;
   border-color: $pink;
 }
-.el-input,.el-button {
+.el-input,
+.el-button {
   font-size: 16px;
 }
- 
-.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
-  content: '';
-  color: #F56C6C;
+
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:before {
+  content: "";
+  color: #f56c6c;
   margin-right: 4px;
 }
-.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:after {
-  content: ' *';
-  color: #F56C6C;
+.el-form-item.is-required:not(.is-no-asterisk) > .el-form-item__label:after {
+  content: " *";
+  color: #f56c6c;
   margin-right: 4px;
   position: relative;
   top: -5px;
 }
 
-
-
-
 .demo-drawer__content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  .el-form{
+  .el-form {
     flex: 1;
   }
   .demo-drawer__footer {
@@ -515,47 +513,57 @@
   }
 }
 
-.el-message-box__btns{
+.el-message-box__btns {
   .el-button--primary {
     background-size: auto 200%;
     background-image: linear-gradient(90deg, #e53792 0%, #a53792 100%);
     border: #e53792;
-    opacity:1;
+    opacity: 1;
   }
 }
-.el-table,.el-tabs__item {
+.el-table,
+.el-tabs__item {
   font-size: 16px;
 }
 
 .el-row .el-col .search input.el-input__inner {
-  padding-top:3px;
+  padding-top: 3px;
   margin: 0px;
   height: 44px;
 }
 
-
-
 // customer searching
-.el-row .el-col .customer-search input.el-input__inner{
+.el-row .el-col .customer-search input.el-input__inner {
   background: $white;
   border: 1px solid #ddd;
-  margin-top:0;
+  margin-top: 0;
 }
 .el-row .el-col .customer-search input.el-input__inner:focus {
-  background: $white; 
+  background: $white;
 }
-.customer-search{
+.customer-search {
   position: relative;
-  i{
+  i {
     position: absolute;
-    top:12px;
+    top: 12px;
     left: 10px;
     font-size: 1.7em;
     color: darkgray;
     z-index: 99;
   }
-  .el-input__inner{
+  .el-input__inner {
     height: 50px;
     padding-left: 50px;
+  }
+}
+.my-checkbox {
+  .el-checkbox__inner {
+    width: 20px;
+    height: 20px;
+  }
+  .el-checkbox__inner::after {
+    height: 10px;
+    left: 8px;
+    top: 2px;
   }
 }

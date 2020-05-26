@@ -5,7 +5,7 @@
         <div class="flex justify-between items-center mb-4">
             <!-- <h3 class="text-2xl font-bold text-blue-500">{{ $t('product.title') }}</h3> -->
             <form class="form-inline-search my-2 my-lg-0">
-              <div class>
+              <div class="pl-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -37,7 +37,7 @@
         <thead>
           <tr class="t-head">
             <th style="width: 18px;">
-              <div class="custom-control custom-checkbox text-left">
+              <div class="custom-control my-checkbox custom-checkbox text-left">
                 <el-checkbox v-model="checked"></el-checkbox>
               </div>
             </th>
@@ -70,7 +70,7 @@
         <tbody class="list">
           <tr v-for="o in products" :key="o._id">
             <td>
-              <div>
+              <div class="my-checkbox">
                 <el-checkbox v-model="checked"></el-checkbox>
               </div>
             </td>

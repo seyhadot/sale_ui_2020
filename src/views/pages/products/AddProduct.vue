@@ -1,184 +1,205 @@
 <template>
-    <content-box>
-        <el-dialog title="Add Product Options" :visible.sync="priceOptionsDrawer" width="50%"
-                   :before-close="handleDrawerClose">
+  <content-box>
+    <el-dialog
+      title="Add Product Options"
+      :visible.sync="priceOptionsDrawer"
+      width="50%"
+      :before-close="handleDrawerClose"
+    >
+      <el-row :gutter="40">
+        <el-col :span="24">
+          <el-select
+            filterable
+            clearable
+            v-model="priceOptionId"
+            placeholder="Select Price Options"
+          >
+            <el-option
+              v-for="item in productOptionsArr"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="24">
+          <br />
+          <hr />
+          <el-row :gutter="20">
+            <el-col :span="20">
+              <el-table :data="addProduct.priceOptions">
+                <el-table-column label="Option Name">
+                  <template slot-scope="scope">{{ displayProductionName(scope.row.priceOptionId) }}</template>
+                </el-table-column>
+                <el-table-column label="Price">
+                  <template slot-scope="scope">
+                    <el-input-number v-model="scope.row.price"></el-input-number>
+                  </template>
+                </el-table-column>
+                <el-table-column fixed="right" label="Operations" width="120">
+                  <template slot-scope="scope">
+                    <el-button
+                      @click="handleRemovePriceOption(scope.row.priceOptionId)"
+                      type="text"
+                      size="small"
+                      icon="el-icon-delete"
+                    >Remove</el-button>
+                  </template>
+                </el-table-column>
+              </el-table>
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+    </el-dialog>
+
+    <el-row :gutter="40" v-show="true">
+      <el-col :span="24">
+        <el-form :model="addProduct" :rules="rules" ref="addProductForm">
+          <div class="card-header">
+            <div class="form-title border-b pb-3 mt-5">
+              <h3 class="text-xl text-blue-500">{{ $t('product.add') }}</h3>
+            </div>
+          </div>
+          <div class="card-body mt-5">
+            <el-form-item>
+              <div>
+                <label for>{{ $t('product.form.photo') }}</label>
+              </div>
+              <el-upload
+                v-loading="uploadProgress"
+                action="#"
+                multiple
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :auto-upload="false"
+                :file-list="fileList"
+                :on-change="onUploadChange"
+                :on-remove="handleRemoveFile"
+                class="mb-5"
+              >
+                <i class="el-icon-upload"></i>
+              </el-upload>
+              <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="dialogImageUrl" alt />
+              </el-dialog>
+            </el-form-item>
             <el-row :gutter="40">
-                <el-col :span="24">
-                    <el-select filterable clearable v-model="priceOptionId" placeholder="Select Price Options">
-                        <el-option v-for="item in productOptionsArr" :key="item.value" :label="item.label"
-                                   :value="item.value"></el-option>
-                    </el-select>
-                </el-col>
-                <el-col :span="24">
-                    <br/>
-                    <hr/>
-                    <el-row :gutter="20">
-                        <el-col :span="20">
-                            <el-table :data="addProduct.priceOptions">
-                                <el-table-column label="Option Name">
-                                    <template slot-scope="scope">{{ displayProductionName(scope.row.priceOptionId) }}
-                                    </template>
-                                </el-table-column>
-                                <el-table-column label="Price">
-                                    <template slot-scope="scope">
-                                        <el-input-number v-model="scope.row.price"></el-input-number>
-                                    </template>
-                                </el-table-column>
-                                <el-table-column fixed="right" label="Operations" width="120">
-                                    <template slot-scope="scope">
-                                        <el-button @click="handleRemovePriceOption(scope.row.priceOptionId)" type="text"
-                                                   size="small" icon="el-icon-delete">Remove
-                                        </el-button>
-                                    </template>
-                                </el-table-column>
-                            </el-table>
-                        </el-col>
-                    </el-row>
-                </el-col>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.name')" prop="name">
+                  <el-input placeholder="ABC.." v-model="addProduct.name"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.cost')" v-show="isAdmin">
+                  <el-input :placeholder="pricePlaceHolder" v-model="addProduct.cost"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.wholeSalePrice')" prop="wholeSalePrice">
+                  <el-input :placeholder="pricePlaceHolder" v-model="addProduct.wholeSalePrice"></el-input>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.price')" prop="price">
+                  <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
+                    <template slot="append">
+                      <el-button type="success" @click="handleClickPriceOptions">
+                        Add Price
+                        Options
+                      </el-button>
+                    </template>
+                  </el-input>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
+                  <el-autocomplete
+                    style="width: 100%;"
+                    v-model="addProduct.skewNumber"
+                    :fetch-suggestions="querySearchAsync"
+                    placeholder="000001"
+                    @select="handleSelect"
+                  ></el-autocomplete>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.category')">
+                  <el-select
+                    style="width: 100%;"
+                    v-model="addProduct.categoryId"
+                    :placeholder="$t('product.form.category')"
+                  >
+                    <el-option
+                      style="width: 100%;"
+                      v-for="item in categoryOptions"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+
+              <el-col :span="8">
+                <el-form-item>
+                  <label for>{{ $t('product.form.type') }}</label>
+                  <br />
+                  <el-radio
+                    v-model="addProduct.type"
+                    v-for="(o, i) in productTypes"
+                    :key="i"
+                    :label="o"
+                  >{{ o.toUpperCase() }}</el-radio>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8" v-show="addProduct.type === 'stock'">
+                <el-form-item :label="$t('product.form.qtyOnHand')">
+                  <el-input-number placeholder="0" v-model="addProduct.qtyOnHand"></el-input-number>
+                </el-form-item>
+              </el-col>
+              <el-col :span="8" v-show="addProduct.type === 'stock'">
+                <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
+                  <label for></label>
+                  <el-date-picker
+                    v-model="addProduct.expiredAt"
+                    type="datetime"
+                    :picker-options="options"
+                    :placeholder="$t('product.form.expired')"
+                  ></el-date-picker>
+                </el-form-item>
+              </el-col>
             </el-row>
-        </el-dialog>
-
-        <el-row :gutter="40" v-show="true">
-            <el-col :span="24">
-                <el-form :model="addProduct" :rules="rules" ref="addProductForm">
-                    <div class="card-header">
-                        <div class="form-title border-b pb-3 mt-5">
-                            <h3 class="text-xl text-blue-500">{{ $t('product.add') }}</h3>
-                        </div>
-                    </div>
-                    <div class="card-body mt-5">
-                        <el-form-item>
-                            <div>
-                                <label for>{{ $t('product.form.photo') }}</label>
-                            </div>
-                            <el-upload
-                                    v-loading="uploadProgress"
-                                    action="#"
-                                    multiple
-                                    list-type="picture-card"
-                                    :on-preview="handlePictureCardPreview"
-                                    :auto-upload="false"
-                                    :file-list="fileList"
-                                    :on-change="onUploadChange"
-                                    :on-remove="handleRemoveFile"
-                                    class="mb-5"
-                            >
-                                <i class="el-icon-upload"></i>
-                            </el-upload>
-                            <el-dialog :visible.sync="dialogVisible">
-                                <img width="100%" :src="dialogImageUrl" alt/>
-                            </el-dialog>
-                        </el-form-item>
-                        <el-row :gutter="40">
-                            <el-col :span="8">
-                                <el-form-item :label="$t('product.form.name')" prop="name">
-                                    <el-input placeholder="ABC.." v-model="addProduct.name"></el-input>
-                                </el-form-item>
-                            </el-col>
-                          <el-col :span="8">
-                            <el-form-item :label="$t('product.form.cost')" v-show="isAdmin">
-                              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.cost">
-
-                              </el-input>
-                            </el-form-item>
-                          </el-col>
-                          <el-col :span="8">
-                            <el-form-item :label="$t('product.form.wholeSalePrice')" prop="wholeSalePrice">
-                              <el-input :placeholder="pricePlaceHolder" v-model="addProduct.wholeSalePrice">
-
-                              </el-input>
-                            </el-form-item>
-                          </el-col>
-                            <el-col :span="8">
-                                <el-form-item :label="$t('product.form.price')" prop="price">
-                                    <el-input :placeholder="pricePlaceHolder" v-model="addProduct.price">
-                                        <template slot="append">
-                                            <el-button type="success" @click="handleClickPriceOptions">Add Price
-                                                Options
-                                            </el-button>
-                                        </template>
-                                    </el-input>
-                                </el-form-item>
-                            </el-col>
-
-
-
-                            <el-col :span="8">
-                                <el-form-item :label="$t('product.form.skewNumber')" prop="skewNumber">
-                                    <el-autocomplete
-                                            style="width: 100%;"
-                                            v-model="addProduct.skewNumber"
-                                            :fetch-suggestions="querySearchAsync"
-                                            placeholder="000001"
-                                            @select="handleSelect"
-                                    ></el-autocomplete>
-                                </el-form-item>
-                            </el-col>
-                            <el-col :span="8">
-                                <el-form-item :label="$t('product.form.category')">
-                                    <el-select style="width: 100%;" v-model="addProduct.categoryId"
-                                               :placeholder="$t('product.form.category')">
-                                        <el-option style="width: 100%;" v-for="item in categoryOptions"
-                                                   :key="item.value" :label="item.label"
-                                                   :value="item.value"></el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </el-col>
-
-
-
-                            <el-col :span="8">
-                                <el-form-item>
-                                    <label for>{{ $t('product.form.type') }}</label>
-                                    <br/>
-                                    <el-radio v-model="addProduct.type" v-for="(o, i) in productTypes" :key="i"
-                                              :label="o">{{ o.toUpperCase() }}
-                                    </el-radio>
-                                </el-form-item>
-                            </el-col>
-                          <el-col :span="8" v-show="addProduct.type === 'stock'">
-                            <el-form-item :label="$t('product.form.qtyOnHand')">
-                              <el-input-number placeholder="0" v-model="addProduct.qtyOnHand"></el-input-number>
-                            </el-form-item>
-                          </el-col>
-                            <el-col :span="8" v-show="addProduct.type === 'stock'">
-                                <el-form-item :label="$t('product.form.expired')" prop="expiredAt">
-                                    <label for></label>
-                                    <el-date-picker v-model="addProduct.expiredAt" type="datetime"
-                                                    :picker-options="options"
-                                                    :placeholder="$t('product.form.expired')"></el-date-picker>
-                                </el-form-item>
-                            </el-col>
-                        </el-row>
-                        <el-row>
-                            <el-col :span="8">
-                                <el-form-item :label="$t('product.form.barcode')">
-                                    <el-select
-                                            v-model="addProduct.barcodes"
-                                            multiple
-                                            filterable
-                                            allow-create
-                                            default-first-option
-                                            placeholder="Add barcodes">
-                                        <el-option
-                                                v-for="item in []"
-                                                :key="item.value"
-                                                :label="item.label"
-                                                :value="item.value">
-                                        </el-option>
-                                    </el-select>
-                                </el-form-item>
-                            </el-col>
-                        </el-row>
-                        <el-row>
-                            <el-col :span="8">
-                                <el-form-item label="">
-                                    <el-checkbox v-model="addProduct.isAddOn">{{$t('product.form.isAddOn')}}
-                                    </el-checkbox>
-                                </el-form-item>
-                            </el-col>
-                        </el-row>
-                        <!-- <el-row>
+            <el-row>
+              <el-col :span="8">
+                <el-form-item :label="$t('product.form.barcode')">
+                  <el-select
+                    v-model="addProduct.barcodes"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    placeholder="Add barcodes"
+                  >
+                    <el-option
+                      v-for="item in []"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value"
+                    ></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row>
+              <el-col :span="8">
+                <el-form-item label>
+                  <el-checkbox v-model="addProduct.isAddOn">{{$t('product.form.isAddOn')}}</el-checkbox>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <!-- <el-row>
                             <el-col :span="6">
                               <el-form-item :label="$t('product.form.addToSlide')">
                                 <el-checkbox v-model="addProduct.isAddToSlide"></el-checkbox>
@@ -199,20 +220,20 @@
                                 </el-form-item>
                               </el-col>
                             </transition>
-                        </el-row>-->
-                    </div>
+            </el-row>-->
+          </div>
 
-                    <div class="action" style="padding-left: 0px;">
-                        <el-button type="warning" @click="handleSave" :loading="isLoading">
-                            <i class="uil-check-circle mr-2"></i>
-                            {{ $t('product.save') }}
-                        </el-button>
-                        <btn-cancel></btn-cancel>
-                    </div>
-                </el-form>
-            </el-col>
-        </el-row>
-    </content-box>
+          <div class="action" style="padding-left: 0px;">
+            <el-button type="warning" @click="handleSave" :loading="isLoading">
+              <i class="uil-check-circle mr-2"></i>
+              {{ $t('product.save') }}
+            </el-button>
+            <btn-cancel></btn-cancel>
+          </div>
+        </el-form>
+      </el-col>
+    </el-row>
+  </content-box>
 </template>
 
 <script>
