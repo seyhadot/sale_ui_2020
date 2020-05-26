@@ -9307,6 +9307,11 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
+vue-virtual-scroll-list@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/vue-virtual-scroll-list/-/vue-virtual-scroll-list-2.2.3.tgz#e4b811f5f3feef059cc451a5dde9ca8bb883eea9"
+  integrity sha512-28o+xxFQciP1pmKQenyFXsHLREfXeHLYAwZK8vEN5LGq6pJYsekEQz5eePCuIcSUwT+PFS1vlxogFHAvSjclUw==
+
 vue@^2.6.11:
   version "2.6.11"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"

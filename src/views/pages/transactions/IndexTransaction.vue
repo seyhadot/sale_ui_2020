@@ -1,24 +1,30 @@
 <template>
   <!-- <content-box> -->
-      <div class="p-10 h-full shadow-none">
-        <el-tabs v-model="activeName">
-          <el-tab-pane :label="$t('customer.title')">
-            <span slot="label">{{$t('customer.title')}}</span>
-            <transition name="el-zoom-in-top">
-              <el-row v-if="activeName === '0'">
-                <customer />
-              </el-row>
-            </transition>
-          </el-tab-pane>
-          <el-tab-pane label="Inventory Transactions">
-            <transition name="el-zoom-in-top">
-              <el-row v-if="activeName === '1'">
-                <inventory-transaction />
-              </el-row>
-            </transition>
-          </el-tab-pane>
-        </el-tabs>
-      </div>
+  <div class="p-10 h-full shadow-none">
+    <el-tabs v-model="activeName">
+      <el-tab-pane :label="$t('customer.title')">
+        <span slot="label">{{$t('customer.title')}}</span>
+        <transition name="el-zoom-in-top">
+          <el-row v-if="activeName === '0'">
+            <customer />
+          </el-row>
+        </transition>
+      </el-tab-pane>
+      <el-tab-pane label="Inventory Transactions">
+        <transition name="el-zoom-in-top">
+          <el-row v-if="activeName === '1'">
+            <inventory-transaction />
+          </el-row>
+        </transition>
+      </el-tab-pane>
+      <el-tab-pane label="Product Options">
+        <transition name="el-zoom-in-top">
+          <div slot="label">Product Options</div>
+          <product-options v-if="activeName === '2'"></product-options>
+        </transition>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
   <!-- </content-box> -->
 </template>
 
@@ -27,6 +33,7 @@
 import ContentBox from '@/components/ContentBox.vue'
 import Overview from "./Overview.vue";
 import Customer from "./Customer.vue";
+import ProductOptions from "./ProductOptions.vue";
 import Order from "./Order.vue";
 import Payment from "./Payment.vue";
 import InventoryTransaction from "./InventoryTransaction.vue";
@@ -37,7 +44,8 @@ export default {
     Order,
     Payment,
     InventoryTransaction,
-    ContentBox
+    ContentBox,
+    ProductOptions
   },
   data() {
     return {

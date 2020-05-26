@@ -4,13 +4,20 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
-        <div class="bread_crumb content xs:px-10 pt-5">
+        <div class="bread_crumb content xs:px-10 pt-8 pb-3">
           <ul class="flex font-bold">
-            <el-breadcrumb class="app-breadcrumb" separator="/">
+            <el-breadcrumb class="app-breadcrumb" separator="•">
               <transition-group el-fade-in-linear name="breadcrumb">
                 <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.path">
-                  <span v-if="item.redirect === 'noRedirect' || index == levelList.length - 1" class="no-redirect">{{ item.meta.title }}</span>
-                  <router-link :to="item.path" v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</router-link>
+                  <span
+                    v-if="item.redirect === 'noRedirect' || index == levelList.length - 1"
+                    class="no-redirect"
+                  >{{ item.meta.title }}</span>
+                  <router-link
+                    :to="item.path"
+                    v-else
+                    @click.prevent="handleLink(item)"
+                  >{{ item.meta.title }}</router-link>
                 </el-breadcrumb-item>
               </transition-group>
             </el-breadcrumb>
@@ -103,9 +110,36 @@ export default {
   display: inline-block;
   font-size: 14px;
   line-height: 50px;
+
+  a {
+    position: relative;
+    font-size: 14px;
+    background: #fff;
+    margin-bottom: 6px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid #e0e6ed;
+    -webkit-box-shadow: 2px 5px 17px 0 rgba(31, 45, 61, 0.1);
+    box-shadow: 0px 1px 8px 0px rgba(31, 45, 61, 0.1);
+    &:hover {
+      color: $pink;
+    }
+  }
   .no-redirect {
     color: #97a8be;
     cursor: text;
+    position: relative;
+    font-size: 14px;
+    background: #fff;
+    margin-bottom: 6px;
+    padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid #e0e6ed;
+    -webkit-box-shadow: 2px 5px 17px 0 rgba(31, 45, 61, 0.1);
+    box-shadow: 0px 1px 8px 0px rgba(31, 45, 61, 0.1);
   }
+}
+.el-breadcrumb__item .el-breadcrumb__separator {
+  color: $pink;
 }
 </style>

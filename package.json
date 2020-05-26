@@ -29,6 +29,7 @@
     "vue-media-queries": "^0.0.5",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.1.6",
+    "vue-virtual-scroll-list": "^2.2.3",
     "vuex": "^3.3.0"
   },
   "devDependencies": {

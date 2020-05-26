@@ -33,6 +33,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/Dashboard.vue'),
         name: 'Dashboard',
+        meta: {icon: "<i class='icon-feather-home'></i>"}
       },
       {
         path: 'user',

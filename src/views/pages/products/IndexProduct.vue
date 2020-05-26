@@ -62,7 +62,9 @@
             <th style="width: 120px;">
               <a href="#">Active</a>
             </th>
-            <th style="width: 24px;" class="pl-0"></th>
+            <th style="width: 24px;" class="pl-0">
+                <el-button type="" icon="el-icon-delete" circle></el-button>
+            </th>
           </tr>
         </thead>
         <tbody class="list">
@@ -121,13 +123,7 @@
             <td class="text-right">
               <el-row class="flex">
                 <el-button @click="handleEdit(o)" type="success" icon="el-icon-edit" circle></el-button>
-                <el-button type="danger" icon="el-icon-delete" circle></el-button>
               </el-row>
-              <!-- <a href class="text-gray-700">
-                <i
-                  class="flex items-center justify-center bg-menu_blue uil-ellipsis-v w-8 h-8 rounded-full"
-                ></i>
-              </a>-->
             </td>
             <div></div>
           </tr>
@@ -180,7 +176,7 @@ export default {
       form: {},
       loading: false,
       input: '',
-      checked: true,
+      checked: false,
       isLoading: true,
       total: 0,
       currentPage: 1,
