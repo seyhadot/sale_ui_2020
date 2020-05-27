@@ -2,21 +2,28 @@
   font-family: "KhmerR";
   font-style: bold;
   font-size: 1rem;
-  src: url("../fonts/KhmerR.ttf") format("ttf");
+  src: url("../font/avenir-500.woff2") format("woff2");
+  unicode-range: U+1780-17FF, U+200C, U+25CC;
+}
+/* @font-face {
+  font-family: "KhmerR";
+  font-style: bold;
+  font-size: 1rem;
+  src: url("../font/KhmerR.ttf") format("ttf");
   unicode-range: U+1780-17FF, U+200C, U+25CC;
 }
 @font-face {
   font-family: "KhmerR";
   font-style: normal;
-  src: url("../fonts/sykx.woff2") format("woff2");
+  src: url("../font/sykx.woff2") format("woff2");
   unicode-range: U+1780-17FF, U+200C, U+25CC;
-}
+} */
 @font-face {
   font-family: 'Feather-Icons';
   src:
-    url('../fonts/Feather-Icons.ttf') format('truetype'),
-    url('../fonts/Feather-Icons.woff') format('woff'),
-    url('../fonts/Feather-Icons.svg') format('svg');
+    url('../font/Feather-Icons.ttf') format('truetype'),
+    url('../font/Feather-Icons.woff') format('woff'),
+    url('../font/Feather-Icons.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -1104,12 +1111,12 @@
 
 @font-face {
   font-family: 'unicons';
-  src: url('../fonts/unicons.eot');
-  src: url('../fonts/unicons.eot') format('embedded-opentype'),
-        url('../fonts/unicons.woff') format('woff2'),
-        url('../fonts/unicons.woff') format('woff'),
-        url('../fonts/unicons.ttf') format('truetype'),
-        url('../fonts/unicons.svg') format('svg');
+  src: url('../font/unicons.eot');
+  src: url('../font/unicons.eot') format('embedded-opentype'),
+        url('../font/unicons.woff') format('woff2'),
+        url('../font/unicons.woff') format('woff'),
+        url('../font/unicons.ttf') format('truetype'),
+        url('../font/unicons.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
