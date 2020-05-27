@@ -247,7 +247,8 @@ module.exports = {
     },
     fontFamily: {
       opensan: ['Open Sans', 'system-ui', '-apple-system'],
-      Raleway: ['Raleway', 'system-ui', '-apple-system'],
+      roboto: ['Roboto', 'system-ui', '-apple-system'],
+      raleway: ['Raleway', 'system-ui', '-apple-system'],
       sans: [
         'system-ui',
         '-apple-system',

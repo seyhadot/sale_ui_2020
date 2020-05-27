@@ -6,9 +6,15 @@
       </div>
       <div class="card-info" @click="handleClickCard(item)" style="cursor: pointer;">{{item.label}}</div>
       <div class="card-height">
-        <span style="float: right">
-          <el-button type="warning" size="mini" @click="handleClickRemove(item)">Remove</el-button>
-        </span>
+        <el-button
+          type="warning"
+          size="mini"
+          icon="el-icon-delete"
+          class="hover:bg-white bg-red-600 text-white hover:text-red-700 hover:border-red-700 border-red-700 is-circle"
+          style="padding:12px;"
+          @click="handleClickRemove(item)"
+          circle
+        ></el-button>
       </div>
     </div>
   </div>

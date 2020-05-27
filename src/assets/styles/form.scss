@@ -33,7 +33,7 @@
   .el-col {
     label {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       .span1 {
         color: $white;
         background: $bunting;
@@ -50,14 +50,14 @@
     }
     .el-textarea {
       .el-textarea__inner {
-        background: $input_bg;
+        background: $white;
         border: 1px solid $input_bg;
         margin: 8px 0px;
         padding-bottom: 9px;
       }
       .el-textarea__inner:focus {
         border: 1px solid $yellow;
-        background: $input_bg;
+        background: $white;
         border-color: rgba(234, 76, 137, 0.4);
         -webkit-box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
         box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
@@ -66,14 +66,14 @@
     .el-input {
       font-size: 16px;
       input.el-input__inner {
-        background: $input_bg;
+        background: $white;
         border: 1px solid $input_bg;
         margin: 8px 0px;
         margin-bottom: 13px;
       }
       input.el-input__inner:focus {
         border: 1px solid $yellow;
-        background: $input_bg;
+        background: $white;
         border-color: rgba(234, 76, 137, 0.4);
         -webkit-box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
         box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
@@ -592,10 +592,7 @@
     }
   }
   .el-dialog__body{
-    padding: 60px 60px;
-
-    // padding-top: 30px;
-    padding-bottom: 80px;
+    padding: 40px 60px;
   }
 }
 .el-input__suffix {
@@ -612,4 +609,35 @@
   .el-table_1_column_3  {
     text-align: center;
   }
+}
+button.el-button.btn-new-product {
+  height: 48px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: -1px 4px 4px rgb(0, 80, 255);
+}
+
+button.el-button.btn-new-print {
+  height: 48px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: #f55d2c;
+  background-image: linear-gradient(to right, rgba(230, 92, 91, 0.9), rgba(245, 93, 44, 0.9));
+  box-shadow: -1px 4px 4px #f55d2c;
+}
+button.el-button.btn-product-option {
+  height: 48px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-color: #78c350;
+  background-image: linear-gradient(to right, rgba(120, 195, 80, 1), rgba(27, 201, 27, 0.767));
+  box-shadow: -1px 4px 4px #78c350;
+}
+button.el-button.btn-category {
+  height: 48px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border-color: #8063e9;
+  background-image: linear-gradient(to right, rgba(96, 92, 168, 1.00), rgb(131, 126, 238));
+  box-shadow: -1px 4px 4px #8063e9;
 }

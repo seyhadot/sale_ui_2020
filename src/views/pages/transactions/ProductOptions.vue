@@ -58,37 +58,31 @@
       <!-- Dialog -->
       <el-dialog title="Product Options" :visible.sync="dialogVisible">
         <el-form :model="ProductOptionsForm" :rules="rules" ref="product-options-form">
-          <el-form-item label="Type" prop="type">
-            <el-select v-model="ProductOptionsForm.type" placeholder="Select options">
-              <el-option
-                v-for="item in typeOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-
-
-
-
-          
-
-
-
-
-
-
-          </el-form-item>
-          <el-form-item label="Label" prop="label">
+          <el-row>
             <el-col :span="24">
-              <el-input v-model="ProductOptionsForm.label" @keypress.native.enter="handleSave"></el-input>
+              <el-form-item label="Type" prop="type">
+                <el-select v-model="ProductOptionsForm.type" placeholder="Select options">
+                  <el-option
+                    v-for="item in typeOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  ></el-option>
+                </el-select>
+              </el-form-item>
             </el-col>
-          </el-form-item>
+
+            <el-col :span="24">
+              <el-form-item label="Label" prop="label">
+                <el-input v-model="ProductOptionsForm.label" @keypress.native.enter="handleSave"></el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
         </el-form>
-        <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogVisible = false">Cancel</el-button>
-          <el-button type="primary" @click="handleSave">Save</el-button>
-        </span>
+        <div class="action text-left mt-5">
+          <el-button type="warning" @click="handleSave">Save</el-button>
+          <el-button type="primary" @click="dialogVisible = false">Cancel</el-button>
+        </div>
       </el-dialog>
       <!-- End dialog -->
     </el-row>
@@ -282,12 +276,3 @@
     }
   }
 </script>
-<style lang="scss" scoped>
-.action-form {
-  .el-input input.el-input__inner {
-    background: #f6f6f6;
-    border: 1px solid #f6f6f6;
-    margin: 0px;
-  }
-}
-</style>

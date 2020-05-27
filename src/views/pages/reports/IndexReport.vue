@@ -1,7 +1,13 @@
 <template>
   <content-box>
+      <div class="report-header w-full">
+        <h3 class="text-2xl text-menu_gray font-extrabold font-roboto">Sales & Customers</h3>
+      </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-4 mt-4">
-      <div class="w-full report-box cursor-pointer h-full py-8 px-6 bg-pink-700 flex justify-between items-center">
+ 
+      <div
+        class="w-full report-box cursor-pointer h-full py-8 px-6 bg-pink-700 flex justify-between items-center"
+      >
         <div class="flex items-center">
           <div class="rectangle-box flex items-center justify-center">
             <h5 class="font-weight-500 text-white m-0">C1</h5>
@@ -15,7 +21,7 @@
       </div>
 
       <div
-        class="w-full report-box cursor-pointer  h-full py-8 px-6 bg-orange-600 flex justify-between items-center"
+        class="w-full report-box cursor-pointer h-full py-8 px-6 bg-orange-600 flex justify-between items-center"
       >
         <div class="flex items-center">
           <div class="rectangle-box flex items-center justify-center">
@@ -28,7 +34,9 @@
         </div>
         <i class="uil-arrow-growth text-white text-4xl"></i>
       </div>
-      <div class="w-full report-box cursor-pointer  h-full py-8 px-6 bg-blue-600 flex justify-between items-center">
+      <div
+        class="w-full report-box cursor-pointer h-full py-8 px-6 bg-blue-600 flex justify-between items-center"
+      >
         <div class="flex items-center">
           <div class="rectangle-box flex items-center justify-center">
             <h5 class="font-weight-500 text-white m-0">C1</h5>
@@ -41,7 +49,7 @@
         <i class="uil-arrow-growth text-white text-4xl"></i>
       </div>
       <div
-        class="w-full report-box cursor-pointer  h-full py-8 px-6 bg-green-600 flex justify-between items-center"
+        class="w-full report-box cursor-pointer h-full py-8 px-6 bg-green-600 flex justify-between items-center"
       >
         <div class="flex items-center">
           <div class="rectangle-box flex items-center justify-center">
