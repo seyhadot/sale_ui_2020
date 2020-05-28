@@ -155,10 +155,13 @@ small {
   border-color: #868e96;
 }
 
-.form-inline-search > div {
-  position: relative;
-  width: 340px;
-}
+.form-inline-search{
+  width: 100%;
+
+  div {
+    position: relative;
+  }
+} 
 .form-inline-search > div svg {
   position: absolute;
   right: 11px;
@@ -166,6 +169,7 @@ small {
   height: 36px;
   width: 19px;
   top: 4px;
+  z-index: 9;
 }
 .form-inline-search input {
   color: #d3d3d3;

@@ -58,12 +58,12 @@
             </el-col>
             <el-col :span="8">
               <el-form-item label="Number" prop="number">
-                <el-input-number v-model="tableForm.number"></el-input-number>
+                <el-input-number v-model="tableForm.number" :min="1" ></el-input-number>
               </el-form-item>
             </el-col>
             <el-col :span="8">
               <el-form-item label="Chair" prop="chair">
-                <el-input-number v-model="tableForm.chair"></el-input-number>
+                <el-input-number v-model="tableForm.chair" :min="1" ></el-input-number>
               </el-form-item>
             </el-col>
           </el-row>
@@ -108,8 +108,8 @@
         filterTypeVal: '',
         tableForm: {
           name: '',
-          number: 0,
-          chair: 0
+          number: 1,
+          chair: 1
         },
         rules: {
           name: [

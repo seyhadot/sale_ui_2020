@@ -97,13 +97,47 @@
         <div
           class="h-full overflow-scroll overflow-hidden overflow-x-scroll overflow-hidden font-sans"
         >
-          <div class="customer-search">
-            <i class="uil-search"></i>
-            <el-input v-model="search" :placeholder="$t('customer.search')" clearable />
+          <div class="flex mb-4">
+            <form class="form-inline-search">
+              <div class="pl-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-search"
+                  style="top:14px;"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <el-input
+                  type="text"
+                  v-model="search"
+                  :placeholder="$t('customer.search')"
+                />
+              </div>
+            </form>
           </div>
+          <!-- <div class="customer-search">
+            <i class="uil-search"></i>
+            <el-input clearable />
+          </div>-->
           <ul v-for="(value, key) in grouped" :key="value._id">
-            <h2 class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
-            <li v-for="customer in value" :key="customer._id" class="py-3 border-b cursor-pointer" @click="handleClickCustomer(customer)">
+            <h2
+              class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl"
+            >{{ key }}</h2>
+            <li
+              v-for="customer in value"
+              :key="customer._id"
+              class="py-3 border-b cursor-pointer"
+              @click="handleClickCustomer(customer)"
+            >
               <a href="#">
                 <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
                 <span class="text-gray-500">{{customer.tel}}</span>
@@ -299,7 +333,7 @@ export default {
   background-position: 20% 30%;
   border-radius: 6px;
 }
-ul li:last-child{
+ul li:last-child {
   border-bottom: none;
 }
 </style>

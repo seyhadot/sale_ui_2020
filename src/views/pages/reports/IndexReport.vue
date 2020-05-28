@@ -1,10 +1,9 @@
 <template>
   <content-box>
-      <div class="report-header w-full">
-        <h3 class="text-2xl text-menu_gray font-extrabold font-roboto">Sales & Customers</h3>
-      </div>
+    <div class="report-header w-full">
+      <h3 class="text-xl text-bunting font-extrabold font-roboto uppercase">Sales & Customers</h3>
+    </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-4 mt-4">
- 
       <div
         class="w-full report-box cursor-pointer h-full py-8 px-6 bg-pink-700 flex justify-between items-center"
       >

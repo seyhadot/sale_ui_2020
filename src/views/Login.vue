@@ -148,6 +148,11 @@ export default {
                     } else {
                       this.$router.push('/')
                     }
+                    this.isLoading = false
+                    this.$message({
+                      type: 'success',
+                      message: `${body.data}`
+                    })
                   } else {
                     this.isLoading = false
                     this.$message({
