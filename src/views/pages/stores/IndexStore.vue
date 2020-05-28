@@ -1,5 +1,5 @@
 <template>
-  <div class="xs:px-3 sm:px-10 lg:px-32 xl:px-56 mt-6">
+  <div class="xs:px-3 sm:px-10 lg:px-32 xl:px-56 sm:mt-0 lg:mt-6">
     <div class="flex justify-between items-center">
       <div>
         <h1 class="xs:text-2xl sm:text-4xl lg:text-6xl font-bold text-white font-Raleway">{{ $route.meta.title }}</h1>
@@ -9,7 +9,7 @@
         <span class="caret text-white"></span>
       </button>
     </div>
-    <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-10">
+    <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-6 gap-4 sm:mt-5 md:mt-8 xl:mt-10">
       <div :class="setStyleActiveStore(store)" :key="store.id" v-for="store in userStores" class="store bg-bcg ml-0 flex justify-center relative items-center align-middle">
         <div class="absolute top-0 right-0 pr-3 text-menu_profile pt-2 edit_setting">
           <el-button class="p-0 z-10" type="text" @click="handleEdit(store.id)">

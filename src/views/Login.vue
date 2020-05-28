@@ -148,11 +148,6 @@ export default {
                     } else {
                       this.$router.push('/')
                     }
-                    this.isLoading = false
-                    this.$message({
-                      type: 'success',
-                      message: `${body.data}`
-                    })
                   } else {
                     this.isLoading = false
                     this.$message({
@@ -186,6 +181,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+*:focus {
+  outline: none !important;
+}
 .bg_cover {
   background: url('../assets/img/login/salewhat.svg') #272d33 center center no-repeat;
   background-size: 60%;

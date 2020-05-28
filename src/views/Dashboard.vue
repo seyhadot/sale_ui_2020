@@ -1,18 +1,22 @@
 <template>
   <content-box>
     <div class="intro-y flex items-center">
-      <h2 class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase">General Report</h2>
+      <h2
+        class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase"
+      >General Report</h2>
     </div>
-    <div class="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xs:gap-6 sm:gap-10 xl:gap-8 mt-3">
+    <div
+      class="grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-4 xs:gap-6 md:gap-6 sm:gap-10 xl:gap-8 mt-3"
+    >
       <div class="w-full intro-y transition ease-out duration-700">
-        <div class="card bg-primary">
+        <div class="card bg-teal-600">
           <div class="card-body tag-card">
             <div class="progressbar-widgets">
               <div class="media media-widgets">
-                <div class="media-body">
-                  <p class="text-xs capitalize">Active Customers</p>
+                <div class="media-body xs:px-4 xs:py-3 sm:px-2 sm:pt-2 xl:p-5">
+                  <p class="xs:text-xs sm:text-xs capitalize">Active Customers</p>
                   <h3 class="mt-0 mb-0 flex items-center">
-                    <span class="text-3xl font-extrabold">1,014,125</span>
+                    <span class="xs:text-3xl sm:text-2xl lg:text-3xl font-extrabold">1,014,125</span>
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +38,14 @@
                 </div>
               </div>
               <div class="progress sm-progress-bar progress-animate">
-                <div class="progress-gradient-light" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div
+                  class="progress-gradient-light"
+                  role="progressbar"
+                  style="width: 65%;"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
                   <span class="animate-circle"></span>
                 </div>
               </div>
@@ -59,70 +70,16 @@
           </div>
         </div>
       </div>
-      <div class="w-full intro-y transition ease-out duration-700">
-        <div class="card bg-green-600">
-          <div class="card-body tag-card">
-            <div class="progressbar-widgets">
-              <div class="media media-widgets">
-                <div class="media-body">
-                  <p class="text-xs capitalize">Active Customers</p>
-                  <h3 class="mt-0 mb-0 flex items-center">
-                    <span class="text-3xl font-extrabold">1,014,125</span>
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="feather feather-trending-up font-light"
-                      >
-                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                        <polyline points="17 6 23 6 23 12" />
-                      </svg>
-                    </span>
-                  </h3>
-                </div>
-              </div>
-              <div class="progress sm-progress-bar progress-animate">
-                <div class="progress-gradient-light" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
-                  <span class="animate-circle"></span>
-                </div>
-              </div>
-              <span class="tag-content-light tag-light tag-hover-effect">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-trending-up"
-                >
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                  <polyline points="17 6 23 6 23 12" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+     
       <div class="w-full intro-y transition ease-out duration-700">
         <div class="card bg-plum">
           <div class="card-body tag-card">
             <div class="progressbar-widgets">
               <div class="media media-widgets">
-                <div class="media-body">
-                  <p class="text-xs capitalize">Active Customers</p>
+                <div class="media-body xs:px-4 xs:py-3 sm:px-2 sm:pt-2 xl:p-5">
+                  <p class="xs:text-xs sm:text-xs capitalize">Active Customers</p>
                   <h3 class="mt-0 mb-0 flex items-center">
-                    <span class="text-3xl font-extrabold">1,014,125</span>
+                    <span class="xs:text-3xl sm:text-2xl lg:text-3xl font-extrabold">1,014,125</span>
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +101,14 @@
                 </div>
               </div>
               <div class="progress sm-progress-bar progress-animate">
-                <div class="progress-gradient-light" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div
+                  class="progress-gradient-light"
+                  role="progressbar"
+                  style="width: 65%;"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
                   <span class="animate-circle"></span>
                 </div>
               </div>
@@ -169,15 +133,16 @@
           </div>
         </div>
       </div>
+     
       <div class="w-full intro-y transition ease-out duration-700">
         <div class="card bg-orange-600">
           <div class="card-body tag-card">
             <div class="progressbar-widgets">
               <div class="media media-widgets">
-                <div class="media-body">
-                  <p class="text-xs capitalize">Active Customers</p>
+                <div class="media-body xs:px-4 xs:py-3 sm:px-2 sm:pt-2 xl:p-5">
+                  <p class="xs:text-xs sm:text-xs capitalize">Active Customers</p>
                   <h3 class="mt-0 mb-0 flex items-center">
-                    <span class="text-3xl font-extrabold">1,014,125</span>
+                    <span class="xs:text-3xl sm:text-2xl lg:text-3xl font-extrabold">1,014,125</span>
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +164,14 @@
                 </div>
               </div>
               <div class="progress sm-progress-bar progress-animate">
-                <div class="progress-gradient-light" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                <div
+                  class="progress-gradient-light"
+                  role="progressbar"
+                  style="width: 65%;"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
                   <span class="animate-circle"></span>
                 </div>
               </div>
@@ -224,31 +196,119 @@
           </div>
         </div>
       </div>
+     
+      <div class="w-full intro-y transition ease-out duration-700">
+        <div class="card bg-primary">
+          <div class="card-body tag-card">
+            <div class="progressbar-widgets">
+              <div class="media media-widgets">
+                <div class="media-body xs:px-4 xs:py-3 sm:px-2 sm:pt-2 xl:p-5">
+                  <p class="xs:text-xs sm:text-xs capitalize">Active Customers</p>
+                  <h3 class="mt-0 mb-0 flex items-center">
+                    <span class="xs:text-3xl sm:text-2xl lg:text-3xl font-extrabold">1,014,125</span>
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-trending-up font-light"
+                      >
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                        <polyline points="17 6 23 6 23 12" />
+                      </svg>
+                    </span>
+                  </h3>
+                </div>
+              </div>
+              <div class="progress sm-progress-bar progress-animate">
+                <div
+                  class="progress-gradient-light"
+                  role="progressbar"
+                  style="width: 65%;"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <span class="animate-circle"></span>
+                </div>
+              </div>
+              <span class="tag-content-light tag-light tag-hover-effect">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-trending-up"
+                >
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+     
     </div>
 
-    <div class="chart mt-10 -m-4">
-      <div class="lg:flex-row xl:flex mb-4">
-        <div class="xs:w-1/1 lg:w-1/2 m-4">
-          <div class="intro-y block flex justify-between items-center h-10 mb-3 xs:mt-8 xl:mt-0">
-            <h2 class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase">Chart Report</h2>
-            <el-row class="xs:w-8/12 sm:w-8/12 lg:w-5/12 xl:w-5/12">
-              <el-col :span="24">
-                <el-date-picker v-model="value1" type="daterange" range-separator="To" start-placeholder="Start date" end-placeholder="End date"></el-date-picker>
-              </el-col>
-            </el-row>
-          </div>
-          <div class="bg-white">
-            <apexchart width="100%" height="350px" type="area" :options="options" :series="series"></apexchart>
-          </div>
-        </div>
-        <div class="xs:w-1/1 lg:w-1/2 m-4">
-          <div class="intro-y block flex justify-between items-center h-10 mb-3 xs:mt-8 xl:mt-0">
-            <h2 class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase">Bar Report</h2>
-          </div>
-          <div class="bg-white">
-            <apexchart width="100%" height="350px" type="bar" :options="options1" :series="series"></apexchart>
-          </div>
-        </div>
+    <div class="chart sm:mt-0 xl:mt-10">
+      <div class="mb-4">
+        <el-row :gutter="40">
+          <el-col :sm="24" :md="12" :lg="12">
+            <div class="intro-y block flex justify-between items-center h-10 mb-3 xs:mt-8 xl:mt-0">
+              <h2
+                class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase"
+              >Chart Report</h2>
+              <el-row>
+                <el-col :span="24">
+                  <el-date-picker
+                    v-model="value1"
+                    type="daterange"
+                    range-separator="To"
+                    start-placeholder="Start date"
+                    end-placeholder="End date"
+                  ></el-date-picker>
+                </el-col>
+              </el-row>
+            </div>
+            <div class="bg-white">
+              <apexchart
+                width="100%"
+                height="250px"
+                type="area"
+                :options="options"
+                :series="series"
+              ></apexchart>
+            </div>
+          </el-col>
+          <el-col :sm="24" :md="12" :lg="12">
+            <div class="intro-y block flex justify-between items-center h-10 mb-3 xs:mt-8 xl:mt-0">
+              <h2
+                class="text-xl text-bunting font-extrabold font-roboto truncate mr-5 uppercase"
+              >Bar Report</h2>
+            </div>
+            <div class="bg-white">
+              <apexchart
+                width="100%"
+                height="250px"
+                type="bar"
+                :options="options1"
+                :series="series"
+              ></apexchart>
+            </div>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </content-box>

@@ -1,7 +1,7 @@
 <template>
   <el-row class="bg-gray-700 h-full p-10 customer-bg">
     <div v-if="customer">
-      <el-col :span="16">
+      <el-col :sm="24" :lg="16">
         <div class="customer-detail">
           <h1 class="text-5xl text-white font-bold mb-8 flex items-center">{{ customer.name }}</h1>
           <div class="content-detail flex mb-5">
@@ -31,7 +31,7 @@
         </div>
       </el-col>
     </div>
-    <el-col :span="8">
+    <el-col :sm="24" :lg="8" class="xs:hidden sm:hidden md:hidden">
       <div class="flex h-full flex-col justify-between">
         <div class="credit-card bg-blue-400 h-56 rounded-lg mb-10"></div>
         <div class="credit-card bg-gray-700 h-56 rounded-lg"></div>

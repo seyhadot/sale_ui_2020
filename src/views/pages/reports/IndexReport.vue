@@ -4,55 +4,55 @@
       <h3 class="text-xl text-bunting font-extrabold font-roboto uppercase">Sales & Customers</h3>
     </div>
     <div class="grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 gap-4 mt-4">
-      <div class="w-full report-box cursor-pointer h-full py-8 px-6 bg-pink-700 flex justify-between items-center">
+      <div class="w-full report-box cursor-pointer sm:px-3 sm:py-3 lg:px-5 lg:py-5 h-full bg-orange-600 flex justify-center items-center">
         <div class="flex items-center">
           <div class="rectangle-box flex items-center justify-center">
             <h5 class="font-weight-500 text-white m-0">C1</h5>
           </div>
           <div class="ml-3">
             <h3 class="text-white text-sm font-weight-600 capitalize">Sale Summary Report</h3>
-            <p class="text-xs muted-white">sale-summary</p>
+            <p class="text-xs xs:hidden sm:hidden md:hidden xl:block muted-white">sale-summary</p>
           </div>
         </div>
-        <i class="uil-arrow-growth text-white text-4xl"></i>
+        <i class="xs:hidden sm:hidden md:hidden xl:block uil-arrow-growth text-white text-4xl"></i>
+      </div>
+      <div class="w-full report-box cursor-pointer sm:px-3 sm:py-3 lg:px-5 lg:py-5 h-full bg-cerise flex justify-center items-center">
+        <div class="flex items-center">
+          <div class="rectangle-box flex items-center justify-center">
+            <h5 class="font-weight-500 text-white m-0">C1</h5>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-white text-sm font-weight-600 capitalize">Sale Summary Report</h3>
+            <p class="text-xs xs:hidden sm:hidden md:hidden xl:block muted-white">sale-summary</p>
+          </div>
+        </div>
+        <i class="xs:hidden sm:hidden md:hidden xl:block uil-arrow-growth text-white text-4xl"></i>
+      </div>
+      <div class="w-full report-box cursor-pointer sm:px-3 sm:py-3 lg:px-5 lg:py-5 h-full bg-blue-600 flex justify-center items-center">
+        <div class="flex items-center">
+          <div class="rectangle-box flex items-center justify-center">
+            <h5 class="font-weight-500 text-white m-0">C1</h5>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-white text-sm font-weight-600 capitalize">Sale Summary Report</h3>
+            <p class="text-xs xs:hidden sm:hidden  md:hidden xl:block muted-white">sale-summary</p>
+          </div>
+        </div>
+        <i class="xs:hidden sm:hidden md:hidden xl:block uil-arrow-growth text-white text-4xl"></i>
+      </div>
+      <div class="w-full report-box cursor-pointer sm:px-3 sm:py-3 lg:px-5 lg:py-5 h-full bg-plum flex justify-center items-center">
+        <div class="flex items-center">
+          <div class="rectangle-box flex items-center justify-center">
+            <h5 class="font-weight-500 text-white m-0">C1</h5>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-white text-sm font-weight-600 capitalize">Sale Summary Report</h3>
+            <p class="text-xs xs:hidden sm:hidden md:hidden xl:block muted-white">sale-summary</p>
+          </div>
+        </div>
+        <i class="xs:hidden sm:hidden md:hidden xl:block uil-arrow-growth text-white text-4xl"></i>
       </div>
 
-      <div class="w-full report-box cursor-pointer h-full py-8 px-6 bg-orange-600 flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="rectangle-box flex items-center justify-center">
-            <h5 class="font-weight-500 text-white m-0">C1</h5>
-          </div>
-          <div class="ml-3">
-            <h3 class="text-white text-sm font-weight-600 capitalize">sale-summary</h3>
-            <p class="text-xs muted-white">sale-summary</p>
-          </div>
-        </div>
-        <i class="uil-arrow-growth text-white text-4xl"></i>
-      </div>
-      <div class="w-full report-box cursor-pointer h-full py-8 px-6 bg-blue-600 flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="rectangle-box flex items-center justify-center">
-            <h5 class="font-weight-500 text-white m-0">C1</h5>
-          </div>
-          <div class="ml-3">
-            <h3 class="text-white text-sm font-weight-600 capitalize">sale-summary</h3>
-            <p class="text-xs muted-white">sale-summary</p>
-          </div>
-        </div>
-        <i class="uil-arrow-growth text-white text-4xl"></i>
-      </div>
-      <div class="w-full report-box cursor-pointer h-full py-8 px-6 bg-green-600 flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="rectangle-box flex items-center justify-center">
-            <h5 class="font-weight-500 text-white m-0">C1</h5>
-          </div>
-          <div class="ml-3">
-            <h3 class="text-white text-sm font-weight-600 capitalize">sale-summary</h3>
-            <p class="text-xs muted-white">sale-summary</p>
-          </div>
-        </div>
-        <i class="uil-arrow-growth text-white text-4xl"></i>
-      </div>
     </div>
   </content-box>
 </template>

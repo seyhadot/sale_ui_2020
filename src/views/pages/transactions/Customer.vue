@@ -92,7 +92,7 @@
                 </el-pagination>
             </el-row>
     </transition>-->
-    <el-col :span="5">
+    <el-col :sm="8" :md="8" :lg="5">
       <div class="p-0">
         <div class="h-full overflow-scroll overflow-hidden overflow-x-scroll overflow-hidden font-sans">
           <div class="flex mb-4">
@@ -134,7 +134,7 @@
         </div>
       </div>
     </el-col>
-    <el-col :span="19" class="rounded-px6">
+    <el-col :sm="16" :md="16" :lg="19" class="rounded-px6">
       <customer-detail :customer="selectedCustomer"></customer-detail>
     </el-col>
   </el-row>
