@@ -75,7 +75,7 @@
               </el-col>
               <el-col :span="8">
                 <el-form-item :label="$t('product.form.cost')" v-show="isAdmin">
-                  <el-input v-model="addProduct.cost" :placeholder="pricePlaceHolder" controls-position="right" :min="1"></el-input>
+                  <el-input-number v-model="addProduct.cost" controls-position="right"></el-input-number>
                 </el-form-item>
               </el-col>
               <el-col :span="8">
