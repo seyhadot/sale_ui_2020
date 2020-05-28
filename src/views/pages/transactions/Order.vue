@@ -1,5 +1,5 @@
 <template>
-    <el-row>
-        Order
-    </el-row>
+  <el-row>
+    Order
+  </el-row>
 </template>

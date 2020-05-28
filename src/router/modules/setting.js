@@ -18,7 +18,7 @@ const settingRouter = {
       path: 'users/add',
       name: 'add_user',
       meta: {
-        title: 'New User',
+        title: 'New User'
       },
       component: () => import('@/views/pages/settings/users/AddUser.vue')
     },
@@ -32,4 +32,4 @@ const settingRouter = {
     }
   ]
 }
-export default settingRouter;
+export default settingRouter

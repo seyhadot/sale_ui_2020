@@ -22,10 +22,11 @@ const productRouter = {
       component: () => import('@/views/pages/products/AddProduct.vue'),
       name: 'Add Product',
       meta: {
-        title: 'New Product', enName: 'New Product',
+        title: 'New Product',
+        enName: 'New Product',
         khName: 'បង្កើតទំនិញថ្មី'
       }
-    },
+    }
     // {
     //   path: 'add/:id',
     //   component: () => import('../views/pages/stores/AddStore'),
@@ -34,4 +35,4 @@ const productRouter = {
     // }
   ]
 }
-export default productRouter;
+export default productRouter

@@ -39,11 +39,7 @@
 
                   <el-row>
                     <el-form-item :label="$t('category.tableData.status')">
-                      <el-switch
-                        v-model="categoryModel.isUsable"
-                        :active-text="$t('category.tableData.unusable')"
-                        :inactive-text="$t('category.tableData.usable')"
-                      ></el-switch>
+                      <el-switch v-model="categoryModel.isUsable" :active-text="$t('category.tableData.unusable')" :inactive-text="$t('category.tableData.usable')"></el-switch>
                     </el-form-item>
                   </el-row>
                 </div>

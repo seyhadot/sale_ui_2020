@@ -33,7 +33,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/Dashboard.vue'),
         name: 'Dashboard',
-        meta: {icon: "<i class='icon-feather-home'></i>"}
+        meta: { icon: "<i class='icon-feather-home'></i>" }
       },
       {
         path: 'user',
@@ -46,7 +46,7 @@ export const constantRoutes = [
         component: () => import('@/views/Form.vue'),
         name: 'Form',
         meta: { title: 'Form' }
-      },
+      }
     ]
   },
   storeRouter,

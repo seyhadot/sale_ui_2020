@@ -21,62 +21,29 @@
 
               <el-col :xs="24" :sm="12" :lg="8">
                 <el-form-item :label="$t('user.chooseStores')">
-                  <el-select
-                    v-model="editUserForm.stores"
-                    multiple
-                    :placeholder="$t('user.chooseStores')"
-                  >
-                    <el-option
-                      v-for="item in storeOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    ></el-option>
+                  <el-select v-model="editUserForm.stores" multiple :placeholder="$t('user.chooseStores')">
+                    <el-option v-for="item in storeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
               <el-col :xs="24" :sm="12" :lg="8">
                 <el-form-item :label="$t('user.chooseRoles')">
-                  <el-select
-                    v-model="editUserForm.roles"
-                    multiple
-                    :placeholder="$t('user.chooseRoles')"
-                    style="width: 100%;"
-                  >
-                    <el-option
-                      v-for="item in rolesOptions"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    ></el-option>
+                  <el-select v-model="editUserForm.roles" multiple :placeholder="$t('user.chooseRoles')" style="width: 100%;">
+                    <el-option v-for="item in rolesOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
             </el-row>
             <el-row>
-              <el-switch
-                v-model="editUserForm.profile.approved"
-                :active-text="$t('user.approved')"
-                inactive-text
-              ></el-switch>
+              <el-switch v-model="editUserForm.profile.approved" :active-text="$t('user.approved')" inactive-text></el-switch>
             </el-row>
           </div>
         </el-form>
 
-        <div
-          class="action flex justify-between"
-        >
+        <div class="action flex justify-between">
           <div class="">
-            <el-button
-              type="warning"
-              @click="handleSubmit"
-              :loading="isLoading"
-            > <i class="uil-check-circle mr-2"></i> {{ $t('user.edit') }}</el-button>
-            <el-button
-              type="success"
-              @click="dialogFormVisible = true"
-              :loading="isLoading"
-            ><i class="uil-keyhole-circle mr-2"></i> {{ $t('user.changePassword') }}</el-button>
+            <el-button type="warning" @click="handleSubmit" :loading="isLoading"> <i class="uil-check-circle mr-2"></i> {{ $t('user.edit') }}</el-button>
+            <el-button type="success" @click="dialogFormVisible = true" :loading="isLoading"><i class="uil-keyhole-circle mr-2"></i> {{ $t('user.changePassword') }}</el-button>
           </div>
           <btn-cancel></btn-cancel>
         </div>
@@ -90,20 +57,12 @@
             <el-row>
               <el-col :span="24">
                 <el-form-item :label="$t('user.password')" prop="password">
-                  <el-input
-                    type="password"
-                    v-model="changePasswordForm.password"
-                    autocomplete="off"
-                  ></el-input>
+                  <el-input type="password" v-model="changePasswordForm.password" autocomplete="off"></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="24">
                 <el-form-item :label="$t('user.changePassword')" prop="confirmPassword">
-                  <el-input
-                    type="password"
-                    v-model="changePasswordForm.confirmPassword"
-                    autocomplete="off"
-                  ></el-input>
+                  <el-input type="password" v-model="changePasswordForm.confirmPassword" autocomplete="off"></el-input>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -240,12 +199,12 @@ export default {
       this.$refs['editUser'].validate((valid) => {
         if (valid) {
           this.isLoading = true
-          let { modules } = this.editUserForm;
+          let { modules } = this.editUserForm
           if (!modules || modules.length === 0) {
-            if(!modules) {
-              modules = [this.$store.state.defaultModule];
+            if (!modules) {
+              modules = [this.$store.state.defaultModule]
             } else {
-              modules.push(this.$store.state.defaultModule);
+              modules.push(this.$store.state.defaultModule)
             }
           }
           axios

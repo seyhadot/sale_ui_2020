@@ -21,30 +21,14 @@
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <input
-                  type="text"
-                  class="form-control product-search"
-                  id="input-search"
-                  placeholder="Search ..."
-                  v-model="search"
-                />
+                <input type="text" class="form-control product-search" id="input-search" placeholder="Search ..." v-model="search" />
               </div>
             </form>
             <el-select v-model="filterTypeVal" clearable class="dropdown-caret" placeholder="All">
-              <el-option
-                v-for="item in filterTypeOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
+              <el-option v-for="item in filterTypeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
           </div>
-          <el-button
-            icon="uil-plus"
-            type="primary"
-            @click="handleCreateNew"
-            class="btn-new-product"
-          ></el-button>
+          <el-button icon="uil-plus" type="primary" @click="handleCreateNew" class="btn-new-product"></el-button>
         </div>
       </el-col>
     </el-row>
@@ -62,12 +46,7 @@
             <el-col :span="24">
               <el-form-item label="Type" prop="type">
                 <el-select v-model="ProductOptionsForm.type" placeholder="Select options">
-                  <el-option
-                    v-for="item in typeOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  ></el-option>
+                  <el-option v-for="item in typeOptions" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
               </el-form-item>
             </el-col>
@@ -88,161 +67,115 @@
     </el-row>
     <el-row>
       <div>
-        <item
-          @item-action="handleItemAction"
-          v-for="item of filteredProductOptionsArr"
-          :key="item.id"
-          :item="item"
-        />
+        <item @item-action="handleItemAction" v-for="item of filteredProductOptionsArr" :key="item.id" :item="item" />
       </div>
     </el-row>
   </div>
 </template>
 
-
 <script>
-  import { provider } from '@/service/provider'
-  import axios from 'axios'
-  import item from './ProductOptionsItem'
-  import virtualList from 'vue-virtual-scroll-list'
+import { provider } from '@/service/provider'
+import axios from 'axios'
+import item from './ProductOptionsItem'
+import virtualList from 'vue-virtual-scroll-list'
 
-  export default {
-    components: {
-      item },
-    data() {
-      return {
-        search: '',
-        dialogVisible: false,
-        id: null,
-        ProductOptionsArr: [],
-        filteredProductOptionsArr: [],
-        filterTypeVal: '',
-        typeOptions: [
-          {
-            label: 'Flavor',
-            value: 'flavor'
-          },
-          {
-            label: 'Color',
-            value: 'color'
-          },
-          {
-            label: 'Shape',
-            value: 'shape'
-          },
-          {
-            label: 'Unit',
-            value: 'unit'
-          }
-
-        ],
-        ProductOptionsForm: {
-          label: '',
-          type: '',
-          modifiedBy: ''
+export default {
+  components: {
+    item
+  },
+  data() {
+    return {
+      search: '',
+      dialogVisible: false,
+      id: null,
+      ProductOptionsArr: [],
+      filteredProductOptionsArr: [],
+      filterTypeVal: '',
+      typeOptions: [
+        {
+          label: 'Flavor',
+          value: 'flavor'
         },
-        rules: {
-          label: [
-            { required: true, message: 'Required', trigger: 'blur' }
-          ],
-          type: [
-            { required: true, message: 'Required', trigger: 'blur' }
-          ]
+        {
+          label: 'Color',
+          value: 'color'
+        },
+        {
+          label: 'Shape',
+          value: 'shape'
+        },
+        {
+          label: 'Unit',
+          value: 'unit'
         }
-      }
-    },
-    computed: {
-      filterTypeOptions() {
-        const c = this.typeOptions.map(o => o)
-        c.unshift({ label: 'All', value: '' })
-        return c
-      }
-    },
-    watch: {
-      filterTypeVal(val) {
-        this.handleFilerProductOptionsArray(val)
-
+      ],
+      ProductOptionsForm: {
+        label: '',
+        type: '',
+        modifiedBy: ''
       },
-      search(val) {
-        this.handleFilerProductOptionsArray(this.filterTypeVal)
+      rules: {
+        label: [{ required: true, message: 'Required', trigger: 'blur' }],
+        type: [{ required: true, message: 'Required', trigger: 'blur' }]
+      }
+    }
+  },
+  computed: {
+    filterTypeOptions() {
+      const c = this.typeOptions.map((o) => o)
+      c.unshift({ label: 'All', value: '' })
+      return c
+    }
+  },
+  watch: {
+    filterTypeVal(val) {
+      this.handleFilerProductOptionsArray(val)
+    },
+    search(val) {
+      this.handleFilerProductOptionsArray(this.filterTypeVal)
+    }
+  },
+  methods: {
+    handleCreateNew() {
+      this.dialogVisible = true
+      this.id = ''
+      for (let k in this.ProductOptionsForm) {
+        this.ProductOptionsForm[k] = ''
       }
     },
-    methods: {
-      handleCreateNew() {
-        this.dialogVisible = true
-        this.id = ''
+    handleItemAction(item) {
+      if (item.action === 'edit') {
+        this.id = item.item._id
         for (let k in this.ProductOptionsForm) {
-          this.ProductOptionsForm[k] = ''
+          this.ProductOptionsForm[k] = item.item[k]
         }
-      },
-      handleItemAction(item) {
-        if (item.action === 'edit') {
-          this.id = item.item._id
-          for (let k in this.ProductOptionsForm) {
-            this.ProductOptionsForm[k] = item.item[k]
-          }
-          this.dialogVisible = true
-        } else {
-          this.handleRemoveItem(item.item)
-        }
-      },
-      handleRemoveItem(item) {
-        const { token, user } = this.$store.state.user
-        const removeUrl = `${provider.baseURL}${provider.prefix}/product-options/${item._id}/remove`
-        this.$alert(`Remove ${item.label}?`, 'Confirm', {
-          confirmButtonText: 'OK',
-          callback: action => {
-            if (action === 'confirm') {
-              axios.post(removeUrl, {
-                userId: user._id
-              }, {
-                headers: {
-                  token
-                }
-              })
-                .then((res) => {
-                  if (res.data.code === 201) {
-                    this.$message.success(`Removed ${item.label} `)
-                    this.fetchProductOptions()
-                  } else {
-                    this.$message.error(res.data.message)
+        this.dialogVisible = true
+      } else {
+        this.handleRemoveItem(item.item)
+      }
+    },
+    handleRemoveItem(item) {
+      const { token, user } = this.$store.state.user
+      const removeUrl = `${provider.baseURL}${provider.prefix}/product-options/${item._id}/remove`
+      this.$alert(`Remove ${item.label}?`, 'Confirm', {
+        confirmButtonText: 'OK',
+        callback: (action) => {
+          if (action === 'confirm') {
+            axios
+              .post(
+                removeUrl,
+                {
+                  userId: user._id
+                },
+                {
+                  headers: {
+                    token
                   }
-                })
-                .catch((err) => this.$message.error(err.message))
-            }
-          }
-        })
-      },
-      handleFilerProductOptionsArray(val) {
-        if (!!val) {
-          this.filteredProductOptionsArr = this.ProductOptionsArr.filter(o => o.type === val)
-            .filter(o => o.label.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
-        } else {
-          this.filteredProductOptionsArr = this.ProductOptionsArr.filter(o => o.label.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
-        }
-      },
-
-      handleSave() {
-        const { token, user } = this.$store.state.user
-        const url = !this.id ? `${provider.baseURL}${provider.prefix}/product-options/add` : `${provider.baseURL}${provider.prefix}/product-options/${this.id}/edit`
-        this.$refs['product-options-form'].validate(valid => {
-          if (valid) {
-            this.ProductOptionsForm.modifiedBy = user._id
-            axios.post(url, this.ProductOptionsForm, {
-              headers: {
-                token
-              }
-            })
+                }
+              )
               .then((res) => {
                 if (res.data.code === 201) {
-                  if (!!this.id) {
-                    this.$message.success('updated')
-                    this.dialogVisible = false
-                  } else {
-                    this.$message.success('added')
-                    this.ProductOptionsForm.label = ''
-                  }
-
+                  this.$message.success(`Removed ${item.label} `)
                   this.fetchProductOptions()
                 } else {
                   this.$message.error(res.data.message)
@@ -250,29 +183,70 @@
               })
               .catch((err) => this.$message.error(err.message))
           }
-        })
-      },
-      fetchProductOptions() {
-        const { token } = this.$store.state.user
-        const url = `${provider.baseURL}${provider.prefix}/product-options`
-        axios.get(url, {
+        }
+      })
+    },
+    handleFilerProductOptionsArray(val) {
+      if (val) {
+        this.filteredProductOptionsArr = this.ProductOptionsArr.filter((o) => o.type === val).filter((o) => o.label.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
+      } else {
+        this.filteredProductOptionsArr = this.ProductOptionsArr.filter((o) => o.label.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
+      }
+    },
+
+    handleSave() {
+      const { token, user } = this.$store.state.user
+      const url = !this.id ? `${provider.baseURL}${provider.prefix}/product-options/add` : `${provider.baseURL}${provider.prefix}/product-options/${this.id}/edit`
+      this.$refs['product-options-form'].validate((valid) => {
+        if (valid) {
+          this.ProductOptionsForm.modifiedBy = user._id
+          axios
+            .post(url, this.ProductOptionsForm, {
+              headers: {
+                token
+              }
+            })
+            .then((res) => {
+              if (res.data.code === 201) {
+                if (this.id) {
+                  this.$message.success('updated')
+                  this.dialogVisible = false
+                } else {
+                  this.$message.success('added')
+                  this.ProductOptionsForm.label = ''
+                }
+
+                this.fetchProductOptions()
+              } else {
+                this.$message.error(res.data.message)
+              }
+            })
+            .catch((err) => this.$message.error(err.message))
+        }
+      })
+    },
+    fetchProductOptions() {
+      const { token } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/product-options`
+      axios
+        .get(url, {
           headers: {
             token
           }
-        }).then((res) => {
+        })
+        .then((res) => {
           if (res.data.code === 201) {
             this.ProductOptionsArr = res.data.data
             this.handleFilerProductOptionsArray(this.filterTypeVal)
           } else {
-            this.$message.error(res.data.message
-            )
+            this.$message.error(res.data.message)
           }
         })
-          .catch((err) => this.$message.error(err.message))
-      }
-    },
-    created() {
-      this.fetchProductOptions()
+        .catch((err) => this.$message.error(err.message))
     }
+  },
+  created() {
+    this.fetchProductOptions()
   }
+}
 </script>

@@ -15,15 +15,14 @@ const reportRouter = {
       component: () => import('@/views/pages/transactions/IndexTransaction.vue')
     },
     {
-      path: "/customers/add",
-      name: "Add Customer",
+      path: '/customers/add',
+      name: 'Add Customer',
       meta: {
-        enName: "Add Customer",
-        khName: "បង្កើតអតិថិជនថ្មី"
+        enName: 'Add Customer',
+        khName: 'បង្កើតអតិថិជនថ្មី'
       },
-      component: () =>
-        import("@/views/pages/transactions/AddCustomer.vue")
-    },
+      component: () => import('@/views/pages/transactions/AddCustomer.vue')
+    }
   ]
 }
-export default reportRouter;
+export default reportRouter

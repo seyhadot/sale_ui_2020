@@ -21,22 +21,11 @@
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <input
-                  type="text"
-                  class="form-control product-search"
-                  id="input-search"
-                  placeholder="Search ..."
-                  v-model="search"
-                />
+                <input type="text" class="form-control product-search" id="input-search" placeholder="Search ..." v-model="search" />
               </div>
             </form>
           </div>
-          <el-button
-            icon="uil-plus"
-            type="primary"
-            @click="handleCreateNew"
-            class="btn-new-product"
-          ></el-button>
+          <el-button icon="uil-plus" type="primary" @click="handleCreateNew" class="btn-new-product"></el-button>
         </div>
       </el-col>
     </el-row>
@@ -58,12 +47,12 @@
             </el-col>
             <el-col :span="8">
               <el-form-item label="Number" prop="number">
-                <el-input-number v-model="tableForm.number" :min="1" ></el-input-number>
+                <el-input-number v-model="tableForm.number" :min="1"></el-input-number>
               </el-form-item>
             </el-col>
             <el-col :span="8">
               <el-form-item label="Chair" prop="chair">
-                <el-input-number v-model="tableForm.chair" :min="1" ></el-input-number>
+                <el-input-number v-model="tableForm.chair" :min="1"></el-input-number>
               </el-form-item>
             </el-col>
           </el-row>
@@ -77,141 +66,87 @@
     </el-row>
     <el-row>
       <div>
-        <item
-          @table-item-action="handleItemAction"
-          v-for="item of filteredTableArr"
-          :key="item.id"
-          :item="item"
-        />
+        <item @table-item-action="handleItemAction" v-for="item of filteredTableArr" :key="item.id" :item="item" />
       </div>
     </el-row>
   </div>
 </template>
 
-
 <script>
-  import { provider } from '@/service/provider'
-  import axios from 'axios'
-  import item from './TableDetailItem'
+import { provider } from '@/service/provider'
+import axios from 'axios'
+import item from './TableDetailItem'
 
-  export default {
-    components: {
-      item
-    },
-    data() {
-      return {
-        search: '',
-        dialogVisible: false,
-        id: null,
-        TableArr: [],
-        filteredTableArr: [],
-        filterTypeVal: '',
-        tableForm: {
-          name: '',
-          number: 1,
-          chair: 1
-        },
-        rules: {
-          name: [
-            { required: true, message: 'Required', trigger: 'blur' }
-          ],
-          chair: [
-            { required: true, message: 'Required', trigger: 'blur' }
-          ],
-          number: [
-            { required: true, message: 'Required', trigger: 'blur' }
-          ]
-        }
+export default {
+  components: {
+    item
+  },
+  data() {
+    return {
+      search: '',
+      dialogVisible: false,
+      id: null,
+      TableArr: [],
+      filteredTableArr: [],
+      filterTypeVal: '',
+      tableForm: {
+        name: '',
+        number: 1,
+        chair: 1
+      },
+      rules: {
+        name: [{ required: true, message: 'Required', trigger: 'blur' }],
+        chair: [{ required: true, message: 'Required', trigger: 'blur' }],
+        number: [{ required: true, message: 'Required', trigger: 'blur' }]
+      }
+    }
+  },
+  watch: {
+    search(val) {
+      this.handleFilerTableArray()
+    }
+  },
+  methods: {
+    handleCreateNew() {
+      this.dialogVisible = true
+      this.id = ''
+      for (let k in this.tableForm) {
+        this.tableForm[k] = ''
       }
     },
-    watch: {
-
-      search(val) {
-        this.handleFilerTableArray()
-      }
-    },
-    methods: {
-
-      handleCreateNew() {
-        this.dialogVisible = true
-        this.id = ''
+    handleItemAction(item) {
+      if (item.action === 'edit') {
+        this.id = item.item._id
         for (let k in this.tableForm) {
-          this.tableForm[k] = ''
+          this.tableForm[k] = item.item[k]
         }
-      },
-      handleItemAction(item) {
-        if (item.action === 'edit') {
-          this.id = item.item._id
-          for (let k in this.tableForm) {
-            this.tableForm[k] = item.item[k]
-          }
-          this.dialogVisible = true
-        } else {
-          this.handleRemoveItem(item.item)
-        }
-      },
-      handleRemoveItem(item) {
-        const { token, user } = this.$store.state.user
-        const removeUrl = `${provider.baseURL}${provider.prefix}/table/${item._id}/remove`
-        this.$alert(`Remove ${item.name}?`, 'Confirm', {
-          confirmButtonText: 'OK',
-          callback: action => {
-            if (action === 'confirm') {
-              axios.post(removeUrl, {
-                userId: user._id
-              }, {
-                headers: {
-                  token
-                }
-              })
-                .then((res) => {
-                  if (res.data.code === 201) {
-                    this.$message.success(`Removed ${item.name} `)
-                    this.fetchTable()
-                  } else {
-                    this.$message.error(res.data.message)
+        this.dialogVisible = true
+      } else {
+        this.handleRemoveItem(item.item)
+      }
+    },
+    handleRemoveItem(item) {
+      const { token, user } = this.$store.state.user
+      const removeUrl = `${provider.baseURL}${provider.prefix}/table/${item._id}/remove`
+      this.$alert(`Remove ${item.name}?`, 'Confirm', {
+        confirmButtonText: 'OK',
+        callback: (action) => {
+          if (action === 'confirm') {
+            axios
+              .post(
+                removeUrl,
+                {
+                  userId: user._id
+                },
+                {
+                  headers: {
+                    token
                   }
-                })
-                .catch((err) => this.$message.error(err.message))
-            }
-          }
-        })
-      },
-      handleFilerTableArray() {
-        this.filteredTableArr = this.TableArr.filter(o => o.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
-
-      },
-
-      handleSave() {
-        const { token, user, activeStore } = this.$store.state.user
-        const url = `${provider.baseURL}${provider.prefix}/table/upsert`
-        this.tableForm.createdBy = user._id
-        this.tableForm.storeId = activeStore
-        if (this.id) {
-          this.tableForm._id = this.id;
-        }
-        this.$refs['product-options-form'].validate(valid => {
-          if (valid) {
-            this.tableForm.modifiedBy = user._id
-            axios.post(url, this.tableForm, {
-              headers: {
-                token
-              }
-            })
+                }
+              )
               .then((res) => {
                 if (res.data.code === 201) {
-                  if (!!this.id) {
-                    this.$message.success('updated')
-                    this.dialogVisible = false
-                  } else {
-                    this.$message.success('added')
-                    this.tableForm = {
-                      name: '',
-                      number: 0,
-                      chair: 0
-                    }
-                  }
-
+                  this.$message.success(`Removed ${item.name} `)
                   this.fetchTable()
                 } else {
                   this.$message.error(res.data.message)
@@ -219,31 +154,76 @@
               })
               .catch((err) => this.$message.error(err.message))
           }
-        })
-      },
-      fetchTable() {
-        const { token, activeStore, user } = this.$store.state.user
-        const url = `${provider.baseURL}${provider.prefix}/table/all?store_id=${activeStore}`
+        }
+      })
+    },
+    handleFilerTableArray() {
+      this.filteredTableArr = this.TableArr.filter((o) => o.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1)
+    },
 
+    handleSave() {
+      const { token, user, activeStore } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/table/upsert`
+      this.tableForm.createdBy = user._id
+      this.tableForm.storeId = activeStore
+      if (this.id) {
+        this.tableForm._id = this.id
+      }
+      this.$refs['product-options-form'].validate((valid) => {
+        if (valid) {
+          this.tableForm.modifiedBy = user._id
+          axios
+            .post(url, this.tableForm, {
+              headers: {
+                token
+              }
+            })
+            .then((res) => {
+              if (res.data.code === 201) {
+                if (this.id) {
+                  this.$message.success('updated')
+                  this.dialogVisible = false
+                } else {
+                  this.$message.success('added')
+                  this.tableForm = {
+                    name: '',
+                    number: 0,
+                    chair: 0
+                  }
+                }
 
-        axios.get(url, {
+                this.fetchTable()
+              } else {
+                this.$message.error(res.data.message)
+              }
+            })
+            .catch((err) => this.$message.error(err.message))
+        }
+      })
+    },
+    fetchTable() {
+      const { token, activeStore, user } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/table/all?store_id=${activeStore}`
+
+      axios
+        .get(url, {
           headers: {
             token
           }
-        }).then((res) => {
+        })
+        .then((res) => {
           if (res.data.code === 201) {
             this.TableArr = res.data.data
             this.handleFilerTableArray(this.filterTypeVal)
           } else {
-            this.$message.error(res.data.message
-            )
+            this.$message.error(res.data.message)
           }
         })
-          .catch((err) => this.$message.error(err.message))
-      }
-    },
-    created() {
-      this.fetchTable()
+        .catch((err) => this.$message.error(err.message))
     }
+  },
+  created() {
+    this.fetchTable()
   }
+}
 </script>

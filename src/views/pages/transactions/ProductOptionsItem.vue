@@ -1,17 +1,17 @@
 <template>
   <div class="item" v-bind:style="itemStyle">
     <div class="card">
-      <div class="card-avatar" style="background: purple">
-        <span>{{item.type.toUpperCase()}}</span>
+      <div class="card-avatar" style="background: purple;">
+        <span>{{ item.type.toUpperCase() }}</span>
       </div>
-      <div class="card-info" @click="handleClickCard(item)" style="cursor: pointer;">{{item.label}}</div>
+      <div class="card-info" @click="handleClickCard(item)" style="cursor: pointer;">{{ item.label }}</div>
       <div class="card-height">
         <el-button
           type="warning"
           size="mini"
           icon="el-icon-delete"
           class="hover:bg-white bg-red-600 text-white hover:text-red-700 hover:border-red-700 border-red-700 is-circle"
-          style="padding:12px;"
+          style="padding: 12px;"
           @click="handleClickRemove(item)"
           circle
         ></el-button>
@@ -21,37 +21,36 @@
 </template>
 
 <script>
-
-    export default {
-        name: 'item',
-        props: {
-            item: {
-                type: Object
-            },
-        },
-        computed: {
-            itemStyle () {
-                return {
-                    'height': `80px`,
-                    'line-height': `2px`,
-                }
-            }
-        },
-        methods: {
-            handleClickCard(item) {
-               this.$emit('item-action', {
-                   action: 'edit',
-                   item
-               })
-            },
-            handleClickRemove(item) {
-                this.$emit('item-action', {
-                    action: 'remove',
-                    item
-                })
-            }
-        }
+export default {
+  name: 'item',
+  props: {
+    item: {
+      type: Object
     }
+  },
+  computed: {
+    itemStyle() {
+      return {
+        height: `80px`,
+        'line-height': `2px`
+      }
+    }
+  },
+  methods: {
+    handleClickCard(item) {
+      this.$emit('item-action', {
+        action: 'edit',
+        item
+      })
+    },
+    handleClickRemove(item) {
+      this.$emit('item-action', {
+        action: 'remove',
+        item
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -24,9 +24,7 @@ export default {
       this.isLoading = false
     }, 1300)
   },
-    components: {
-     
-    },
+  components: {}
 }
 </script>
 

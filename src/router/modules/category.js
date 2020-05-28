@@ -20,7 +20,7 @@ const categoryRouter = {
       component: () => import('@/views/pages/categories/AddCategory.vue'),
       name: 'Add Category',
       meta: { title: 'New Category' }
-    },
+    }
     // {
     //   path: 'add/:id',
     //   component: () => import('../views/pages/stores/AddStore'),
@@ -29,4 +29,4 @@ const categoryRouter = {
     // }
   ]
 }
-export default categoryRouter;
+export default categoryRouter

@@ -55,10 +55,10 @@ export const appLocale = {
       options: 'Options',
       search: 'Search Products...',
       form: {
-        cost: "Cost",
+        cost: 'Cost',
         wholeSalePrice: 'Whole Sale Price',
         barcode: 'Barcode',
-        isAddOn: "Can be add on",
+        isAddOn: 'Can be add on',
         qtyOnHand: 'QTY ON HAND',
         name: 'Product Name',
         photo: 'Photos',
@@ -188,7 +188,7 @@ export const appLocale = {
       options: 'ជម្រើស',
       search: 'ស្វែងរកទំនិញ...',
       form: {
-        wholeSalePrice: "តម្លៃលក់ដុំ",
+        wholeSalePrice: 'តម្លៃលក់ដុំ',
         cost: 'តម្លៃដើម',
         barcode: 'បារកូដ',
         isAddOn: 'ជាប្រភេទទំនិញបន្ថែម',

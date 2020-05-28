@@ -3,7 +3,7 @@
     <div v-if="customer">
       <el-col :span="16">
         <div class="customer-detail">
-          <h1 class="text-5xl text-white font-bold mb-8 flex items-center">{{customer.name}}</h1>
+          <h1 class="text-5xl text-white font-bold mb-8 flex items-center">{{ customer.name }}</h1>
           <div class="content-detail flex mb-5">
             <i class="uil-calling text-white text-4xl"></i>
             <div class="text-base text-white font-bold ml-3">
@@ -13,9 +13,7 @@
           </div>
           <div class="content-detail flex mb-5">
             <i class="uil-mailbox text-white text-4xl"></i>
-            <div
-              class="text-base w-64 text-white font-bold ml-3 flex items-center"
-            >terminal@gmail.com</div>
+            <div class="text-base w-64 text-white font-bold ml-3 flex items-center">terminal@gmail.com</div>
           </div>
           <div class="content-detail flex mb-5">
             <i class="uil-atm-card text-white text-4xl"></i>
@@ -43,12 +41,12 @@
 </template>
 
 <script>
-  export default {
-    props: {
+export default {
+  props: {
     customer: {
-        type: Object,
-        defautValue: null
+      type: Object,
+      defautValue: null
     }
   }
-  }
+}
 </script>

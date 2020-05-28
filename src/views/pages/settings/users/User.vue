@@ -2,35 +2,26 @@
   <el-col :span="24" v-loading="isLoading">
     <el-row>
       <div class="action mb-5 flex justify-between">
-        <el-button
-          icon="el-icon-plus"
-          type="warning"
-          @click="handleGotoCreateUser"
-        >{{ $t('user.add') }}</el-button>
+        <el-button icon="el-icon-plus" type="warning" @click="handleGotoCreateUser">{{ $t('user.add') }}</el-button>
         <el-col :span="8">
           <el-input v-model="search" size="large" class="search" :placeholder="$t('user.tableData.search')" clearable />
         </el-col>
       </div>
     </el-row>
     <el-row>
-      <el-table
-        :data="tableData.filter((data) => !search || data.username.toLowerCase().includes(search.toLowerCase()))"
-        @row-click="handleClick"
-      >
+      <el-table :data="tableData.filter((data) => !search || data.username.toLowerCase().includes(search.toLowerCase()))" @row-click="handleClick">
         <el-table-column :label="$t('user.tableData.accountName')" prop="username"></el-table-column>
         <el-table-column :label="$t('user.tableData.createdAt')">
           <template slot-scope="scope">{{ scope.row.createdAt | moment('DD/MM/YYYY HH:mm') }}</template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.status')">
-          <template
-            slot-scope="scope"
-          >{{ scope.row.profile.approved ? 'បានអនុញ្ញាត' : 'មិនទាន់បានអនុញ្ញាត' }}</template>
+          <template slot-scope="scope">{{ scope.row.profile.approved ? 'បានអនុញ្ញាត' : 'មិនទាន់បានអនុញ្ញាត' }}</template>
         </el-table-column>
         <el-table-column :label="$t('user.tableData.roles')">
           <template slot-scope="scope">
             <span :key="role" v-for="role in scope.row.roles">
               <el-tag type="warning" class="mr-2">
-                {{role}}
+                {{ role }}
               </el-tag>
             </span>
           </template>
@@ -38,7 +29,7 @@
         <el-table-column :label="$t('user.tableData.stores')">
           <template slot-scope="scope">
             <el-tag :key="store._id" v-for="store in scope.row.stores">
-              {{store.name}}
+              {{ store.name }}
             </el-tag>
           </template>
         </el-table-column>

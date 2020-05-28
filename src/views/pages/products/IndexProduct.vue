@@ -21,42 +21,17 @@
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <input
-                  type="text"
-                  class="form-control product-search"
-                  id="input-search"
-                  placeholder="Search ..."
-                />
+                <input type="text" class="form-control product-search" id="input-search" placeholder="Search ..." />
               </div>
             </form>
           </el-col>
 
           <div>
-            <el-button
-              type="primary"
-              @click="handleCreateProduct"
-              icon="uil-web-grid text-xl"
-              class="btn-category"
-            ></el-button>
-            <el-button
-              type="primary"
-              @click="handleCreateProduct"
-              icon="icon-feather-archive text-xl"
-              class="btn-product-option"
-            ></el-button>
-            <el-button
-              type="primary"
-              @click="handleCreateProduct"
-              icon="uil-print text-2xl"
-              class="btn-new-print"
-            ></el-button>
+            <el-button type="primary" @click="handleCreateProduct" icon="uil-web-grid text-xl" class="btn-category"></el-button>
+            <el-button type="primary" @click="handleCreateProduct" icon="icon-feather-archive text-xl" class="btn-product-option"></el-button>
+            <el-button type="primary" @click="handleCreateProduct" icon="uil-print text-2xl" class="btn-new-print"></el-button>
           </div>
-          <el-button
-            type="primary"
-            @click="handleCreateProduct"
-            icon="icon-feather-plus text-xl"
-            class="btn-new-product"
-          ></el-button>
+          <el-button type="primary" @click="handleCreateProduct" icon="icon-feather-plus text-xl" class="btn-new-product"></el-button>
         </div>
       </div>
 
@@ -90,12 +65,7 @@
               <a href="#">Active</a>
             </th>
             <th style="width: 24px;" class="pl-0">
-              <el-button
-                type
-                icon="el-icon-delete"
-                class="bg-red-600 text-white hover:text-red-700 hover:border-red-700"
-                circle
-              ></el-button>
+              <el-button type icon="el-icon-delete" class="bg-red-600 text-white hover:text-red-700 hover:border-red-700" circle></el-button>
             </th>
           </tr>
         </thead>
@@ -114,11 +84,7 @@
                     <img :src="displayFacebookImageUrl(o.imageUrl)" class="avatar-img rounded-md" />
                   </slot>
                   <slot v-else>
-                    <img
-                      :src="getImageUrl(o.imageUrl)"
-                      class="avatar-img rounded-md"
-                      style="height: 48px; width: 48px;"
-                    />
+                    <img :src="getImageUrl(o.imageUrl)" class="avatar-img rounded-md" style="height: 48px; width: 48px;" />
                   </slot>
                 </div>
                 <div>
@@ -160,24 +126,12 @@
           </tr>
         </tbody>
       </table>
-      <el-drawer
-        :before-close="handleClose"
-        size="60%"
-        :direction="direction"
-        custom-class="demo-drawer"
-        ref="drawer"
-        title="Edit Product"
-        :visible.sync="drawer"
-      >
+      <el-drawer :before-close="handleClose" size="60%" :direction="direction" custom-class="demo-drawer" ref="drawer" title="Edit Product" :visible.sync="drawer">
         <div class="demo-drawer__content">
           <el-form :model="form">
             <el-row class="flex mt-3 flex-col h-full px-10" :gutter="40">
               <!-- Edit by kevin-->
-              <edit-product
-                :fn-fetch-product="fetchProduct"
-                :product="currentSelectedProduct"
-                :title="title"
-              ></edit-product>
+              <edit-product :fn-fetch-product="fetchProduct" :product="currentSelectedProduct" :title="title"></edit-product>
             </el-row>
           </el-form>
           <!-- <div class="demo-drawer__footer px-10 action action_draw pb-5">
@@ -200,7 +154,7 @@ import axios from 'axios'
 import { provider } from '@/service/provider'
 import _ from 'lodash'
 import ContentBox from '@/components/ContentBoxNoBorder.vue'
-import EditProduct from './EditProduct';
+import EditProduct from './EditProduct'
 export default {
   data() {
     return {
@@ -219,12 +173,12 @@ export default {
       company: null,
       drawer: false,
       direction: 'rtl',
-      currentSelectedProduct: null,
+      currentSelectedProduct: null
     }
   },
   components: {
     EditProduct,
-    ContentBox,
+    ContentBox
   },
   watch: {
     query: _.debounce(function (val) {
@@ -239,12 +193,12 @@ export default {
   },
   methods: {
     handleEdit(product) {
-        this.title = "Edit " + product.name;
-        this.currentSelectedProduct = product;
-        this.drawer  = true;
+      this.title = 'Edit ' + product.name
+      this.currentSelectedProduct = product
+      this.drawer = true
     },
     handleClose(done) {
-      done();
+      done()
     },
     displayFacebookImageUrl(images) {
       if (images.length > 0) {
@@ -272,7 +226,7 @@ export default {
         })
         .then((res) => {
           if (res.data.code === 201) {
-            this.drawer = false;
+            this.drawer = false
             this.products = res.data.data
           }
         })
@@ -333,13 +287,12 @@ export default {
         })
         window.open(url.href, '_blank')
       }
-    },
-
+    }
   },
   computed: {
     storeObj() {
-      const {activeStore, stores} = this.$store.state.user;
-      return stores.find(o => o._id === activeStore);
+      const { activeStore, stores } = this.$store.state.user
+      return stores.find((o) => o._id === activeStore)
     }
   },
   created() {

@@ -1,5 +1,5 @@
 <template>
-    <el-row>
-        Overview
-    </el-row>
+  <el-row>
+    Overview
+  </el-row>
 </template>

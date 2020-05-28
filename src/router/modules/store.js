@@ -28,4 +28,4 @@ const storeRouter = {
   ]
 }
 
-export default storeRouter;
+export default storeRouter

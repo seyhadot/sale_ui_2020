@@ -94,12 +94,10 @@
     </transition>-->
     <el-col :span="5">
       <div class="p-0">
-        <div
-          class="h-full overflow-scroll overflow-hidden overflow-x-scroll overflow-hidden font-sans"
-        >
+        <div class="h-full overflow-scroll overflow-hidden overflow-x-scroll overflow-hidden font-sans">
           <div class="flex mb-4">
             <form class="form-inline-search">
-              <div class="pl-1">
+              <div class="px-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -111,16 +109,12 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   class="feather feather-search"
-                  style="top:14px;"
+                  style="top: 14px;"
                 >
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <el-input
-                  type="text"
-                  v-model="search"
-                  :placeholder="$t('customer.search')"
-                />
+                <el-input type="text" v-model="search" :placeholder="$t('customer.search')" />
               </div>
             </form>
           </div>
@@ -128,19 +122,12 @@
             <i class="uil-search"></i>
             <el-input clearable />
           </div>-->
-          <ul v-for="(value, key) in grouped" :key="value._id">
-            <h2
-              class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl"
-            >{{ key }}</h2>
-            <li
-              v-for="customer in value"
-              :key="customer._id"
-              class="py-3 border-b cursor-pointer"
-              @click="handleClickCustomer(customer)"
-            >
+          <ul v-for="(value, key) in grouped" :key="value._id" class="px-1">
+            <h2 class="bg-cerise rounded-px6 px-2 py-1 text-white font-semibold uppercase text-xl">{{ key }}</h2>
+            <li v-for="customer in value" :key="customer._id" class="py-3 border-b cursor-pointer" @click="handleClickCustomer(customer)">
               <a href="#">
-                <p class="text-base text-gray-800 text-sm capitalize">{{customer.name}}</p>
-                <span class="text-gray-500">{{customer.tel}}</span>
+                <p class="text-base text-gray-800 text-sm capitalize">{{ customer.name }}</p>
+                <span class="text-gray-500">{{ customer.tel }}</span>
               </a>
             </li>
           </ul>
@@ -154,20 +141,18 @@
 </template>
 
 <script>
-import {
-  provider
-} from '@/service/provider';
-import axios from 'axios';
-import _ from 'lodash';
-import numeral from 'numeral';
+import { provider } from '@/service/provider'
+import axios from 'axios'
+import _ from 'lodash'
+import numeral from 'numeral'
 import CustomerDetail from './CustomerDetail.vue'
 export default {
   components: {
-    CustomerDetail,
+    CustomerDetail
   },
   data() {
     return {
-      search: "",
+      search: '',
       selectedCustomer: null,
       total: 0,
       page: 1,
@@ -177,133 +162,128 @@ export default {
   },
   watch: {
     search: _.debounce(function () {
-      this.fetchCustomer();
+      this.fetchCustomer()
     }, 200),
     page(val) {
-      this.fetchCustomer();
+      this.fetchCustomer()
     }
   },
   methods: {
-    handleClickCustomer(customer){
-      this.selectedCustomer = customer;
+    handleClickCustomer(customer) {
+      this.selectedCustomer = customer
     },
     generateRouteUrl(row) {
-      return `/payments/add?txt=${row.name}`;
+      return `/payments/add?txt=${row.name}`
     },
     handleClickDetail(row) {
-      this.$router.push(`/customers/${row._id}/show`);
+      this.$router.push(`/customers/${row._id}/show`)
     },
     handleCommand(command) {
-
       switch (command) {
         case 'edit':
-          this.$router.push(`/customers/${this.multipleSelection[0]._id}/edit`);
-          break;
+          this.$router.push(`/customers/${this.multipleSelection[0]._id}/edit`)
+          break
         case 'remove':
-          this.handleToggleActive(false);
-          break;
+          this.handleToggleActive(false)
+          break
         case 'active':
-          this.handleToggleActive(true);
-          break;
+          this.handleToggleActive(true)
+          break
         case 'deselect':
-          this.toggleSelection();
-          break;
+          this.toggleSelection()
+          break
       }
     },
     handleToggleActive(arg) {
-      const {
-        token,
-        user
-      } = this.$store.state.user;
-      const url = `${provider.baseURL}${provider.prefix}/customers/removes`;
-      const ids = this.multipleSelection.map(map => map._id);
+      const { token, user } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/customers/removes`
+      const ids = this.multipleSelection.map((map) => map._id)
       const body = {
         ids,
         selector: {
           createdBy: user._id,
           isActive: arg
         }
-      };
-      this.$alert(`${arg ? 'Activate' : "Deactivate"} ${this.multipleSelection.map(map => map.name)}`, 'បញ្ជាក់', {
+      }
+      this.$alert(`${arg ? 'Activate' : 'Deactivate'} ${this.multipleSelection.map((map) => map.name)}`, 'បញ្ជាក់', {
         confirmButtonText: 'OK',
-        callback: action => {
+        callback: (action) => {
           if (action === 'confirm') {
-            axios.post(url, body, {
+            axios
+              .post(url, body, {
                 headers: {
                   token
                 }
               })
               .then((res) => {
                 if (res.data.code === 201) {
-                  this.multipleSelection.forEach(o => {
-                    o.isActive = arg;
-                  });
-                  this.$message.success("Success");
-                  this.toggleSelection();
+                  this.multipleSelection.forEach((o) => {
+                    o.isActive = arg
+                  })
+                  this.$message.success('Success')
+                  this.toggleSelection()
                 } else {
                   this.$message.error(res.data.message)
                 }
-              }).catch((err) => this.$message.error(err.message));
+              })
+              .catch((err) => this.$message.error(err.message))
           }
         }
-      });
-
+      })
     },
     isDisableCommand() {
-      return this.multipleSelection.length === 0;
+      return this.multipleSelection.length === 0
     },
     isDisableEdit() {
-      return this.multipleSelection.length === 0 || this.multipleSelection.length > 1;
+      return this.multipleSelection.length === 0 || this.multipleSelection.length > 1
     },
     toggleSelection() {
-      this.$refs.customerTable.clearSelection();
+      this.$refs.customerTable.clearSelection()
     },
     handleSelectionChange(val) {
-      this.multipleSelection = val;
+      this.multipleSelection = val
     },
     handleCreateCustomer() {
       this.$router.push('/customers/add')
     },
     fetchCustomer() {
-      const {
-        token,
-        activeStore
-      } = this.$store.state.user;
-      const url = `${provider.baseURL}${provider.prefix}/customers?q=${this.search}&page=${this.page}&s=${activeStore}`;
-      axios.get(url, {
+      const { token, activeStore } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/customers?q=${this.search}&page=${this.page}&s=${activeStore}`
+      axios
+        .get(url, {
           headers: {
             token
           }
         })
         .then((res) => {
           if (res.data.code === 201) {
-            this.tableData = res.data.data;
+            this.tableData = res.data.data
           } else {
-            this.$message.error(res.data.message);
+            this.$message.error(res.data.message)
           }
-        }).catch((err) => {
-          this.$message.error(err.message);
+        })
+        .catch((err) => {
+          this.$message.error(err.message)
         })
     },
     countCustomer() {
-      const {
-        token,
-        activeStore
-      } = this.$store.state.user;
-      const url = `${provider.baseURL}${provider.prefix}/customers/count?s=${activeStore}`;
-      axios.get(url, {
+      const { token, activeStore } = this.$store.state.user
+      const url = `${provider.baseURL}${provider.prefix}/customers/count?s=${activeStore}`
+      axios
+        .get(url, {
           headers: {
             token
           }
         })
         .then((res) => {
           if (res.data.code === 201) {
-            this.total = res.data.data;
+            this.total = res.data.data
           } else {
-            this.$message.error(res.data.message);
+            this.$message.error(res.data.message)
           }
-        }).catch((err) => {
-          this.$message.error(err.message);
+        })
+        .catch((err) => {
+          this.$message.error(err.message)
         })
     }
   },
@@ -315,12 +295,11 @@ export default {
     }
   },
   created() {
-    this.fetchCustomer();
-    this.countCustomer();
+    this.fetchCustomer()
+    this.countCustomer()
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 .customer-bg {

@@ -13,7 +13,7 @@ const reportRouter = {
     {
       path: '',
       component: () => import('@/views/pages/reports/IndexReport.vue')
-    },
+    }
   ]
 }
-export default reportRouter;
+export default reportRouter
