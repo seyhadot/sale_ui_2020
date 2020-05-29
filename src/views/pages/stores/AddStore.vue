@@ -312,7 +312,9 @@ export default {
               } else {
                 if (this.storeId) {
                   this.$message.success('កែប្រែបានជោគជ័យ')
-                  this.handleLogout()
+                  if(!this.isSuperFn()){
+                    this.handleLogout()
+                  }
                 } else {
                   this.$message.success('បង្កើតហាងបានជោគជ័យ')
                   this.$router.push('/stores')
@@ -333,6 +335,10 @@ export default {
       setTimeout(() => {
         this.$router.push('/not_authorized')
       }, 1000)
+    },
+    isSuperFn() {
+      const { user } = this.$store.state.user;
+      return provider.isSuper(user.roles);
     },
     fetchStore(id) {
       const { token, user } = this.$store.state.user

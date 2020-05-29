@@ -135,6 +135,8 @@ export default {
                 password: this.loginForm.password
               })
               .end((err, result) => {
+                console.log(result)
+                
                 if (!err) {
                   let body = result.body
                   if (body.code == 201) {
