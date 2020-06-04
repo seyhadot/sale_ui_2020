@@ -1,5 +1,5 @@
 // const baseURL = "https://salewhat.co";
-const baseURL = 'http://192.168.0.109:3000';
+const baseURL = 'http://192.168.1.10:3000';
 import firebase from 'firebase'
 
 //this is use for test by seyha

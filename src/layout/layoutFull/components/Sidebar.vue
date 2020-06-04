@@ -36,20 +36,20 @@
               </router-link>
             </el-tooltip>
           </li>
-          <!-- <li>
+          <li>
             <el-tooltip class="item" effect="dark" content="Categories" placement="right-start">
               <router-link to="/categories" class="transition ease-in duration-700 w-full flex items-center justify-center">
                 <i class="uil-chart-pie text-5xl"></i>
-                <span>Products</span>
+                <!-- <span>Products</span> -->
               </router-link>
             </el-tooltip>
           </li>
-          -->
+         
           <li>
             <el-tooltip class="item" effect="dark" content="Transaction" placement="right-start">
               <router-link to="/transactions" class="transition ease-in duration-700 w-full flex items-center justify-center">
                 <i class="uil-document-layout-left text-5xl"></i>
-                <span>Users</span>
+                <!-- <span>Users</span> -->
               </router-link>
             </el-tooltip>
           </li>

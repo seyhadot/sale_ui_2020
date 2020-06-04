@@ -312,6 +312,7 @@ export default {
               } else {
                 if (this.storeId) {
                   this.$message.success('កែប្រែបានជោគជ័យ')
+                  this.$router.push('/stores')
                   if(!this.isSuperFn()){
                     this.handleLogout()
                   }

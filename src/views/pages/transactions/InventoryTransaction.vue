@@ -1,9 +1,10 @@
 <template>
   <el-row>
-    <el-button icon="el-icon-plus" type="primary" @click="handleAddStock">Add Stock</el-button>
+    <el-button type="primary" @click="handleAddStock" icon="icon-feather-plus text-xl" class="btn-new-product"></el-button>
 
     <el-dialog title="Add Stock" :visible.sync="addStockDialog" @close="handleOnClose">
       <el-form :model="stockForm" :rules="rules" ref="stock-form-ref">
+
         <el-form-item label="Select Product">
           <el-autocomplete
             ref="addStock"
@@ -16,7 +17,8 @@
             @select="handleSelect"
           ></el-autocomplete>
         </el-form-item>
-        <el-row :gutter="10">
+
+        <el-row :gutter="40" class="mt-3">
           <el-col :span="12">
             <el-form-item label="Stock Type" prop="type">
               <el-select v-model="stockForm.type" style="width: 100%;" placeholder="Select Type">
@@ -45,7 +47,7 @@
     </el-dialog>
 
     <!--Table Data-->
-    <el-table :data="tableData" stripe style="width: 100%;">
+    <el-table :data="tableData" stripe style="width: 100%;" class="mt-8">
       <el-table-column prop="productDoc.name" label="Product" width="180"> </el-table-column>
       <el-table-column prop="in" label="Qty In" width="180"> </el-table-column>
       <el-table-column prop="out" label="Qty Out"> </el-table-column>

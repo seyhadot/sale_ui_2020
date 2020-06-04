@@ -1,8 +1,10 @@
 <template>
   <content-box>
     <el-row>
-      <el-button icon="el-icon-plus" type="primary" @click="handleCreateNewCategory">{{ $t('category.add') }}</el-button>
-      <el-row>
+      <!-- <el-button icon="el-icon-plus" type="primary" @click="handleCreateNewCategory">{{ $t('category.add') }}</el-button> -->
+      <el-button type="primary" @click="handleCreateNewCategory" icon="icon-feather-plus text-xl" class="btn-new-product"></el-button>
+
+      <el-row class="mt-8">
         <el-table :data="tableData.filter((data) => !search || data.name.toLowerCase().includes(search.toLowerCase()))" style="width: 100%;" @row-click="handleClick">
           <el-table-column :label="$t('category.tableData.createdAt')">
             <template slot-scope="scope">{{ scope.row.timestamp | moment('DD/MM/YYYY HH:mm') }}</template>

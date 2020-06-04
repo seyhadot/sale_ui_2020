@@ -26,11 +26,11 @@
             </form>
           </el-col>
 
-          <div>
+          <!-- <div>
             <el-button type="primary" @click="handleCreateProduct" icon="uil-web-grid text-xl" class="btn-category"></el-button>
             <el-button type="primary" @click="handleCreateProduct" icon="icon-feather-archive text-xl" class="btn-product-option"></el-button>
             <el-button type="primary" @click="handleCreateProduct" icon="uil-print text-2xl" class="btn-new-print"></el-button>
-          </div>
+          </div> -->
           <el-button type="primary" @click="handleCreateProduct" icon="icon-feather-plus text-xl" class="btn-new-product"></el-button>
         </div>
       </div>
