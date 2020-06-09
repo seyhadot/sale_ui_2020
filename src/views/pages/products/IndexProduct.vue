@@ -3,7 +3,7 @@
     <div class="table-responsive">
       <div class="card-header">
         <div class="flex justify-between items-center mb-4">
-          <el-col :span="5">
+          <el-col :xs="15" :sm="12" :md="10" :lg="8">
             <form class="form-inline-search my-2 my-lg-0">
               <div class="pl-1">
                 <svg
