@@ -89,8 +89,8 @@
         border-radius: 10px;
         background: $white;
         &:hover {
-          -webkit-transform: translateY(0) scale(1.03);
-          transform: translateY(0) scale(1.01);
+          // -webkit-transform: translateY(0) scale(1.01);
+          // transform: translateY(0) scale(1.01);
           border-radius: 10px;
           background-image: linear-gradient(90deg, #e53792 5%, #a53792 100%);
           color: $white;
@@ -100,6 +100,9 @@
           }
           .chip-outline-secondary {
             border-color: $white;
+          }
+          td {
+            border: none;
           }
         }
         td {
@@ -155,13 +158,13 @@ small {
   border-color: #868e96;
 }
 
-.form-inline-search{
+.form-inline-search {
   width: 100%;
 
   div {
     position: relative;
   }
-} 
+}
 .form-inline-search > div svg {
   position: absolute;
   right: 11px;
