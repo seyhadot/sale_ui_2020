@@ -179,7 +179,7 @@ small {
   box-shadow: -1px 4px 4px rgba(109, 122, 151, 0.12);
   width: 100% !important;
   background-color: #fff;
-  height: auto;
+  height: 45px;
   border: 1px solid #fff;
   color: #3b3f5c;
   font-size: 15px;
@@ -192,6 +192,9 @@ small {
   border-color: rgba(234, 76, 137, 0.4);
   -webkit-box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
   box-shadow: 0 0 0 4px rgba(234, 76, 137, 0.1);
+}
+.form-inline-search .el-input__inner:hover {
+  border-color: none;
 }
 
 .el-input-number {

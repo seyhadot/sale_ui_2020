@@ -643,3 +643,6 @@ button.el-button.btn-category {
   background-image: linear-gradient(to right, rgba(96, 92, 168, 1.00), rgb(131, 126, 238));
   box-shadow: -1px 4px 4px #8063e9;
 }
+.el-input .el-input__inner:hover{
+  border-color: none;
+}

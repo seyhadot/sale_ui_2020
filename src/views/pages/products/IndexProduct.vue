@@ -1,9 +1,9 @@
 <template>
   <content-box>
-    <div class="table-responsive">
+    <div class="table-responsive mb-10">
       <div class="card-header">
         <div class="flex justify-between items-center mb-4">
-          <el-col :xs="15" :sm="12" :md="10" :lg="8">
+          <el-col :xs="15" :sm="12" :md="10" :lg="6">
             <form class="form-inline-search my-2 my-lg-0">
               <div class="pl-1">
                 <svg
@@ -25,6 +25,7 @@
                   type="text"
                   class="form-control product-search"
                   id="input-search"
+                  v-model="query"
                   placeholder="Search ..."
                 />
               </div>
@@ -45,12 +46,12 @@
         </div>
       </div>
 
-      <table class="table">
+      <table class="table" ref="multipleTable">
         <thead>
           <tr class="t-head">
             <th style="width: 18px;">
               <div class="custom-control my-checkbox custom-checkbox text-left">
-                <el-checkbox v-model="checked"></el-checkbox>
+                <el-checkbox v-model="selection"></el-checkbox>
               </div>
             </th>
 
@@ -88,7 +89,7 @@
           <tr v-for="o in products" :key="o._id">
             <td>
               <div class="my-checkbox">
-                <el-checkbox v-model="checked"></el-checkbox>
+                <el-checkbox type="selection"></el-checkbox>
               </div>
             </td>
 
@@ -145,6 +146,7 @@
           </tr>
         </tbody>
       </table>
+
       <el-drawer
         :before-close="handleClose"
         size="60%"
@@ -177,6 +179,19 @@
         </div>
       </el-drawer>
     </div>
+    <el-row
+      v-show="!query"
+      class="bg-white h-12 flex justify-center items-center fixed bottom-0 z-20"
+    >
+      <el-pagination
+        class="px-8"
+        background
+        :page-size="limit"
+        :current-page.sync="currentPage"
+        layout="total,prev, pager, next"
+        :total="total"
+      ></el-pagination>
+    </el-row>
   </content-box>
 </template>
 
@@ -192,19 +207,19 @@ export default {
       form: {},
       loading: false,
       input: '',
-      checked: false,
       isLoading: true,
       total: 0,
       currentPage: 1,
       title: '',
       query: '',
-      limit: 20,
+      limit: 7,
       skip: 0,
       products: [],
       company: null,
       drawer: false,
       direction: 'rtl',
-      currentSelectedProduct: null
+      currentSelectedProduct: null,
+      multipleSelection: []
     }
   },
   components: {
