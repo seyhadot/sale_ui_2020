@@ -4,7 +4,7 @@
     <div class="wrapper_main w-full">
       <Navbar />
       <main class="w-full">
-        <div class="content">
+        <div class="">
           <router-view :key="key" />
         </div>
       </main>

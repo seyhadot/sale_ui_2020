@@ -61,6 +61,14 @@
               </router-link>
             </el-tooltip>
           </li>
+            <li>
+            <el-tooltip class="item" effect="dark" content="Sale" placement="right-start">
+              <router-link to="/sales" class="transition ease-in duration-700 w-full flex items-center justify-center">
+                <i class="uil-arrow-growth text-5xl"></i>
+                <!-- <span>Users</span> -->
+              </router-link>
+            </el-tooltip>
+          </li>
         </ul>
       </nav>
     </ul>
