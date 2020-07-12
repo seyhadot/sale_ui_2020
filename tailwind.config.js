@@ -17,7 +17,6 @@ module.exports = {
       current: 'currentColor',
       black: '#000',
       white: '#fff',
-      pure_gray: '#f7f6f1',
       menu_gray: '#4B4B4B',
       menu_yellow: '#fec171',
       menu_profile: '#a2a2a2',
@@ -28,7 +27,9 @@ module.exports = {
       plum: '#9E3792',
       cerise: '#F4368E',
       bunting: '#1E2E40',
+      bluelight: '#2437AC',
       bcg: '#F1F5F8',
+      bg_sale: '#F4F4F6',
       gray: {
         100: '#f7fafc',
         200: '#edf2f7',

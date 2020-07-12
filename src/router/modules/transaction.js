@@ -1,9 +1,9 @@
-import LayoutFull from '@/layout/layoutNoMain'
+import layoutNoBreadCrumb from '@/layout/layoutNoBreadCrumb'
 
 const reportRouter = {
   path: '/transactions',
   name: 'Transactions',
-  component: LayoutFull,
+  component: layoutNoBreadCrumb,
   meta: {
     title: 'Transactions',
     enName: 'Transactions',

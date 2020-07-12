@@ -10,6 +10,7 @@ import reportRouter from './modules/report'
 import categoryRouter from './modules/category'
 import settingRouter from './modules/setting'
 import storeRouter from './modules/store'
+import saleRouter from './modules/sale'
 import transactionRouter from './modules/transaction'
 
 export const constantRoutes = [
@@ -50,6 +51,7 @@ export const constantRoutes = [
     ]
   },
   storeRouter,
+  saleRouter,
   settingRouter,
   categoryRouter,
   productRouter,

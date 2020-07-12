@@ -1,6 +1,6 @@
 <template>
-  <!-- <content-box> -->
-  <div class="p-10 h-full shadow-none">
+  <content-box>
+  <div class="py-10 h-full shadow-none">
     <el-tabs v-model="activeName">
       <el-tab-pane :label="$t('customer.title')">
         <span slot="label">{{ $t('customer.title') }}</span>
@@ -32,11 +32,11 @@
       </el-tab-pane>
     </el-tabs>
   </div>
-  <!-- </content-box> -->
+  </content-box>
 </template>
 
 <script>
-import ContentBox from '@/components/ContentBox.vue'
+import ContentBox from '@/components/ContentBoxNoBorder.vue'
 import Overview from './Overview.vue'
 import Customer from './Customer.vue'
 import ProductOptions from './ProductOptions.vue'
