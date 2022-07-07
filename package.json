@@ -14,7 +14,7 @@
     "element-ui": "^2.13.1",
     "fibers": "^5.0.0",
     "firebase": "^7.14.3",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "numeral": "^2.0.6",
     "path-to-regexp": "^6.1.0",
     "postcss-nested": "^4.2.1",
